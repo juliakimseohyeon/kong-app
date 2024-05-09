@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
+import kongLogo from "../../assets/logos/logo-kong-full-mark-horizontal.svg";
 
 export default function HeaderNav() {
   return (
     <header>
       <nav class="nav__top">
         <Link to="/">
-          <img
-            className="logo"
-            src="assets/logos/logo-kong-full-mark-horizontal.svg"
-            alt="Kong logo"
-          />
+          <img className="logo" src={kongLogo} alt="Kong logo" />
         </Link>
       </nav>
     </header>
