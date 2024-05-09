@@ -1,0 +1,14 @@
+.nav__top {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  z-index: 1;
+  height: 5rem;
+  background-color: white;
+  box-shadow: $box-shadow;
+  @include display-flex(flex, row, center, center);
+}
+
+.logo {
+  height: 3rem;
+}

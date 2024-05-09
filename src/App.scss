@@ -1,0 +1,57 @@
+@use "partials/mixins" as *;
+@use "partials/variables" as *;
+
+@include font-face("Inter", 300, "Inter-Light.ttf");
+@include font-face("Inter", 400, "Inter-Regular.ttf");
+@include font-face("Inter", 700, "Inter-Bold.ttf");
+@include font-face("Inter", 800, "Inter-ExtraBold.ttf");
+@include font-face("Inter", 900, "Inter-Black.ttf");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
+button {
+  width: 100%;
+  border-radius: 4rem;
+  background-color: $color-primary-green;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border: none;
+  padding: 1rem;
+}
+
+@media (min-width: $tablet-width) {
+  button {
+    width: 50%;
+    font-size: 1rem;
+    padding: 2rem;
+  }
+}

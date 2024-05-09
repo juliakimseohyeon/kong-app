@@ -1,0 +1,39 @@
+@use "partials/mixins" as *;
+@use "partials/variables" as *;
+
+.stats {
+  padding: 1.5rem 1rem;
+  height: 40vh;
+  width: 100vw;
+  @include display-flex(flex, column, flex-end);
+  gap: 1rem;
+  &__text {
+    @include display-flex(flex, row, space-between);
+    width: 100%;
+  }
+  &__number {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: $color-primary-blue;
+  }
+}
+
+.map {
+  background-color: $color-secondary-blue;
+  height: 50vh;
+  width: 100vw;
+}
+
+@media (min-width: $tablet-width) {
+  .stats {
+    padding: 3rem;
+    height: 30vh;
+    // &__text {
+    //   @include display-flex(flex, column);
+    //   width: 100%;
+    // }
+  }
+  .map {
+    height: 70vh;
+  }
+}

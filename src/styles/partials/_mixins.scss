@@ -1,0 +1,19 @@
+@mixin display-flex(
+  $flex: flex,
+  $direction,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: $flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin font-face($font-family, $font-weight, $font-name) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    src: url(./assets/fonts/#{font-name}) format("ttf");
+  }
+}

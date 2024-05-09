@@ -1,0 +1,36 @@
+.nav__bottom {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  z-index: 1;
+  height: 5rem;
+  bottom: 0;
+  background-color: $color-primary-green;
+  box-shadow: $box-shadow;
+  @include display-flex(flex, row, space-between, center);
+  justify-self: flex-end;
+  &-item {
+    @include display-flex(flex, column, center, center);
+    text-decoration: none;
+    color: white;
+    gap: 0.25rem;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .label {
+    font-size: 1rem;
+  }
+
+  .nav__bottom {
+    padding: 1.5rem 3rem;
+    height: 8rem;
+    &-item {
+      gap: 1rem;
+    }
+  }
+
+  .icon {
+    height: 3rem;
+  }
+}
