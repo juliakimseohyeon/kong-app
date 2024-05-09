@@ -1,5 +1,5 @@
-@use "partials/mixins" as *;
-@use "partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/variables" as *;
 
 @include font-face("Inter", 300, "Inter-Light.ttf");
 @include font-face("Inter", 400, "Inter-Regular.ttf");
