@@ -1,0 +1,42 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.collection-detail {
+  padding: 2.5rem 1rem;
+  @include display-flex(flex, column);
+  gap: 3rem;
+  &__block {
+    @include display-flex(flex, column, normal, flex-start);
+    gap: 1rem;
+  }
+  &__description {
+    background-color: $color-secondary-gray;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.hero {
+  @include display-flex(flex, column, normal, center);
+  &__image {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  &__text {
+    padding: 1rem;
+    text-align: left;
+  }
+  &__status-group {
+    @include display-flex(flex, row, space-between);
+  }
+  &__status {
+    text-align: center;
+    width: 100%;
+    min-height: 70px;
+    margin: 0 1rem;
+    padding: 1rem;
+    background-color: aliceblue;
+    border-radius: 1rem;
+  }
+}

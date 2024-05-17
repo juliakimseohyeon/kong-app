@@ -48,6 +48,22 @@ button {
   padding: 1rem;
 }
 
+.header {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  z-index: 1;
+  height: 5rem;
+  background-color: white;
+  box-shadow: $box-shadow;
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+  align-items: center;
+  &__title {
+    justify-self: center;
+  }
+}
+
 @media (min-width: $tablet-width) {
   button {
     width: 50%;

@@ -8,11 +8,29 @@ import HeaderNav from "./components/HeaderNav/HeaderNav";
 import FooterNav from "./components/FooterNav/FooterNav";
 
 function App() {
+  const [isPlantSelected, setIsPlantSelected] = useState(false);
   return (
     <BrowserRouter>
-      <HeaderNav />
+      {!isPlantSelected && <HeaderNav />}
       <Routes>
-        <Route path="/collections" element={<CollectionPage />} />
+        <Route
+          path="/"
+          element={
+            <CollectionPage
+              isPlantSelected={isPlantSelected}
+              setIsPlantSelected={setIsPlantSelected}
+            />
+          }
+        />
+        <Route
+          path="/collections/:plantId"
+          element={
+            <CollectionPage
+              isPlantSelected={isPlantSelected}
+              setIsPlantSelected={setIsPlantSelected}
+            />
+          }
+        />
         <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
         <Route path="" element="" />
       </Routes>

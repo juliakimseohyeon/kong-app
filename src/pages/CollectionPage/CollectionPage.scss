@@ -19,7 +19,8 @@
 }
 
 .gallery {
-  width: 80vw;
+  width: 100%;
+  padding: 1rem;
   margin: auto;
   @include display-flex(flex, column);
   gap: 3rem;

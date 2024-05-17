@@ -1,4 +1,22 @@
-export default function CollectionGallery({ plantCollection }) {
+import { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+export default function CollectionGallery({
+  plantCollection,
+  isPlantSelected,
+  setIsPlantSelected,
+  setSelectedPlantId,
+}) {
+  const params = useParams();
+  const selectPlant = () => {
+    setIsPlantSelected(!isPlantSelected);
+    setSelectedPlantId(params.plantId);
+    console.log(params.plantId);
+  };
+
+  // useEffect(() => {
+  //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
+  // }, [params]);
+
   return (
     <main>
       <section className="stats">
@@ -9,15 +27,17 @@ export default function CollectionGallery({ plantCollection }) {
       </section>
       <section className="gallery">
         {plantCollection.map((plant) => (
-          <div key={plant.id} className="plant-card">
-            <img src={plant.image} className="plant-card__image" />
-            <div>
-              <h2 className="plant-card__title">{plant.commonName}</h2>
-              <p className="plant-card__subtitle label">
-                {plant.scientificName}
-              </p>
+          <Link to={`/collections/${plant.id}`} key={plant.id}>
+            <div className="plant-card" onClick={selectPlant}>
+              <img src={plant.image} className="plant-card__image" />
+              <div>
+                <h2 className="plant-card__title">{plant.commonName}</h2>
+                <p className="plant-card__subtitle label">
+                  {plant.scientificName}
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </section>
     </main>
