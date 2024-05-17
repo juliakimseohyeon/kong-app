@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import kongLogo from "../../assets/logos/logo-kong-full-mark-horizontal.svg";
+import "./HeaderNav.scss";
 
 export default function HeaderNav() {
   return (
