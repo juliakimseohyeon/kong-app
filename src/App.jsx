@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <HeaderNav />
       <Routes>
-        <Route path="/" element={<CollectionPage />} />
+        <Route path="/collections" element={<CollectionPage />} />
         <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
         <Route path="" element="" />
       </Routes>

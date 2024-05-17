@@ -5,7 +5,7 @@ import "./HeaderNav.scss";
 export default function HeaderNav() {
   return (
     <header>
-      <nav class="nav__top">
+      <nav className="nav__top">
         <Link to="/">
           <img className="logo" src={kongLogo} alt="Kong logo" />
         </Link>
