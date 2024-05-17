@@ -3,7 +3,7 @@
 
 .stats {
   padding: 1.5rem 1rem;
-  height: 40vh;
+  padding-top: 6rem;
   width: 100vw;
   @include display-flex(flex, column, flex-end);
   gap: 1rem;
@@ -18,10 +18,28 @@
   }
 }
 
-.map {
-  background-color: $color-secondary-blue;
-  height: 50vh;
-  width: 100vw;
+.gallery {
+  width: 80vw;
+  margin: auto;
+  @include display-flex(flex, column);
+  gap: 3rem;
+  padding-bottom: 8rem;
+}
+
+.plant-card {
+  box-shadow: $box-shadow;
+  border-radius: 1rem;
+  width: 100%;
+  @include display-flex(flex, column);
+  gap: 1rem;
+  &__image {
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+  }
+  &__subtitle {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
 }
 
 @media (min-width: $tablet-width) {
