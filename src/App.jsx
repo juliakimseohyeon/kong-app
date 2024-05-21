@@ -14,7 +14,7 @@ function App() {
       {!isPlantSelected && <HeaderNav />}
       <Routes>
         <Route
-          path="/"
+          path="/collections"
           element={
             <CollectionPage
               isPlantSelected={isPlantSelected}

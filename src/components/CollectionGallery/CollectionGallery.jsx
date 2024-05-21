@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 export default function CollectionGallery({
   plantCollection,
@@ -7,10 +6,10 @@ export default function CollectionGallery({
   setSelectedPlantId,
 }) {
   const params = useParams();
-  const selectPlant = () => {
-    setIsPlantSelected(!isPlantSelected);
-    setSelectedPlantId(params.plantId);
-    console.log(params.plantId);
+  const selectPlant = (plantId) => {
+    setIsPlantSelected(true);
+    setSelectedPlantId(plantId);
+    console.log(plantId);
   };
 
   // useEffect(() => {
@@ -28,8 +27,12 @@ export default function CollectionGallery({
       <section className="gallery">
         {plantCollection.map((plant) => (
           <Link to={`/collections/${plant.id}`} key={plant.id}>
-            <div className="plant-card" onClick={selectPlant}>
-              <img src={plant.image} className="plant-card__image" />
+            <div className="plant-card" onClick={() => selectPlant(plant.id)}>
+              <img
+                src={plant.image}
+                className="plant-card__image"
+                alt={plant.commonName}
+              />
               <div>
                 <h2 className="plant-card__title">{plant.commonName}</h2>
                 <p className="plant-card__subtitle label">

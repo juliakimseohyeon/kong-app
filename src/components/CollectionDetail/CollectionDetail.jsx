@@ -1,21 +1,28 @@
 import "../../App.scss";
 import "./CollectionDetail.scss";
 import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function CollectionDetail({ selectedPlant, selectedPlantId }) {
-  console.log(selectedPlantId);
+export default function CollectionDetail({
+  selectedPlant,
+  setIsPlantSelected,
+  selectedPlantId,
+}) {
   return (
     <>
       <header className="header">
-        <Link to={"/"}>
-          <img src={arrowLeftSmall} />
+        <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
+          <img src={arrowLeftSmall} alt="Back Button" />
         </Link>
         <p className="header__title">{selectedPlant.commonName}</p>
       </header>
       <main>
         <section className="hero">
-          <img className="hero__image" src={selectedPlant.image} />
+          <img
+            className="hero__image"
+            src={selectedPlant.image}
+            alt={selectedPlant.commonName}
+          />
           <div className="hero__text">
             <h1>{selectedPlant.commonName}</h1>
             <h2>{selectedPlant.scientificName}</h2>
@@ -46,7 +53,7 @@ export default function CollectionDetail({ selectedPlant, selectedPlantId }) {
           </div>
           <div className="collection-detail__block">
             <h3>Photos of the plant</h3>
-            <img />
+            <img alt="" />
           </div>
         </section>
       </main>

@@ -35,10 +35,12 @@ export default function CollectionPage({
   useEffect(() => {
     async function getOnePlantData() {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/collections/${selectedPlantId}`
-        );
-        setSelectedPlant(response.data);
+        if (selectedPlantId) {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/collections/${selectedPlantId}`
+          );
+          setSelectedPlant(response.data);
+        }
       } catch (err) {
         console.log(err);
       }
@@ -57,7 +59,10 @@ export default function CollectionPage({
           setSelectedPlantId={setSelectedPlantId}
         />
       ) : (
-        <CollectionDetail selectedPlant={selectedPlant} />
+        <CollectionDetail
+          selectedPlant={selectedPlant}
+          setIsPlantSelected={setIsPlantSelected}
+        />
       )}
     </>
   );

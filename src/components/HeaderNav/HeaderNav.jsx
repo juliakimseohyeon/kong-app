@@ -6,7 +6,7 @@ export default function HeaderNav() {
   return (
     <header>
       <nav className="nav__top">
-        <Link to="/">
+        <Link to="/collections">
           <img className="logo" src={kongLogo} alt="Kong logo" />
         </Link>
       </nav>
