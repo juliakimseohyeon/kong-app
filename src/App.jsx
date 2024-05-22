@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import CollectionPage from "./pages/CollectionPage/CollectionPage";
 import FeaturedPlantsPage from "./pages/FeaturedPlantsPage/FeaturedPlantsPage";
+import CameraPage from "./pages/CameraPage/CameraPage";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
 import FooterNav from "./components/FooterNav/FooterNav";
 
@@ -32,7 +33,7 @@ function App() {
           }
         />
         <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
-        <Route path="" element="" />
+        <Route path="/camera" element={<CameraPage />} />
       </Routes>
       <FooterNav />
     </BrowserRouter>
