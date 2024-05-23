@@ -1,8 +1,17 @@
 import "./CameraPage.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function CameraPage({ setReceivedData }) {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [imageUploaded, setImageUploaded] = useState(false);
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  useEffect(() => {
+    if (imageUploaded) {
+      navigate("/collections"); // Navigate to "/collections" route when imageUploaded state changes
+    }
+  }, [imageUploaded, navigate]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -23,6 +32,7 @@ export default function CameraPage({ setReceivedData }) {
       const data = await response.json();
       console.log("Response from OpenAI:", data);
       setReceivedData(true); // Update the state to show the response on CollectionsPage
+      setImageUploaded(true);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
