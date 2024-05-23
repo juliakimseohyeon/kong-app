@@ -10,6 +10,8 @@ import FooterNav from "./components/FooterNav/FooterNav";
 
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
+  const [receivedData, setReceivedData] = useState(false);
+
   return (
     <BrowserRouter>
       {!isPlantSelected && <HeaderNav />}
@@ -33,7 +35,10 @@ function App() {
           }
         />
         <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
-        <Route path="/camera" element={<CameraPage />} />
+        <Route
+          path="/camera"
+          element={<CameraPage setReceivedData={setReceivedData} />}
+        />
       </Routes>
       <FooterNav />
     </BrowserRouter>

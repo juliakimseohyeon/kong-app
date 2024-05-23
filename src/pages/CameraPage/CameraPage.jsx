@@ -1,7 +1,7 @@
 import "./CameraPage.scss";
 import { useState } from "react";
 
-export default function CameraPage() {
+export default function CameraPage({ setReceivedData }) {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -16,13 +16,13 @@ export default function CameraPage() {
     formData.append("image", file);
 
     try {
-      const response = await fetch("http://localhost:3000/camera", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/camera`, {
         method: "POST",
         body: formData,
       });
       const data = await response.json();
       console.log("Response from OpenAI:", data);
-      // Redirect or update the state to show the response on CollectionsPage
+      setReceivedData(true); // Update the state to show the response on CollectionsPage
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -31,9 +31,7 @@ export default function CameraPage() {
     <main>
       <section className="camera">
         <h1>Camera</h1>
-        <button id="accessButton">
-          <img src="camera-icon.png" alt="Access Camera and Photo Album" />
-        </button>
+
         <input
           type="file"
           id="fileInput"

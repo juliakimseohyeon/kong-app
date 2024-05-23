@@ -6,34 +6,34 @@ import plantsIcon from "../../assets/icons/icon-plants.svg";
 import "./FooterNav.scss";
 
 export default function FooterNav() {
-  const fileInputRef = useRef(null);
+  // const fileInputRef = useRef(null);
 
-  const handleCameraClick = () => {
-    fileInputRef.current.click();
-  };
+  // const handleCameraClick = () => {
+  //   fileInputRef.current.click();
+  // };
 
-  const handleFileChange = async (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const formData = new FormData();
-      formData.append("image", file);
+  // const handleFileChange = async (event) => {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     const formData = new FormData();
+  //     formData.append("image", file);
 
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
-          method: "POST",
-          body: formData,
-        });
+  //     try {
+  //       const response = await fetch(`${import.meta.env.VITE_API_URL}/camera`, {
+  //         method: "POST",
+  //         body: formData,
+  //       });
 
-        if (response.ok) {
-          console.log("File uploaded successfully");
-        } else {
-          console.error("File upload failed");
-        }
-      } catch (error) {
-        console.error("Error uploading file:", error);
-      }
-    }
-  };
+  //       if (response.ok) {
+  //         console.log("File uploaded successfully");
+  //       } else {
+  //         console.error("File upload failed");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error uploading file:", error);
+  //     }
+  //   }
+  // };
 
   return (
     <footer className="nav__bottom">
@@ -42,24 +42,28 @@ export default function FooterNav() {
         <p>HOME</p>
       </Link>
 
-      <div className="nav__bottom-item label" onClick={handleCameraClick}>
+      {/* <div className="nav__bottom-item label" onClick={handleCameraClick}>
         <img className="icon" src={cameraIcon} alt="Camera Icon" />
         <p>CAMERA</p>
-      </div>
+      </div> */}
+      <Link to="/camera" className="nav__bottom-item label">
+        <img className="icon" src={cameraIcon} alt="Camera Icon" />
+        <p>CAMERA</p>
+      </Link>
 
       <Link to="/featuredplants" className="nav__bottom-item label">
         <img className="icon" src={plantsIcon} alt="Plants Icon" />
         <p>PLANTS</p>
       </Link>
 
-      <input
+      {/* <input
         type="file"
         ref={fileInputRef}
         accept="image/*"
         capture="camera"
         style={{ display: "none" }}
         onChange={handleFileChange}
-      />
+      /> */}
     </footer>
   );
 }

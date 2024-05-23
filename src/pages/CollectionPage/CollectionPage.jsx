@@ -48,7 +48,6 @@ export default function CollectionPage({
     getOnePlantData();
   }, [selectedPlantId]);
 
-  console.log(selectedPlant);
   return (
     <>
       {!isPlantSelected ? (
