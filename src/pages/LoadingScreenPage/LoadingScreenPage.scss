@@ -1,0 +1,8 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.loading-screen {
+  background-color: $color-secondary-green;
+  height: 100vh;
+  @include display-flex(flex, column);
+}

@@ -1,10 +1,12 @@
 import "./CameraPage.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 
 export default function CameraPage({ setReceivedData }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate(); // Initialize the navigate function
 
   useEffect(() => {
@@ -32,7 +34,10 @@ export default function CameraPage({ setReceivedData }) {
       const data = await response.json();
       console.log("Response from OpenAI:", data);
       setReceivedData(true); // Update the state to show the response on CollectionsPage
-      setImageUploaded(true);
+      setIsLoading(true);
+      if (response) {
+        setImageUploaded(true);
+      }
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -41,7 +46,7 @@ export default function CameraPage({ setReceivedData }) {
     <main>
       <section className="camera">
         <h1>Camera</h1>
-
+        {isLoading && <LoadingScreenPage />}
         <input
           type="file"
           id="fileInput"
