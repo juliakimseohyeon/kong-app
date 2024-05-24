@@ -8,32 +8,12 @@ import "./FooterNav.scss";
 export default function FooterNav() {
   const fileInputRef = useRef(null);
 
-  const handleCameraClick = () => {
-    fileInputRef.current.click();
+  const handleCameraClick = (event) => {
+    event.preventDefault();
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
   };
-
-  // const handleFileChange = async (event) => {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const formData = new FormData();
-  //     formData.append("image", file);
-
-  //     try {
-  //       const response = await fetch(`${import.meta.env.VITE_API_URL}/camera`, {
-  //         method: "POST",
-  //         body: formData,
-  //       });
-
-  //       if (response.ok) {
-  //         console.log("File uploaded successfully");
-  //       } else {
-  //         console.error("File upload failed");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error uploading file:", error);
-  //     }
-  //   }
-  // };
 
   return (
     <footer className="nav__bottom">
@@ -41,16 +21,24 @@ export default function FooterNav() {
         <img className="icon" src={homeIcon} alt="Home Icon" />
         <p>HOME</p>
       </Link>
-
-      <Link to="/camera" className="nav__bottom-item label">
+      <div className="nav__bottom-item label" onClick={handleCameraClick}>
         <img className="icon" src={cameraIcon} alt="Camera Icon" />
         <p>CAMERA</p>
-      </Link>
+      </div>
 
       <Link to="/featuredplants" className="nav__bottom-item label">
         <img className="icon" src={plantsIcon} alt="Plants Icon" />
         <p>PLANTS</p>
       </Link>
+
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        style={{ display: "none" }}
+        onChange={handleCameraClick}
+        ref={fileInputRef} // Attach the ref to the input element
+      />
     </footer>
   );
 }
