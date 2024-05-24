@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.scss";
 import CollectionPage from "./pages/CollectionPage/CollectionPage";
@@ -16,6 +16,7 @@ function App() {
     <BrowserRouter>
       {!isPlantSelected && <HeaderNav />}
       <Routes>
+        <Route path="/" element={<Navigate to="/collections" />} />
         <Route
           path="/collections"
           element={

@@ -6,11 +6,11 @@ import plantsIcon from "../../assets/icons/icon-plants.svg";
 import "./FooterNav.scss";
 
 export default function FooterNav() {
-  // const fileInputRef = useRef(null);
+  const fileInputRef = useRef(null);
 
-  // const handleCameraClick = () => {
-  //   fileInputRef.current.click();
-  // };
+  const handleCameraClick = () => {
+    fileInputRef.current.click();
+  };
 
   // const handleFileChange = async (event) => {
   //   const file = event.target.files[0];
@@ -37,33 +37,33 @@ export default function FooterNav() {
 
   return (
     <footer className="nav__bottom">
-      <Link to="/" className="nav__bottom-item label">
+      <Link to="/collections" className="nav__bottom-item label">
         <img className="icon" src={homeIcon} alt="Home Icon" />
         <p>HOME</p>
       </Link>
 
-      {/* <div className="nav__bottom-item label" onClick={handleCameraClick}>
+      <div className="nav__bottom-item label" onClick={handleCameraClick}>
         <img className="icon" src={cameraIcon} alt="Camera Icon" />
         <p>CAMERA</p>
-      </div> */}
-      <Link to="/camera" className="nav__bottom-item label">
-        <img className="icon" src={cameraIcon} alt="Camera Icon" />
-        <p>CAMERA</p>
-      </Link>
+      </div>
 
       <Link to="/featuredplants" className="nav__bottom-item label">
         <img className="icon" src={plantsIcon} alt="Plants Icon" />
         <p>PLANTS</p>
       </Link>
 
-      {/* <input
+      <input
         type="file"
         ref={fileInputRef}
         accept="image/*"
-        capture="camera"
+        capture="environment"
         style={{ display: "none" }}
-        onChange={handleFileChange}
-      /> */}
+        onChange={(event) => {
+          if (event.target.files[0]) {
+            window.location.href = `/camera?file=${event.target.files[0].name}`;
+          }
+        }}
+      />
     </footer>
   );
 }

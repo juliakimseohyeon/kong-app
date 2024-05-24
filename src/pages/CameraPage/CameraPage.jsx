@@ -1,6 +1,6 @@
 import "./CameraPage.scss";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 
 export default function CameraPage({ setReceivedData }) {
@@ -8,10 +8,21 @@ export default function CameraPage({ setReceivedData }) {
   const [imageUploaded, setImageUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate(); // Initialize the navigate function
+  const location = useLocation();
+  const fileInputRef = useRef(null); // Create a ref for the file input element
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const fileName = params.get("file");
+
+    if (fileName && fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  }, [location]);
 
   useEffect(() => {
     if (imageUploaded) {
-      navigate("/collections"); // Navigate to "/collections" route when imageUploaded state changes
+      navigate("/collections");
     }
   }, [imageUploaded, navigate]);
 
@@ -26,6 +37,7 @@ export default function CameraPage({ setReceivedData }) {
     const formData = new FormData();
     formData.append("image", file);
 
+    setIsLoading(true); // Trigger a loading page
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/camera`, {
         method: "POST",
@@ -34,8 +46,9 @@ export default function CameraPage({ setReceivedData }) {
       const data = await response.json();
       console.log("Response from OpenAI:", data);
       setReceivedData(true); // Update the state to show the response on CollectionsPage
-      setIsLoading(true);
-      if (response) {
+
+      // Only set imageUploaded if data is received
+      if (data) {
         setImageUploaded(true);
       }
     } catch (error) {
@@ -46,7 +59,9 @@ export default function CameraPage({ setReceivedData }) {
     <main>
       <section className="camera">
         <h1>Camera</h1>
+        {/* If data is loading, display LoadingScreenPage */}
         {isLoading && <LoadingScreenPage />}
+
         <input
           type="file"
           id="fileInput"
@@ -54,6 +69,7 @@ export default function CameraPage({ setReceivedData }) {
           capture="camera"
           name="image"
           onChange={handleFileChange}
+          ref={fileInputRef} // Attach the ref to the input element
         />
       </section>
     </main>
