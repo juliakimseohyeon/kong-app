@@ -66,7 +66,6 @@ export default function CameraPage({ setReceivedData }) {
           type="file"
           id="fileInput"
           accept="image/*"
-          capture="camera"
           name="image"
           onChange={handleFileChange}
           ref={fileInputRef} // Attach the ref to the input element

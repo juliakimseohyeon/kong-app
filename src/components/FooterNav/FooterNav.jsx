@@ -42,28 +42,15 @@ export default function FooterNav() {
         <p>HOME</p>
       </Link>
 
-      <div className="nav__bottom-item label" onClick={handleCameraClick}>
+      <Link to="/camera" className="nav__bottom-item label">
         <img className="icon" src={cameraIcon} alt="Camera Icon" />
         <p>CAMERA</p>
-      </div>
+      </Link>
 
       <Link to="/featuredplants" className="nav__bottom-item label">
         <img className="icon" src={plantsIcon} alt="Plants Icon" />
         <p>PLANTS</p>
       </Link>
-
-      <input
-        type="file"
-        ref={fileInputRef}
-        accept="image/*"
-        capture="environment"
-        style={{ display: "none" }}
-        onChange={(event) => {
-          if (event.target.files[0]) {
-            window.location.href = `/camera?file=${event.target.files[0].name}`;
-          }
-        }}
-      />
     </footer>
   );
 }
