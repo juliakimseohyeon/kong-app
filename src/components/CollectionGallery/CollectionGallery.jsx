@@ -31,12 +31,12 @@ export default function CollectionGallery({
               <img
                 src={plant.image}
                 className="plant-card__image"
-                alt={plant.commonName}
+                alt={plant.common_name}
               />
               <div>
-                <h2 className="plant-card__title">{plant.commonName}</h2>
+                <h2 className="plant-card__title">{plant.common_name}</h2>
                 <p className="plant-card__subtitle label">
-                  {plant.scientificName}
+                  {plant.scientific_name}
                 </p>
               </div>
             </div>

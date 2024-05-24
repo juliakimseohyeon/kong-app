@@ -14,18 +14,18 @@ export default function CollectionDetail({
         <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
           <img src={arrowLeftSmall} alt="Back Button" />
         </Link>
-        <p className="header__title">{selectedPlant.commonName}</p>
+        <p className="header__title">{selectedPlant.common_name}</p>
       </header>
       <main>
         <section className="hero">
           <img
             className="hero__image"
             src={selectedPlant.image}
-            alt={selectedPlant.commonName}
+            alt={selectedPlant.common_name}
           />
           <div className="hero__text">
-            <h1>{selectedPlant.commonName}</h1>
-            <h2>{selectedPlant.scientificName}</h2>
+            <h1>{selectedPlant.common_name}</h1>
+            <h2>{selectedPlant.scientific_name}</h2>
           </div>
           <div className="hero__status-group">
             <p className="hero__status">{selectedPlant.status}</p>
