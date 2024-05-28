@@ -1,4 +1,7 @@
 import { useParams, Link } from "react-router-dom";
+import deleteIcon from "../../assets/icons/icon-delete.svg";
+import editIcon from "../../assets/icons/icon-edit.svg";
+
 export default function CollectionGallery({
   plantCollection,
   isPlantSelected,
@@ -28,6 +31,10 @@ export default function CollectionGallery({
         {plantCollection.map((plant) => (
           <Link to={`/collections/${plant.id}`} key={plant.id}>
             <div className="plant-card" onClick={() => selectPlant(plant.id)}>
+              <div className="plant-card__icons">
+                <img src={deleteIcon} />
+                <img src={editIcon} />
+              </div>
               <img
                 src={plant.image}
                 className="plant-card__image"
