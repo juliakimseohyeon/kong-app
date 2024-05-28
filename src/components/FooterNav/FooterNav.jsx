@@ -26,10 +26,10 @@ export default function FooterNav() {
         <p>CAMERA</p>
       </div>
 
-      <Link to="/featuredplants" className="nav__bottom-item label">
+      {/* <Link to="/featuredplants" className="nav__bottom-item label">
         <img className="icon" src={plantsIcon} alt="Plants Icon" />
         <p>PLANTS</p>
-      </Link>
+      </Link> */}
 
       <input
         type="file"

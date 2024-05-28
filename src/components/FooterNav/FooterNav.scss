@@ -10,7 +10,7 @@
   bottom: 0;
   background-color: $color-primary-green;
   box-shadow: $box-shadow;
-  @include display-flex(flex, row, space-between, center);
+  @include display-flex(flex, row, space-around, center);
   justify-self: flex-end;
   &-item {
     @include display-flex(flex, column, center, center);
