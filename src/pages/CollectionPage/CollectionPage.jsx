@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CollectionGallery from "../../components/CollectionGallery/CollectionGallery";
 import CollectionDetail from "../../components/CollectionDetail/CollectionDetail";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 export default function CollectionPage({
   isPlantSelected,
@@ -11,6 +12,7 @@ export default function CollectionPage({
   const [plantCollection, setPlantCollection] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedPlantId, setSelectedPlantId] = useState("");
+  const [isDeleteButtonClicked, setIsDeleteButtonClicked] = useState(false);
 
   /* -------------------------------------------------------------------------- */
   /*                  Function to load all plants in collection                 */
@@ -23,11 +25,11 @@ export default function CollectionPage({
         );
         setPlantCollection(response.data);
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
     getPlantsData();
-  }, []);
+  }, [isDeleteButtonClicked]);
 
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */
@@ -42,7 +44,7 @@ export default function CollectionPage({
           setSelectedPlant(response.data);
         }
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
     getOnePlantData();
@@ -55,7 +57,10 @@ export default function CollectionPage({
           plantCollection={plantCollection}
           isPlantSelected={isPlantSelected}
           setIsPlantSelected={setIsPlantSelected}
+          selectedPlantId={selectedPlantId}
           setSelectedPlantId={setSelectedPlantId}
+          isDeleteButtonClicked={isDeleteButtonClicked}
+          setIsDeleteButtonClicked={setIsDeleteButtonClicked}
         />
       ) : (
         <CollectionDetail
