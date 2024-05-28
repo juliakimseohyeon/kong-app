@@ -4,7 +4,7 @@ Kong (Keep our nature green)
 
 ## Overview
 
-Kong helps foster the love for nature by gamifying plant identification. When user uploads or takes a photo of a plant they would like to identify, the OpenAI API will generate pokemon-like illustration and information about the plant. The identified plant's illustration and information will be added to the user's collection.
+Kong helps foster the love for nature by gamifying plant identification. When user uploads or takes a photo of a plant they would like to identify, the OpenAI API will generate Pokémon-like illustration and information about the plant. The identified plant's illustration and information will be added to the user's collection.
 
 ### Problem
 
@@ -15,7 +15,7 @@ According to the World Economic Forum, almost 8 out of 10 children do not recogn
 - Parents:
   - that want to help teach their children about plants in a fun and engaging way
 - Children (12+):
-  - that want to create and collect their own "Pokemon"-like creature illustrations
+  - that want to create and collect their own Pokémon-like creature illustrations
 - Nature Lovers:
   - that want to keep track of the plants they've found
 
