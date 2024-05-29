@@ -10,10 +10,9 @@ export default function CollectionGallery({
   setIsPlantSelected,
   selectedPlantId,
   setSelectedPlantId,
-  isDeleteButtonClicked,
-  setIsDeleteButtonClicked,
+  deleteModalVisible,
+  setDeleteModalVisible,
 }) {
-  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [plantToDelete, setPlantToDelete] = useState(null);
 
   const params = useParams();

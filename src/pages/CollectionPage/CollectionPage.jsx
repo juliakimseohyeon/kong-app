@@ -12,7 +12,7 @@ export default function CollectionPage({
   const [plantCollection, setPlantCollection] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedPlantId, setSelectedPlantId] = useState("");
-  const [isDeleteButtonClicked, setIsDeleteButtonClicked] = useState(false);
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
   /* -------------------------------------------------------------------------- */
   /*                  Function to load all plants in collection                 */
@@ -29,7 +29,7 @@ export default function CollectionPage({
       }
     }
     getPlantsData();
-  }, [isDeleteButtonClicked]);
+  }, [deleteModalVisible]);
 
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */
@@ -59,8 +59,8 @@ export default function CollectionPage({
           setIsPlantSelected={setIsPlantSelected}
           selectedPlantId={selectedPlantId}
           setSelectedPlantId={setSelectedPlantId}
-          isDeleteButtonClicked={isDeleteButtonClicked}
-          setIsDeleteButtonClicked={setIsDeleteButtonClicked}
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
         />
       ) : (
         <CollectionDetail

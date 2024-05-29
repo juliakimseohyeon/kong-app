@@ -17,6 +17,7 @@ export default function DeleteModal({
         );
         console.log(`Deleted plant with ID: ${plantId}`);
         console.log(response);
+        setDeleteModalVisible(false);
       } catch (err) {
         console.error(err);
       }
