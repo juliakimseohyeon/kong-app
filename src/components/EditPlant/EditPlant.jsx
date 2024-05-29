@@ -6,8 +6,8 @@ import axios from "axios";
 export default function EditPlant({ setIsEditButtonClicked, plantToEdit }) {
   const editPlant = async (plantId) => {
     try {
-      await axios.put(`${import.meta.env.VITE_API_URL}/collections/${plantId}`);
       console.log("Generating new illustration for plant");
+      await axios.put(`${import.meta.env.VITE_API_URL}/collections/${plantId}`);
     } catch (err) {
       console.error("Error updating plant:", err);
     }
