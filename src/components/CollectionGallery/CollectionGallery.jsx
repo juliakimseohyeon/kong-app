@@ -49,32 +49,38 @@ export default function CollectionGallery({
       </section>
       <section className="gallery">
         {plantCollection.map((plant) => (
-          // <Link to={`/collections/${plant.id}`}>
-
           <div className="plant-card" key={plant.id}>
-            {/* Add "onClick={() => selectPlant(plant.id)}"to plant-card */}
-
-            <div className="plant-card__icons">
-              <img
-                src={deleteIcon}
-                alt="Delete"
-                onClick={() => handleClickDelete(plant.id)}
-              />
-              <img src={editIcon} alt="Edit" />
+            <div className="plant-card__main">
+              <div className="plant-card__icons">
+                <img
+                  src={deleteIcon}
+                  alt="Delete"
+                  onClick={() => handleClickDelete(plant.id)}
+                />
+                <img src={editIcon} alt="Edit" />
+              </div>
+              <Link
+                to={`/collections/${plant.id}`}
+                onClick={() => selectPlant(plant.id)}
+              >
+                <img
+                  src={plant.image}
+                  className="plant-card__image"
+                  alt={plant.common_name}
+                />
+              </Link>
             </div>
-            <img
-              src={plant.image}
-              className="plant-card__image"
-              alt={plant.common_name}
-            />
-            <div>
+            <Link
+              to={`/collections/${plant.id}`}
+              className="plant-card__names"
+              onClick={() => selectPlant(plant.id)}
+            >
               <h2 className="plant-card__title">{plant.common_name}</h2>
               <p className="plant-card__subtitle label">
                 {plant.scientific_name}
               </p>
-            </div>
+            </Link>
           </div>
-          // </Link>
         ))}
       </section>
     </main>
