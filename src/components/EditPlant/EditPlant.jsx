@@ -3,6 +3,17 @@ import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
 import { useParams, Link } from "react-router-dom";
 
 export default function EditPlant({ setIsEditButtonClicked, plantToEdit }) {
+  const editPlant = async (plantId) => {
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/collections/${plantId}`
+      );
+      console.log("Generating new illustration for plant");
+    } catch (err) {
+      console.error("Error updating plant:", err);
+    }
+  };
+
   return (
     <>
       <header className="header">
@@ -23,7 +34,10 @@ export default function EditPlant({ setIsEditButtonClicked, plantToEdit }) {
             <h2>{plantToEdit.scientific_name}</h2>
           </div>
         </section>
-        <button className="edit-plant__button">
+        <button
+          className="edit-plant__button"
+          onClick={() => editPlant(plantToEdit.id)}
+        >
           Generate New Illustration of {plantToEdit.common_name}
         </button>
       </main>
