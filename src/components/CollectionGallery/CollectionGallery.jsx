@@ -37,7 +37,6 @@ export default function CollectionGallery({
     <main>
       {deleteModalVisible && (
         <DeleteModal
-          plantId={plantToDelete}
           setDeleteModalVisible={setDeleteModalVisible}
           plantToDelete={plantToDelete}
         />
@@ -50,9 +49,9 @@ export default function CollectionGallery({
       </section>
       <section className="gallery">
         {plantCollection.map((plant) => (
-          // <Link to={`/collections/${plant.id}`} key={plant.id}>
+          // <Link to={`/collections/${plant.id}`}>
 
-          <div className="plant-card">
+          <div className="plant-card" key={plant.id}>
             {/* Add "onClick={() => selectPlant(plant.id)}"to plant-card */}
 
             <div className="plant-card__icons">
