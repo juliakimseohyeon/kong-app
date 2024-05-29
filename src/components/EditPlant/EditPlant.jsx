@@ -1,13 +1,12 @@
 import "./EditPlant.scss";
 import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 export default function EditPlant({ setIsEditButtonClicked, plantToEdit }) {
   const editPlant = async (plantId) => {
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/collections/${plantId}`
-      );
+      await axios.put(`${import.meta.env.VITE_API_URL}/collections/${plantId}`);
       console.log("Generating new illustration for plant");
     } catch (err) {
       console.error("Error updating plant:", err);
