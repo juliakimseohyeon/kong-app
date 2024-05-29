@@ -39,6 +39,7 @@ export default function CollectionGallery({
         <DeleteModal
           setDeleteModalVisible={setDeleteModalVisible}
           plantToDelete={plantToDelete}
+          setPlantToDelete={setPlantToDelete}
         />
       )}
       <section className="stats">
