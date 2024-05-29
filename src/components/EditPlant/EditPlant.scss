@@ -3,7 +3,7 @@
 
 .edit-plant {
   @include display-flex(flex, column);
-  gap: 3rem;
+  gap: 1rem;
   width: 100%;
   padding: 0 1rem;
   &__image {
