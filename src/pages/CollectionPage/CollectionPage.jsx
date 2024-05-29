@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import CollectionGallery from "../../components/CollectionGallery/CollectionGallery";
 import CollectionDetail from "../../components/CollectionDetail/CollectionDetail";
-import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import EditPlant from "../../components/EditPlant/EditPlant";
 
 export default function CollectionPage({
   isPlantSelected,
@@ -13,6 +13,8 @@ export default function CollectionPage({
   const [selectedPlant, setSelectedPlant] = useState({});
   const [selectedPlantId, setSelectedPlantId] = useState("");
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [isEditButtonClicked, setIsEditButtonClicked] = useState(false);
+  const [plantToEdit, setPlantToEdit] = useState(null);
 
   /* -------------------------------------------------------------------------- */
   /*                  Function to load all plants in collection                 */
@@ -50,24 +52,35 @@ export default function CollectionPage({
     getOnePlantData();
   }, [selectedPlantId]);
 
-  return (
-    <>
-      {!isPlantSelected ? (
-        <CollectionGallery
-          plantCollection={plantCollection}
-          isPlantSelected={isPlantSelected}
-          setIsPlantSelected={setIsPlantSelected}
-          selectedPlantId={selectedPlantId}
-          setSelectedPlantId={setSelectedPlantId}
-          deleteModalVisible={deleteModalVisible}
-          setDeleteModalVisible={setDeleteModalVisible}
-        />
-      ) : (
-        <CollectionDetail
-          selectedPlant={selectedPlant}
-          setIsPlantSelected={setIsPlantSelected}
-        />
-      )}
-    </>
-  );
+  if (isEditButtonClicked) {
+    return (
+      <EditPlant
+        setIsEditButtonClicked={setIsEditButtonClicked}
+        plantToEdit={plantToEdit}
+      />
+    );
+  } else if (isPlantSelected) {
+    return (
+      <CollectionDetail
+        selectedPlant={selectedPlant}
+        setIsPlantSelected={setIsPlantSelected}
+      />
+    );
+  } else {
+    return (
+      <CollectionGallery
+        plantCollection={plantCollection}
+        isPlantSelected={isPlantSelected}
+        setIsPlantSelected={setIsPlantSelected}
+        selectedPlantId={selectedPlantId}
+        setSelectedPlantId={setSelectedPlantId}
+        deleteModalVisible={deleteModalVisible}
+        setDeleteModalVisible={setDeleteModalVisible}
+        setIsEditButtonClicked={setIsEditButtonClicked}
+        setPlantToEdit={setPlantToEdit}
+      />
+    );
+  }
+
+  return;
 }

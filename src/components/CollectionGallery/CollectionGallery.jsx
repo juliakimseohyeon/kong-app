@@ -13,10 +13,10 @@ export default function CollectionGallery({
   setSelectedPlantId,
   deleteModalVisible,
   setDeleteModalVisible,
+  setIsEditButtonClicked,
+  setPlantToEdit,
 }) {
   const [plantToDelete, setPlantToDelete] = useState(null);
-  const [plantToEdit, setPlantToEdit] = useState(null);
-  const [isEditButtonClicked, setIsEditButtonClicked] = useState(false);
 
   const params = useParams();
 
@@ -41,12 +41,12 @@ export default function CollectionGallery({
 
   return (
     <>
-      {isEditButtonClicked && (
+      {/* {isEditButtonClicked && (
         <EditPlant
           setIsEditButtonClicked={setIsEditButtonClicked}
           plantToEdit={plantToEdit}
         />
-      )}
+      )} */}
       <main>
         {deleteModalVisible && (
           <DeleteModal
