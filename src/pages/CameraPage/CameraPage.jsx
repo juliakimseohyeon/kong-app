@@ -108,7 +108,7 @@ import Webcam from "react-webcam";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import axios from "axios";
 
-export default function CameraPage({ setReceivedData }) {
+export default function CameraPage() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -143,7 +143,7 @@ export default function CameraPage({ setReceivedData }) {
       console.log("upload response:", response);
       // const data = await response.json();
       // console.log("Response from OpenAI:", data);
-      // setReceivedData(data); // Pass the received data
+
       setIsLoading(false); // Hide loading screen after processing
       setImageUploaded(true);
       navigate("/collections");
@@ -159,8 +159,8 @@ export default function CameraPage({ setReceivedData }) {
 
   return (
     <main>
+      {isLoading && <LoadingScreenPage />}
       <section className="camera">
-        {isLoading && <LoadingScreenPage />}
         {!isLoading && (
           <>
             <Webcam
