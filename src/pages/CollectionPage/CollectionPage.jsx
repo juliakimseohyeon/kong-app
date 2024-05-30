@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import CollectionGallery from "../../components/CollectionGallery/CollectionGallery";
 import CollectionDetail from "../../components/CollectionDetail/CollectionDetail";
 import EditPlant from "../../components/EditPlant/EditPlant";
+import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 
 export default function CollectionPage({
   isPlantSelected,
@@ -15,6 +16,7 @@ export default function CollectionPage({
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [isEditButtonClicked, setIsEditButtonClicked] = useState(false);
   const [plantToEdit, setPlantToEdit] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   /* -------------------------------------------------------------------------- */
   /*                  Function to load all plants in collection                 */
@@ -31,7 +33,7 @@ export default function CollectionPage({
       }
     }
     getPlantsData();
-  }, [deleteModalVisible]);
+  }, [deleteModalVisible, isLoading]); // Re-render the page every time a plant is deleted or edited
 
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */
@@ -55,8 +57,9 @@ export default function CollectionPage({
   if (isEditButtonClicked) {
     return (
       <EditPlant
-        setIsEditButtonClicked={setIsEditButtonClicked}
         plantToEdit={plantToEdit}
+        setIsLoading={setIsLoading}
+        setIsEditButtonClicked={setIsEditButtonClicked}
       />
     );
   } else if (isPlantSelected) {
@@ -66,6 +69,8 @@ export default function CollectionPage({
         setIsPlantSelected={setIsPlantSelected}
       />
     );
+  } else if (isLoading) {
+    return <LoadingScreenPage />;
   } else {
     return (
       <CollectionGallery
