@@ -33,9 +33,26 @@
   width: 100%;
   @include display-flex(flex, column);
   gap: 1rem;
+
+  &__main {
+    width: 100%;
+    position: relative;
+  }
+  &__icons {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    @include display-flex(flex, row);
+    gap: 0.5rem;
+  }
   &__image {
     width: 100%;
     border-radius: 1rem 1rem 0 0;
+  }
+  &__names {
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
   }
   &__title,
   &__subtitle {
