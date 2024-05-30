@@ -106,6 +106,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
+import axios from "axios";
 
 export default function CameraPage({ setReceivedData }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -131,24 +132,18 @@ export default function CameraPage({ setReceivedData }) {
 
   const uploadImage = async (file) => {
     const formData = new FormData();
-    if (file instanceof Blob) {
-      formData.append("image", file);
-    } else {
-      const response = await fetch(file);
-      const blob = await response.blob();
-      formData.append("image", blob);
-    }
+    formData.append("image", file);
 
     setIsLoading(true);
-
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/camera`, {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-      console.log("Response from OpenAI:", data);
-      setReceivedData(data); // Pass the received data
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/camera`,
+        formData
+      );
+      console.log("upload response:", response);
+      // const data = await response.json();
+      // console.log("Response from OpenAI:", data);
+      // setReceivedData(data); // Pass the received data
       setIsLoading(false); // Hide loading screen after processing
       setImageUploaded(true);
       navigate("/collections");
@@ -165,7 +160,6 @@ export default function CameraPage({ setReceivedData }) {
   return (
     <main>
       <section className="camera">
-        <h1>Camera</h1>
         {isLoading && <LoadingScreenPage />}
         {!isLoading && (
           <>
