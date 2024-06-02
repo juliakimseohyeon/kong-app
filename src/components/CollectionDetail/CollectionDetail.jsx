@@ -9,6 +9,9 @@ export default function CollectionDetail({
   selectedPlant,
   setIsPlantSelected,
   selectedPlantId,
+  selectPlant,
+  handleClickDelete,
+  handleClickEdit,
 }) {
   return (
     <>
@@ -34,12 +37,12 @@ export default function CollectionDetail({
               <img
                 src={deleteIcon}
                 alt="Delete"
-                onClick={() => handleClickDelete(plant)}
+                onClick={() => handleClickDelete(selectedPlant)}
               />
               <img
                 src={editIcon}
                 alt="Edit"
-                onClick={() => handleClickEdit(plant)}
+                onClick={() => handleClickEdit(selectedPlant)}
               />
             </div>
           </div>

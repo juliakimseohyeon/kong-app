@@ -15,26 +15,12 @@ export default function CollectionGallery({
   setDeleteModalVisible,
   setIsEditButtonClicked,
   setPlantToEdit,
+  selectPlant,
+  handleClickDelete,
+  handleClickEdit,
 }) {
-  const [plantToDelete, setPlantToDelete] = useState(null);
-
   const params = useParams();
 
-  const selectPlant = (plantId) => {
-    setIsPlantSelected(true);
-    setSelectedPlantId(plantId);
-    // console.log(plantId);
-  };
-
-  const handleClickDelete = (plantObj) => {
-    setPlantToDelete(plantObj);
-    setDeleteModalVisible(true);
-  };
-
-  const handleClickEdit = (plant) => {
-    setPlantToEdit(plant);
-    setIsEditButtonClicked(true);
-  };
   // useEffect(() => {
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
   // }, [params]);

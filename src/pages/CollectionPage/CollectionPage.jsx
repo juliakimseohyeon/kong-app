@@ -16,7 +16,24 @@ export default function CollectionPage({
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [isEditButtonClicked, setIsEditButtonClicked] = useState(false);
   const [plantToEdit, setPlantToEdit] = useState(null);
+  const [plantToDelete, setPlantToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const selectPlant = (plantId) => {
+    setIsPlantSelected(true);
+    setSelectedPlantId(plantId);
+    // console.log(plantId);
+  };
+
+  const handleClickDelete = (plant) => {
+    setPlantToDelete(plant);
+    setDeleteModalVisible(true);
+  };
+
+  const handleClickEdit = (plant) => {
+    setPlantToEdit(plant);
+    setIsEditButtonClicked(true);
+  };
 
   /* -------------------------------------------------------------------------- */
   /*                  Function to load all plants in collection                 */
@@ -67,6 +84,8 @@ export default function CollectionPage({
       <CollectionDetail
         selectedPlant={selectedPlant}
         setIsPlantSelected={setIsPlantSelected}
+        handleClickDelete={handleClickDelete}
+        handleClickEdit={handleClickEdit}
       />
     );
   } else if (isLoading) {
@@ -83,6 +102,9 @@ export default function CollectionPage({
         setDeleteModalVisible={setDeleteModalVisible}
         setIsEditButtonClicked={setIsEditButtonClicked}
         setPlantToEdit={setPlantToEdit}
+        selectPlant={selectPlant}
+        handleClickDelete={handleClickDelete}
+        handleClickEdit={handleClickEdit}
       />
     );
   }
