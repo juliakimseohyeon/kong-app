@@ -5,6 +5,7 @@ import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
 import { Link } from "react-router-dom";
 import DeleteModal from "../DeleteModal/DeleteModal";
+import LoadingScreenPage from "../../pages/LoadingScreenPage/LoadingScreenPage";
 
 export default function CollectionDetail({
   selectedPlant,
@@ -17,6 +18,7 @@ export default function CollectionDetail({
   setDeleteModalVisible,
   plantToDelete,
   setPlantToDelete,
+  isLoading,
 }) {
   return (
     <>
@@ -34,6 +36,7 @@ export default function CollectionDetail({
             setPlantToDelete={setPlantToDelete}
           />
         )}
+        {isLoading && <LoadingScreenPage />}
         <section className="hero">
           <img
             className="hero__image"

@@ -91,6 +91,7 @@ export default function CollectionPage({
         setDeleteModalVisible={setDeleteModalVisible}
         plantToDelete={plantToDelete}
         setPlantToDelete={setPlantToDelete}
+        isLoading={isLoading}
       />
     );
   } else if (isLoading) {
