@@ -18,6 +18,13 @@ function App() {
       icon: "👏",
     });
 
+  const uploadSuccess = () =>
+    toast.success("Your plant has been created!", {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "🌱",
+    });
+
   return (
     <BrowserRouter>
       <Toaster
@@ -51,7 +58,10 @@ function App() {
           }
         />
         <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
-        <Route path="/camera" element={<CameraPage />} />
+        <Route
+          path="/camera"
+          element={<CameraPage uploadSuccess={uploadSuccess} />}
+        />
       </Routes>
       <FooterNav />
     </BrowserRouter>

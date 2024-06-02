@@ -108,7 +108,7 @@ import Webcam from "react-webcam";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import axios from "axios";
 
-export default function CameraPage() {
+export default function CameraPage({ uploadSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -147,6 +147,7 @@ export default function CameraPage() {
       setIsLoading(false); // Hide loading screen after processing
       setImageUploaded(true);
       navigate("/collections");
+      uploadSuccess();
     } catch (error) {
       console.error("Error uploading image:", error);
       setIsLoading(false); // Ensure loading state is reset on error
