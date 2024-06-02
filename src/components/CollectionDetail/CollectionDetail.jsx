@@ -4,6 +4,7 @@ import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
 import { Link } from "react-router-dom";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 export default function CollectionDetail({
   selectedPlant,
@@ -12,6 +13,10 @@ export default function CollectionDetail({
   selectPlant,
   handleClickDelete,
   handleClickEdit,
+  deleteModalVisible,
+  setDeleteModalVisible,
+  plantToDelete,
+  setPlantToDelete,
 }) {
   return (
     <>
@@ -22,6 +27,13 @@ export default function CollectionDetail({
         <p className="header__title">{selectedPlant.common_name}</p>
       </header>
       <main>
+        {deleteModalVisible && (
+          <DeleteModal
+            setDeleteModalVisible={setDeleteModalVisible}
+            plantToDelete={plantToDelete}
+            setPlantToDelete={setPlantToDelete}
+          />
+        )}
         <section className="hero">
           <img
             className="hero__image"

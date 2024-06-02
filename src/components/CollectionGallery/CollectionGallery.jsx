@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
-import DeleteModal from "../DeleteModal/DeleteModal";
 import EditPlant from "../EditPlant/EditPlant";
 
 export default function CollectionGallery({
@@ -34,14 +33,6 @@ export default function CollectionGallery({
         />
       )} */}
       <main>
-        {deleteModalVisible && (
-          <DeleteModal
-            setDeleteModalVisible={setDeleteModalVisible}
-            plantToDelete={plantToDelete}
-            setPlantToDelete={setPlantToDelete}
-          />
-        )}
-
         <section className="stats">
           <div className="stats__text">
             <h1>Total plants collected 🌱</h1>

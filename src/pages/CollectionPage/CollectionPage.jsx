@@ -5,6 +5,7 @@ import CollectionGallery from "../../components/CollectionGallery/CollectionGall
 import CollectionDetail from "../../components/CollectionDetail/CollectionDetail";
 import EditPlant from "../../components/EditPlant/EditPlant";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 export default function CollectionPage({
   isPlantSelected,
@@ -86,10 +87,22 @@ export default function CollectionPage({
         setIsPlantSelected={setIsPlantSelected}
         handleClickDelete={handleClickDelete}
         handleClickEdit={handleClickEdit}
+        deleteModalVisible={deleteModalVisible}
+        setDeleteModalVisible={setDeleteModalVisible}
+        plantToDelete={plantToDelete}
+        setPlantToDelete={setPlantToDelete}
       />
     );
   } else if (isLoading) {
     return <LoadingScreenPage />;
+  } else if (deleteModalVisible) {
+    return (
+      <DeleteModal
+        setDeleteModalVisible={setDeleteModalVisible}
+        plantToDelete={plantToDelete}
+        setPlantToDelete={setPlantToDelete}
+      />
+    );
   } else {
     return (
       <CollectionGallery
