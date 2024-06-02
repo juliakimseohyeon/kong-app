@@ -7,6 +7,7 @@ export default function EditPlant({
   plantToEdit,
   setIsLoading,
   setIsEditButtonClicked,
+  updateSuccess,
 }) {
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ export default function EditPlant({
       );
       setIsLoading(false); // Set loading state to false after API call is completed
       console.log("Done loading");
+      updateSuccess();
       navigate("/collections");
     } catch (err) {
       setIsLoading(false); // Set loading state to false in case of error

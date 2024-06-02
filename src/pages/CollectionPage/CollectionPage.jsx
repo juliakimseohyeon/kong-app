@@ -10,6 +10,7 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal";
 export default function CollectionPage({
   isPlantSelected,
   setIsPlantSelected,
+  updateSuccess,
 }) {
   const [plantCollection, setPlantCollection] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState({});
@@ -78,6 +79,7 @@ export default function CollectionPage({
         plantToEdit={plantToEdit}
         setIsLoading={setIsLoading}
         setIsEditButtonClicked={setIsEditButtonClicked}
+        updateSuccess={updateSuccess}
       />
     );
   } else if (isPlantSelected) {
@@ -92,6 +94,7 @@ export default function CollectionPage({
         plantToDelete={plantToDelete}
         setPlantToDelete={setPlantToDelete}
         isLoading={isLoading}
+        updateSuccess={updateSuccess}
       />
     );
   } else if (isLoading) {

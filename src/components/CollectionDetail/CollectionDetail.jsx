@@ -19,6 +19,7 @@ export default function CollectionDetail({
   plantToDelete,
   setPlantToDelete,
   isLoading,
+  updateSuccess,
 }) {
   return (
     <>
