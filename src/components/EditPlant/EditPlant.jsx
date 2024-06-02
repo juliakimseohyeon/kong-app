@@ -1,6 +1,6 @@
 import "./EditPlant.scss";
 import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function EditPlant({
@@ -8,6 +8,8 @@ export default function EditPlant({
   setIsLoading,
   setIsEditButtonClicked,
 }) {
+  const navigate = useNavigate();
+
   const editPlant = async (plantToEdit) => {
     setIsLoading(true); // Set loading state to true at the beginning of the function
     setIsEditButtonClicked(false); // Set EditButtonClicked to false so it would not render anymore
@@ -22,6 +24,7 @@ export default function EditPlant({
       );
       setIsLoading(false); // Set loading state to false after API call is completed
       console.log("Done loading");
+      navigate("/collections");
     } catch (err) {
       setIsLoading(false); // Set loading state to false in case of error
       console.error("Error updating plant:", err);
