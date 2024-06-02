@@ -6,14 +6,22 @@ import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import axios from "axios";
 import captureIcon from "../../assets/icons/icon-capture.svg";
 import photoAlbumIcon from "../../assets/icons/icon-photo-album.svg";
+import closeIcon from "../../assets/icons/icon-close.svg";
 
-export default function CameraPage({ uploadSuccess }) {
+export default function CameraPage({ uploadSuccess, setIsCameraOn }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const webcamRef = useRef(null);
+
+  /* -------------------------------------------------------------------------- */
+  /*         Function to set CameraOn to true to render different footer        */
+  /* -------------------------------------------------------------------------- */
+  useState(() => {
+    setIsCameraOn(true);
+  }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -54,6 +62,7 @@ export default function CameraPage({ uploadSuccess }) {
   };
 
   const handleExit = () => {
+    setIsCameraOn(false);
     navigate("/");
   };
 
@@ -63,38 +72,46 @@ export default function CameraPage({ uploadSuccess }) {
       <section className="camera">
         {!isLoading && (
           <>
-            <Webcam
-              audio={false}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              className="camera__webcam"
-              // forceScreenshotSourceSize="true"
-              style={{
-                position: "absolute",
-                textAlign: "center",
-                zindex: 8,
-                right: 0,
-                height: "100%",
-                width: "100%",
-                objectFit: "cover",
-              }}
-            />
+            <div className="camera__webcam">
+              <Webcam
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                // forceScreenshotSourceSize="true"
+                style={{
+                  position: "absolute",
+                  textAlign: "center",
+                  zindex: 8,
+                  right: 0,
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+              <div onClick={handleExit} className="camera__icon ">
+                <img
+                  className="icon icon-exit"
+                  src={closeIcon}
+                  alt="Exit Icon"
+                />
+              </div>
+            </div>
             <div className="camera__icon-group">
               <div
                 className="camera__icon label"
                 onClick={() => fileInputRef.current.click()}
               >
                 <img className="icon" src={photoAlbumIcon} alt="Capture Icon" />
-                <p>PHOTO ALBUM</p>
+                <p>ALBUM</p>
               </div>
               <div className="camera__icon label" onClick={captureImage}>
-                <img className="icon" src={captureIcon} alt="Capture Icon" />
+                <img
+                  className="icon  icon-capture"
+                  src={captureIcon}
+                  alt="Capture Icon"
+                />
                 <p>CAPTURE</p>
               </div>
-
-              <button onClick={handleExit} className="exit-button">
-                Exit
-              </button>
             </div>
             <input
               type="file"

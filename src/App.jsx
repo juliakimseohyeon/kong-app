@@ -10,6 +10,7 @@ import FooterNav from "./components/FooterNav/FooterNav";
 
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
+  const [isCameraOn, setIsCameraOn] = useState(false);
 
   const updateSuccess = () =>
     toast.success("Your plant has been updated!", {
@@ -60,10 +61,15 @@ function App() {
         <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
         <Route
           path="/camera"
-          element={<CameraPage uploadSuccess={uploadSuccess} />}
+          element={
+            <CameraPage
+              uploadSuccess={uploadSuccess}
+              setIsCameraOn={setIsCameraOn}
+            />
+          }
         />
       </Routes>
-      <FooterNav />
+      {!isCameraOn && <FooterNav />}
     </BrowserRouter>
   );
 }

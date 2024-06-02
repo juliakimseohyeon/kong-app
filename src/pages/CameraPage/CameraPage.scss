@@ -5,7 +5,9 @@
   width: 100%;
   height: 100vh;
   @include display-flex(flex, column, space-between, normal);
-
+  &__webcam {
+    @include display-flex(flex, column, space-between, normal);
+  }
   &__icon-group {
     width: 100%;
     padding: 0.5rem 1rem;
@@ -18,4 +20,14 @@
     @include display-flex(flex, row, space-around, center);
     justify-self: flex-end;
   }
+}
+
+.icon-exit {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+}
+
+.icon-capture {
+  justify-self: center;
 }
