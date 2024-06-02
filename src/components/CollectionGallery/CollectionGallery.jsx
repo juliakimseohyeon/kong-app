@@ -26,8 +26,8 @@ export default function CollectionGallery({
     // console.log(plantId);
   };
 
-  const handleClickDelete = (plantId) => {
-    setPlantToDelete(plantId);
+  const handleClickDelete = (plantObj) => {
+    setPlantToDelete(plantObj);
     setDeleteModalVisible(true);
   };
 
@@ -70,7 +70,7 @@ export default function CollectionGallery({
                   <img
                     src={deleteIcon}
                     alt="Delete"
-                    onClick={() => handleClickDelete(plant.id)}
+                    onClick={() => handleClickDelete(plant)}
                   />
                   <img
                     src={editIcon}

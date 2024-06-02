@@ -7,6 +7,7 @@ export default function DeleteModal({
   plantToDelete,
   setPlantToDelete,
 }) {
+  console.log(plantToDelete);
   const navigate = useNavigate();
 
   const handleClickConfirm = async (plantId) => {
@@ -31,10 +32,13 @@ export default function DeleteModal({
   return (
     <div className="container">
       <div className="delete-modal">
-        <h1>Are you sure you want to delete Plant Name?</h1>
+        <h1>
+          Are you sure you want to delete the {plantToDelete.common_name}?
+        </h1>
         <p>
-          Please confirm that you'd like to delete the Plant Name from your
-          collection. You won't be able to undo this action.
+          Please confirm that you'd like to delete the{" "}
+          <b>{plantToDelete.common_name}</b> from your collection. You won't be
+          able to undo this action.
         </p>
         <div className="delete-modal__button-group">
           <button
@@ -45,7 +49,7 @@ export default function DeleteModal({
           </button>
           <button
             className="delete-modal__button button--delete"
-            onClick={() => handleClickConfirm(plantToDelete)}
+            onClick={() => handleClickConfirm(plantToDelete.id)}
           >
             Delete
           </button>
