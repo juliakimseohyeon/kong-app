@@ -1,112 +1,11 @@
-// import "./CameraPage.scss";
-// import { useEffect, useState, useRef } from "react";
-// import { useNavigate, useLocation } from "react-router-dom";
-// import Webcam from "react-webcam";
-// import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
-
-// export default function CameraPage({ setReceivedData }) {
-//   const [selectedFile, setSelectedFile] = useState(null);
-//   const [imageUploaded, setImageUploaded] = useState(false);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const navigate = useNavigate(); // Initialize the navigate function
-//   const location = useLocation();
-//   const fileInputRef = useRef(null); // Create a ref for the file input element
-//   const webcamRef = useRef(null);
-
-//   useEffect(() => {
-//     if (imageUploaded) {
-//       navigate("/collections");
-//     }
-//   }, [imageUploaded, navigate]);
-
-//   const handleFileChange = (event) => {
-//     const file = event.target.files[0];
-//     if (file) {
-//       setSelectedFile(file);
-//       uploadImage(file);
-//     }
-//   };
-
-//   const captureImage = () => {
-//     const imageSrc = webcamRef.current.getScreenshot();
-//     setSelectedFile(imageSrc);
-//     uploadImage(imageSrc);
-//   };
-
-//   const uploadImage = async (file) => {
-//     const formData = new FormData();
-//     if (file instanceof Blob) {
-//       formData.append("image", file);
-//     } else {
-//       const response = await fetch(file);
-//       const blob = await response.blob();
-//       formData.append("image", blob);
-//     }
-
-//     setIsLoading(true); // Trigger a loading page
-//     try {
-//       const response = await fetch(`${import.meta.env.VITE_API_URL}/camera`, {
-//         method: "POST",
-//         body: formData,
-//       });
-//       const data = await response.json();
-//       console.log("Response from OpenAI:", data);
-//       setReceivedData(true); // Update the state to show the response on CollectionsPage
-
-//       // Only set imageUploaded if data is received
-//       if (data) {
-//         setImageUploaded(true);
-//       }
-//     } catch (error) {
-//       console.error("Error uploading image:", error);
-//     }
-//   };
-//   return (
-//     <main>
-//       <section className="camera">
-//         <h1>Camera</h1>
-//         {/* If data is loading, display LoadingScreenPage */}
-//         {isLoading && <LoadingScreenPage />}
-
-//         <>
-//           <Webcam
-//             audio={false}
-//             ref={webcamRef}
-//             screenshotFormat="image/jpeg"
-//             className="webcam"
-//           />
-//           <button onClick={captureImage} className="capture-button">
-//             Capture
-//           </button>
-//           <button
-//             onClick={() => fileInputRef.current.click()}
-//             className="gallery-button"
-//           >
-//             Open Gallery
-//           </button>
-//           <button onClick={handleExit} className="exit-button">
-//             Exit
-//           </button>
-//           <input
-//             type="file"
-//             accept="image/*"
-//             name="image"
-//             onChange={handleFileChange}
-//             ref={fileInputRef}
-//             style={{ display: "none" }}
-//           />
-//         </>
-//       </section>
-//     </main>
-//   );
-// }
-
 import "./CameraPage.scss";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import axios from "axios";
+import captureIcon from "../../assets/icons/icon-capture.svg";
+import photoAlbumIcon from "../../assets/icons/icon-photo-album.svg";
 
 export default function CameraPage({ uploadSuccess }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -168,20 +67,35 @@ export default function CameraPage({ uploadSuccess }) {
               audio={false}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
-              className="webcam"
+              className="camera__webcam"
+              // forceScreenshotSourceSize="true"
+              style={{
+                position: "absolute",
+                textAlign: "center",
+                zindex: 8,
+                right: 0,
+                height: "100%",
+                width: "100%",
+                objectFit: "cover",
+              }}
             />
-            <button onClick={captureImage} className="capture-button">
-              Capture
-            </button>
-            <button
-              onClick={() => fileInputRef.current.click()}
-              className="gallery-button"
-            >
-              Open Gallery
-            </button>
-            <button onClick={handleExit} className="exit-button">
-              Exit
-            </button>
+            <div className="camera__icon-group">
+              <div
+                className="camera__icon label"
+                onClick={() => fileInputRef.current.click()}
+              >
+                <img className="icon" src={photoAlbumIcon} alt="Capture Icon" />
+                <p>PHOTO ALBUM</p>
+              </div>
+              <div className="camera__icon label" onClick={captureImage}>
+                <img className="icon" src={captureIcon} alt="Capture Icon" />
+                <p>CAPTURE</p>
+              </div>
+
+              <button onClick={handleExit} className="exit-button">
+                Exit
+              </button>
+            </div>
             <input
               type="file"
               accept="image/*"

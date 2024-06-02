@@ -1,5 +1,21 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .camera {
   width: 100%;
+  height: 100vh;
+  @include display-flex(flex, column, space-between, normal);
 
-  padding-top: 6rem;
+  &__icon-group {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    z-index: 1;
+    height: 5rem;
+    bottom: 0;
+    background-color: $color-primary-green;
+    box-shadow: $box-shadow;
+    @include display-flex(flex, row, space-around, center);
+    justify-self: flex-end;
+  }
 }
