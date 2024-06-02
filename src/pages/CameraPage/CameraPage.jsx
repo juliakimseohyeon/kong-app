@@ -5,6 +5,7 @@ import Webcam from "react-webcam";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import axios from "axios";
 import captureIcon from "../../assets/icons/icon-capture.svg";
+import captureSmallIcon from "../../assets/icons/icon-capture-sml.svg";
 import photoAlbumIcon from "../../assets/icons/icon-photo-album.svg";
 import closeIcon from "../../assets/icons/icon-close.svg";
 
@@ -107,7 +108,7 @@ export default function CameraPage({ uploadSuccess, setIsCameraOn }) {
               <div className="camera__icon label" onClick={captureImage}>
                 <img
                   className="icon  icon-capture"
-                  src={captureIcon}
+                  src={captureSmallIcon}
                   alt="Capture Icon"
                 />
                 <p>CAPTURE</p>
