@@ -70,7 +70,7 @@ export default function CollectionPage({
       }
     }
     getOnePlantData();
-  }, [selectedPlantId]);
+  }, [selectedPlantId, isLoading]);
 
   if (isEditButtonClicked) {
     return (
