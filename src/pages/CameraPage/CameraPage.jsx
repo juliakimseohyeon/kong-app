@@ -9,7 +9,12 @@ import captureSmallIcon from "../../assets/icons/icon-capture-sml.svg";
 import photoAlbumIcon from "../../assets/icons/icon-photo-album.svg";
 import closeIcon from "../../assets/icons/icon-close.svg";
 
-export default function CameraPage({ uploadSuccess, setIsCameraOn, setError }) {
+export default function CameraPage({
+  uploadSuccess,
+  setIsCameraOn,
+  setError,
+  uploadFailure,
+}) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -62,9 +67,9 @@ export default function CameraPage({ uploadSuccess, setIsCameraOn, setError }) {
       console.error("Error uploading image:", error);
       // Check if the error response contains a message
       if (error.response && error.response.data && error.response.data.error) {
-        setError(error.response.data.error);
+        uploadFailure();
       } else {
-        setError("An unexpected error occurred. Please try again.");
+        uploadFailure();
       }
       setIsLoading(false); // Ensure loading state is reset on error
     }

@@ -27,6 +27,14 @@ function App() {
       icon: "🌱",
     });
 
+  const uploadFailure = () => {
+    toast.error("Sorry, there was an error identifying your plant.", {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "😭",
+    });
+  };
+
   return (
     <BrowserRouter>
       <Toaster
@@ -37,7 +45,7 @@ function App() {
         }}
       />
       {!isPlantSelected && <HeaderNav />}
-      {error && <p className="error">{error}</p>}{" "}
+      {/* {error && <p className="error">{error}</p>}{" "} */}
       {/* Display the error message */}
       <Routes>
         <Route path="/" element={<Navigate to="/collections" />} />
@@ -69,6 +77,7 @@ function App() {
               uploadSuccess={uploadSuccess}
               setIsCameraOn={setIsCameraOn}
               setError={setError}
+              uploadFailure={uploadFailure}
             />
           }
         />
