@@ -11,6 +11,7 @@ import FooterNav from "./components/FooterNav/FooterNav";
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
   const [isCameraOn, setIsCameraOn] = useState(false);
+  const [error, setError] = useState(false);
 
   const updateSuccess = () =>
     toast.success("Your plant has been updated!", {
@@ -36,6 +37,8 @@ function App() {
         }}
       />
       {!isPlantSelected && <HeaderNav />}
+      {error && <p className="error">{error}</p>}{" "}
+      {/* Display the error message */}
       <Routes>
         <Route path="/" element={<Navigate to="/collections" />} />
         <Route
@@ -65,6 +68,7 @@ function App() {
             <CameraPage
               uploadSuccess={uploadSuccess}
               setIsCameraOn={setIsCameraOn}
+              setError={setError}
             />
           }
         />
