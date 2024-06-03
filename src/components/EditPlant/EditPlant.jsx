@@ -1,21 +1,32 @@
 import "./EditPlant.scss";
 import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function EditPlant({
   plantToEdit,
   setIsLoading,
   setIsEditButtonClicked,
+  updateSuccess,
 }) {
-  const editPlant = async (plantId) => {
+  const navigate = useNavigate();
+
+  const editPlant = async (plantToEdit) => {
     setIsLoading(true); // Set loading state to true at the beginning of the function
     setIsEditButtonClicked(false); // Set EditButtonClicked to false so it would not render anymore
+    console.log("Loading");
     try {
-      console.log("Generating new illustration for plant");
+      console.log(
+        `Generating new illustration for plant ${plantToEdit.common_name}`
+      );
 
-      await axios.put(`${import.meta.env.VITE_API_URL}/collections/${plantId}`);
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/collections/${plantToEdit.id}`
+      );
       setIsLoading(false); // Set loading state to false after API call is completed
+      console.log("Done loading");
+      updateSuccess();
+      navigate("/collections");
     } catch (err) {
       setIsLoading(false); // Set loading state to false in case of error
       console.error("Error updating plant:", err);
@@ -44,7 +55,7 @@ export default function EditPlant({
         </section>
         <button
           className="edit-plant__button"
-          onClick={() => editPlant(plantToEdit.id)}
+          onClick={() => editPlant(plantToEdit)}
         >
           Generate New Illustration of {plantToEdit.common_name}
         </button>

@@ -2,7 +2,6 @@ import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
-import DeleteModal from "../DeleteModal/DeleteModal";
 import EditPlant from "../EditPlant/EditPlant";
 
 export default function CollectionGallery({
@@ -15,26 +14,12 @@ export default function CollectionGallery({
   setDeleteModalVisible,
   setIsEditButtonClicked,
   setPlantToEdit,
+  selectPlant,
+  handleClickDelete,
+  handleClickEdit,
 }) {
-  const [plantToDelete, setPlantToDelete] = useState(null);
-
   const params = useParams();
 
-  const selectPlant = (plantId) => {
-    setIsPlantSelected(true);
-    setSelectedPlantId(plantId);
-    // console.log(plantId);
-  };
-
-  const handleClickDelete = (plantId) => {
-    setPlantToDelete(plantId);
-    setDeleteModalVisible(true);
-  };
-
-  const handleClickEdit = (plant) => {
-    setPlantToEdit(plant);
-    setIsEditButtonClicked(true);
-  };
   // useEffect(() => {
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
   // }, [params]);
@@ -48,14 +33,6 @@ export default function CollectionGallery({
         />
       )} */}
       <main>
-        {deleteModalVisible && (
-          <DeleteModal
-            setDeleteModalVisible={setDeleteModalVisible}
-            plantToDelete={plantToDelete}
-            setPlantToDelete={setPlantToDelete}
-          />
-        )}
-
         <section className="stats">
           <div className="stats__text">
             <h1>Total plants collected 🌱</h1>
@@ -70,7 +47,7 @@ export default function CollectionGallery({
                   <img
                     src={deleteIcon}
                     alt="Delete"
-                    onClick={() => handleClickDelete(plant.id)}
+                    onClick={() => handleClickDelete(plant)}
                   />
                   <img
                     src={editIcon}

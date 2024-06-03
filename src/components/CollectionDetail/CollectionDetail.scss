@@ -25,25 +25,29 @@
     margin-top: 4rem;
     width: 100%;
   }
+  &__main-info-group {
+    @include display-flex(flex, row, space-between, normal);
+    width: 100%;
+  }
   &__text {
     padding: 1rem;
     text-align: left;
     align-self: flex-start;
   }
-  &__status-group {
-    @include display-flex(flex, row, space-between);
-    width: 100%;
-    padding: 0 1rem;
-    gap: 1rem;
+  &__button-group {
+    @include display-flex(flex, row, normal, center);
+    padding: 1rem;
   }
   &__status {
+    width: 100%;
+    padding: 1rem;
+  }
+  &__status-detail {
     @include display-flex(flex, row);
     text-align: center;
+    background-color: aliceblue;
     width: 100%;
     min-height: 70px;
-
-    padding: 1rem;
-    background-color: aliceblue;
     border-radius: 1rem;
   }
 }
