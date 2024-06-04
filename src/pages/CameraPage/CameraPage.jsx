@@ -14,6 +14,7 @@ export default function CameraPage({
   setIsCameraOn,
   setError,
   uploadFailure,
+  plantAlreadyExists,
 }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
@@ -68,9 +69,16 @@ export default function CameraPage({
       // Check if the error response contains a message
       if (error.response && error.response.data && error.response.data.error) {
         uploadFailure();
+      } else if (error.response.data.existingPlantError) {
+        console.log(
+          "plant already exists in the database: ",
+          error.response.data.existingPlantError
+        );
+        plantAlreadyExists();
       } else {
         uploadFailure();
       }
+
       setIsLoading(false); // Ensure loading state is reset on error
     }
   };

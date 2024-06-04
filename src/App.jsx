@@ -35,6 +35,14 @@ function App() {
     });
   };
 
+  const plantAlreadyExists = () => {
+    toast.error("This plant already exists in your database.", {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "📋",
+    });
+  };
+
   return (
     <BrowserRouter>
       <Toaster
@@ -78,6 +86,7 @@ function App() {
               setIsCameraOn={setIsCameraOn}
               setError={setError}
               uploadFailure={uploadFailure}
+              plantAlreadyExists={plantAlreadyExists}
             />
           }
         />
