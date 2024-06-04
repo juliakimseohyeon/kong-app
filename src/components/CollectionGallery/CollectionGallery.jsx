@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
+import sortIcon from "../../assets/icons/icon-sort.svg";
 import EditPlant from "../EditPlant/EditPlant";
 
 export default function CollectionGallery({
@@ -39,6 +40,17 @@ export default function CollectionGallery({
             <h1>Total plants collected 🌱</h1>
             <p className="stats__number">{plantCollection.length}</p>
           </div>
+        </section>
+        <section className="search-sort-group">
+          <input
+            className="search-sort-group__search-bar"
+            placeholder="search"
+          />
+          <img
+            src={sortIcon}
+            className="search-sort-group__sort-icon"
+            alt="Sort Button"
+          />
         </section>
         <section className="gallery">
           {plantCollection.map((plant) => (
