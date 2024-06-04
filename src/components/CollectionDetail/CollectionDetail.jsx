@@ -27,6 +27,19 @@ export default function CollectionDetail({
       "Related photo URL :",
       selectedPlant.myPlantnetResponse[0].photo_url
     );
+
+    // Apply conditional styling depending on plant's endangerment status
+    const statusStyle = {
+      backgroundColor:
+        selectedPlant.openAiResponse.status === "Not Endangered"
+          ? "#e0f1e5"
+          : "#ffecea",
+      color:
+        selectedPlant.openAiResponse.status === "Not Endangered"
+          ? "#6ac15e"
+          : "#f96866",
+    };
+
     return (
       <>
         <header className="header">
@@ -73,7 +86,7 @@ export default function CollectionDetail({
               </div>
             </div>
             <div className="hero__status">
-              <p className="hero__status-detail">
+              <p className="hero__status-detail" style={statusStyle}>
                 {selectedPlant.openAiResponse.status}
               </p>
             </div>

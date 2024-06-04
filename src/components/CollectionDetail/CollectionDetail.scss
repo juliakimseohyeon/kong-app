@@ -52,7 +52,6 @@
   &__status-detail {
     @include display-flex(flex, row);
     text-align: center;
-    background-color: aliceblue;
     width: 100%;
     min-height: 70px;
     border-radius: 1rem;
