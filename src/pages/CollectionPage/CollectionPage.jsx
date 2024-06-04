@@ -130,6 +130,7 @@ export default function CollectionPage({
     return (
       <CollectionGallery
         plantCollection={plantCollection}
+        setPlantCollection={setPlantCollection}
         isPlantSelected={isPlantSelected}
         setIsPlantSelected={setIsPlantSelected}
         selectedPlantId={selectedPlantId}

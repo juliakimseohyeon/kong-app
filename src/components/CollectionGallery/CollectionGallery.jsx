@@ -9,6 +9,7 @@ import SortModal from "../SortModal/SortModal";
 
 export default function CollectionGallery({
   plantCollection,
+  setPlantCollection,
   isPlantSelected,
   setIsPlantSelected,
   selectedPlantId,
@@ -33,7 +34,7 @@ export default function CollectionGallery({
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
   // }, [params]);
 
-  console.log(plantCollection);
+  console.log("plant collection: ", plantCollection);
   return (
     <>
       {/* {isEditButtonClicked && (
@@ -42,7 +43,13 @@ export default function CollectionGallery({
           plantToEdit={plantToEdit}
         />
       )} */}
-      {isSortClicked && <SortModal setIsSortClicked={setIsSortClicked} />}
+      {isSortClicked && (
+        <SortModal
+          setIsSortClicked={setIsSortClicked}
+          plantCollection={plantCollection}
+          setPlantCollection={setPlantCollection}
+        />
+      )}
       <main>
         <section className="stats">
           <div className="stats__text">
