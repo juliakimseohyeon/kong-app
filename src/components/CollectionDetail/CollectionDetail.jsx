@@ -61,12 +61,14 @@ export default function CollectionDetail({
                 <img
                   src={deleteIcon}
                   alt="Delete"
-                  onClick={() => handleClickDelete(selectedPlant)}
+                  onClick={() =>
+                    handleClickDelete(selectedPlant.openAiResponse)
+                  }
                 />
                 <img
                   src={editIcon}
                   alt="Edit"
-                  onClick={() => handleClickEdit(selectedPlant)}
+                  onClick={() => handleClickEdit(selectedPlant.openAiResponse)}
                 />
               </div>
             </div>

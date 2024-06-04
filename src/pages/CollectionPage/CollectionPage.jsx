@@ -90,7 +90,7 @@ export default function CollectionPage({
       }
     }
     getOnePlantData();
-  }, [selectedPlantId, isLoading]);
+  }, [selectedPlantId, isLoading, isPlantSelected]);
 
   if (isEditButtonClicked) {
     return (

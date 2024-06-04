@@ -36,7 +36,10 @@ export default function EditPlant({
   return (
     <>
       <header className="header">
-        <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
+        <Link
+          to={`/collections/${plantToEdit.id}`}
+          onClick={() => setIsPlantSelected(false)}
+        >
           <img src={arrowLeftSmall} alt="Back Button" />
         </Link>
         <p className="header__title">Edit {plantToEdit.common_name}</p>
