@@ -3,6 +3,7 @@
 
 .collection-detail {
   padding: 2.5rem 1rem;
+  padding-bottom: 8rem;
   @include display-flex(flex, column);
   gap: 3rem;
   &__block {
@@ -15,6 +16,9 @@
     padding: 2rem 1rem;
     border-radius: 1rem;
     line-height: 1.5rem;
+    width: 100%;
+  }
+  &__photo {
     width: 100%;
   }
 }

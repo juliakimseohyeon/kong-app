@@ -87,7 +87,11 @@ export default function CollectionDetail({
           </div>
           <div className="collection-detail__block">
             <h2>Photos of the plant</h2>
-            <img alt="" />
+            {/* {selectedPlant["related_photos"].map((photo) => (
+              <img src={photo} alt="selectedPlant.common_name" />
+            ))} */}
+
+            <p> {selectedPlant["related_photos"]}</p>
           </div>
         </section>
       </main>
