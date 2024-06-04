@@ -25,6 +25,8 @@ export default function CollectionGallery({
   const params = useParams();
   const [isSortClicked, setIsSortClicked] = useState(false);
 
+  const [activeChoice, setActiveChoice] = useState(0); // useState to keep track of whether or not a choice is active
+
   const handleClickSort = () => {
     setIsSortClicked(true);
     console.log("Sort Button Clicked");
@@ -48,6 +50,8 @@ export default function CollectionGallery({
           setIsSortClicked={setIsSortClicked}
           plantCollection={plantCollection}
           setPlantCollection={setPlantCollection}
+          activeChoice={activeChoice}
+          setActiveChoice={setActiveChoice}
         />
       )}
       <main>

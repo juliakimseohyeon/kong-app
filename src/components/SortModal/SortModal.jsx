@@ -1,10 +1,19 @@
+import { useState } from "react";
 import "./SortModal.scss";
 
 export default function SortModal({
   setIsSortClicked,
   plantCollection,
   setPlantCollection,
+  activeChoice,
+  setActiveChoice,
 }) {
+  // Handle click function to trigger both the className toggle and the specified sort function
+  const handleClick = (index, sortFunction) => {
+    setActiveChoice(index);
+    sortFunction();
+  };
+
   // Function to sort by date created (chronological order from newest to oldest)
   const sortByTime = () => {
     setIsSortClicked(false);
@@ -26,13 +35,39 @@ export default function SortModal({
     <div className="container">
       <div className="edit-modal">
         <h1>Sort by</h1>
-        <div className="edit-modal__choice" onClick={sortByTime}>
-          <p className="edit-modal__choice-text">Most recently added</p>
-          <div className="edit-modal__choice-circle"></div>
+        <div
+          className="edit-modal__choice"
+          onClick={() => handleClick(0, sortByTime)}
+        >
+          <p
+            className={`edit-modal__choice-text ${
+              activeChoice === 0 ? "edit-modal__choice-text--active" : ""
+            }`}
+          >
+            Most recently added
+          </p>
+          <div
+            className={`edit-modal__choice-circle ${
+              activeChoice === 0 ? "edit-modal__choice-circle--active" : ""
+            }`}
+          ></div>
         </div>
-        <div className="edit-modal__choice" onClick={sortByName}>
-          <p className="edit-modal__choice-text">Name</p>
-          <div className="edit-modal__choice-circle"></div>
+        <div
+          className="edit-modal__choice"
+          onClick={() => handleClick(1, sortByName)}
+        >
+          <p
+            className={`edit-modal__choice-text ${
+              activeChoice === 1 ? "edit-modal__choice-text--active" : ""
+            }`}
+          >
+            Name
+          </p>
+          <div
+            className={`edit-modal__choice-circle ${
+              activeChoice === 1 ? "edit-modal__choice-circle--active" : ""
+            }`}
+          ></div>
         </div>
         <div className="edit-modal__choice">
           <p className="edit-modal__choice-text">Growing Season</p>

@@ -28,9 +28,21 @@
     font-size: 1.25rem;
     width: 100%;
   }
+
   &__choice-circle {
     border-radius: 50%;
     background-color: $color-secondary-green;
+    width: 2rem;
+    height: 2rem;
+  }
+  &__choice-text--active {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: $color-primary-green;
+  }
+  &__choice-circle--active {
+    border-radius: 50%;
+    background-color: $color-primary-green;
     width: 2rem;
     height: 2rem;
   }
