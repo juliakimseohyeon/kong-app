@@ -74,12 +74,14 @@ export default function CameraPage({
           "plant already exists in the database: ",
           error.response.data.existingPlantError
         );
-        plantAlreadyExists();
+        plantAlreadyExists(error.response.data.existingPlantName);
       } else {
         uploadFailure();
       }
 
       setIsLoading(false); // Ensure loading state is reset on error
+      setIsCameraOn(false);
+      navigate("/collections");
     }
   };
 

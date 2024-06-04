@@ -35,8 +35,8 @@ function App() {
     });
   };
 
-  const plantAlreadyExists = () => {
-    toast.error("This plant already exists in your database.", {
+  const plantAlreadyExists = (plantName) => {
+    toast.error(`${plantName} already exists in your database.`, {
       duration: 4000,
       position: "bottom-left",
       icon: "📋",
