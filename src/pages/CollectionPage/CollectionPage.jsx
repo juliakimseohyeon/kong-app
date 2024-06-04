@@ -46,7 +46,12 @@ export default function CollectionPage({
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/collections`
         );
-        setPlantCollection(response.data);
+        const plantData = response.data;
+
+        plantData.sort(
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        );
+        setPlantCollection(plantData); // Sort plants in chronological order on default
       } catch (err) {
         console.error(err);
       }
