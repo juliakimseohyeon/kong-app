@@ -59,10 +59,7 @@ export default function CameraPage({
       // const data = await response.json();
       // console.log("Response from OpenAI:", data);
 
-      setIsLoading(false); // Hide loading screen after processing
       setImageUploaded(true);
-      setIsCameraOn(false);
-      navigate("/collections");
       uploadSuccess();
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -78,11 +75,10 @@ export default function CameraPage({
       } else {
         uploadFailure();
       }
-
-      setIsLoading(false); // Ensure loading state is reset on error
-      setIsCameraOn(false);
-      navigate("/collections");
     }
+    setIsLoading(false); // Hide loading screen after processing
+    setIsCameraOn(false);
+    navigate("/collections");
   };
 
   const handleExit = () => {
