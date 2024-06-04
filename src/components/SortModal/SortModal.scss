@@ -1,0 +1,37 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.container {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+}
+
+.edit-modal {
+  width: 100%;
+  height: 60%;
+  background-color: white;
+  z-index: 2;
+  position: relative;
+  padding: 1rem;
+  @include display-flex(flex, column, space-around, stretch);
+  align-self: flex-end;
+  &__choice {
+    @include display-flex(flex, row, space-between);
+  }
+  &__choice-text {
+    font-size: 1.25rem;
+    width: 100%;
+  }
+  &__choice-circle {
+    border-radius: 50%;
+    background-color: $color-secondary-green;
+    width: 2rem;
+    height: 2rem;
+  }
+}

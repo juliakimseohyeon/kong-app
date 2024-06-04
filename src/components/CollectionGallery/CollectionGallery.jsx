@@ -5,6 +5,7 @@ import editIcon from "../../assets/icons/icon-edit.svg";
 import sortIcon from "../../assets/icons/icon-sort.svg";
 import EditPlant from "../EditPlant/EditPlant";
 import "./CollectionGallery.scss";
+import SortModal from "../SortModal/SortModal";
 
 export default function CollectionGallery({
   plantCollection,
@@ -21,6 +22,12 @@ export default function CollectionGallery({
   handleClickEdit,
 }) {
   const params = useParams();
+  const [isSortClicked, setIsSortClicked] = useState(false);
+
+  const handleClickSort = () => {
+    setIsSortClicked(true);
+    console.log("Sort Button Clicked");
+  };
 
   // useEffect(() => {
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
@@ -35,6 +42,7 @@ export default function CollectionGallery({
           plantToEdit={plantToEdit}
         />
       )} */}
+      {isSortClicked && <SortModal setIsSortClicked={setIsSortClicked} />}
       <main>
         <section className="stats">
           <div className="stats__text">
@@ -42,6 +50,7 @@ export default function CollectionGallery({
             <p className="stats__number">{plantCollection.length}</p>
           </div>
         </section>
+
         <section className="search-sort-group">
           <input
             className="search-sort-group__search-bar"
@@ -51,6 +60,7 @@ export default function CollectionGallery({
             src={sortIcon}
             className="search-sort-group__sort-icon"
             alt="Sort Button"
+            onClick={handleClickSort}
           />
         </section>
         <section className="gallery">
