@@ -4,6 +4,7 @@ import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
 import sortIcon from "../../assets/icons/icon-sort.svg";
 import EditPlant from "../EditPlant/EditPlant";
+import "./CollectionGallery.scss";
 
 export default function CollectionGallery({
   plantCollection,
