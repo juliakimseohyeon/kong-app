@@ -15,13 +15,21 @@ export default function SortModal({
   };
 
   // Function to sort by date created (chronological order from newest to oldest)
-  const sortByTime = () => {
+  const sortByCreateTime = () => {
     setIsSortClicked(false);
     plantCollection.sort(
       (a, b) => new Date(b.created_at) - new Date(a.created_at)
     );
     setPlantCollection(plantCollection);
-    console.log("sorted plant collection: ", plantCollection);
+  };
+
+  // Function to sort by date updated (chronological order from newest to oldest)
+  const sortByUpdateTime = () => {
+    setIsSortClicked(false);
+    plantCollection.sort(
+      (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
+    );
+    setPlantCollection(plantCollection);
   };
 
   // Function to sort by name (alphabetical order)
@@ -29,7 +37,6 @@ export default function SortModal({
     setIsSortClicked(false);
     plantCollection.sort((a, b) => a.common_name.localeCompare(b.common_name));
     setPlantCollection(plantCollection);
-    console.log("sorted plant collection: ", plantCollection);
   };
   return (
     <div className="container">
@@ -37,7 +44,7 @@ export default function SortModal({
         <h1>Sort by</h1>
         <div
           className="edit-modal__choice"
-          onClick={() => handleClick(0, sortByTime)}
+          onClick={() => handleClick(0, sortByCreateTime)}
         >
           <p
             className={`edit-modal__choice-text ${
@@ -54,14 +61,14 @@ export default function SortModal({
         </div>
         <div
           className="edit-modal__choice"
-          onClick={() => handleClick(1, sortByName)}
+          onClick={() => handleClick(1, sortByUpdateTime)}
         >
           <p
             className={`edit-modal__choice-text ${
               activeChoice === 1 ? "edit-modal__choice-text--active" : ""
             }`}
           >
-            Name
+            Most recently updated
           </p>
           <div
             className={`edit-modal__choice-circle ${
@@ -69,14 +76,24 @@ export default function SortModal({
             }`}
           ></div>
         </div>
-        <div className="edit-modal__choice">
-          <p className="edit-modal__choice-text">Growing Season</p>
-          <div className="edit-modal__choice-circle"></div>
+        <div
+          className="edit-modal__choice"
+          onClick={() => handleClick(2, sortByName)}
+        >
+          <p
+            className={`edit-modal__choice-text ${
+              activeChoice === 2 ? "edit-modal__choice-text--active" : ""
+            }`}
+          >
+            Name
+          </p>
+          <div
+            className={`edit-modal__choice-circle ${
+              activeChoice === 2 ? "edit-modal__choice-circle--active" : ""
+            }`}
+          ></div>
         </div>
-        <div className="edit-modal__choice">
-          <p className="edit-modal__choice-text">Habitat</p>
-          <div className="edit-modal__choice-circle"></div>
-        </div>
+
         <button
           className="button--cancel"
           onClick={() => setIsSortClicked(false)}
