@@ -21,80 +21,97 @@ export default function CollectionDetail({
   isLoading,
   updateSuccess,
 }) {
-  return (
-    <>
-      <header className="header">
-        <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
-          <img src={arrowLeftSmall} alt="Back Button" />
-        </Link>
-        <p className="header__title">{selectedPlant.common_name}</p>
-      </header>
-      <main>
-        {deleteModalVisible && (
-          <DeleteModal
-            setDeleteModalVisible={setDeleteModalVisible}
-            plantToDelete={plantToDelete}
-            setPlantToDelete={setPlantToDelete}
-          />
-        )}
-        {isLoading && <LoadingScreenPage />}
-        <section className="hero">
-          <img
-            className="hero__image"
-            src={selectedPlant.image}
-            alt={selectedPlant.common_name}
-          />
-          <div className="hero__main-info-group">
-            <div className="hero__text">
-              <h1>{selectedPlant.common_name}</h1>
-              <h3>{selectedPlant.scientific_name}</h3>
+  if (selectedPlant) {
+    console.log("Selected Plant: ", selectedPlant);
+    console.log(
+      "Related photo URL :",
+      selectedPlant.myPlantnetResponse[0].photo_url
+    );
+    return (
+      <>
+        <header className="header">
+          <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
+            <img src={arrowLeftSmall} alt="Back Button" />
+          </Link>
+          <p className="header__title">
+            {selectedPlant.openAiResponse.common_name}
+          </p>
+        </header>
+        <main>
+          {deleteModalVisible && (
+            <DeleteModal
+              setDeleteModalVisible={setDeleteModalVisible}
+              plantToDelete={plantToDelete}
+              setPlantToDelete={setPlantToDelete}
+            />
+          )}
+          {isLoading && <LoadingScreenPage />}
+          <section className="hero">
+            <img
+              className="hero__image"
+              src={selectedPlant.openAiResponse.image}
+              alt={selectedPlant.openAiResponse.common_name}
+            />
+            <div className="hero__main-info-group">
+              <div className="hero__text">
+                <h1>{selectedPlant.openAiResponse.common_name}</h1>
+                <h3>{selectedPlant.openAiResponse.scientific_name}</h3>
+              </div>
+              <div className="hero__button-group">
+                <img
+                  src={deleteIcon}
+                  alt="Delete"
+                  onClick={() => handleClickDelete(selectedPlant)}
+                />
+                <img
+                  src={editIcon}
+                  alt="Edit"
+                  onClick={() => handleClickEdit(selectedPlant)}
+                />
+              </div>
             </div>
-            <div className="hero__button-group">
-              <img
-                src={deleteIcon}
-                alt="Delete"
-                onClick={() => handleClickDelete(selectedPlant)}
-              />
-              <img
-                src={editIcon}
-                alt="Edit"
-                onClick={() => handleClickEdit(selectedPlant)}
-              />
+            <div className="hero__status">
+              <p className="hero__status-detail">
+                {selectedPlant.openAiResponse.status}
+              </p>
             </div>
-          </div>
-          <div className="hero__status">
-            <p className="hero__status-detail">{selectedPlant.status}</p>
-          </div>
-        </section>
-        <section className="collection-detail">
-          <div className="collection-detail__block">
-            <h2>When does it grow?</h2>
-            <p className="collection-detail__description">
-              {selectedPlant.season}
-            </p>
-          </div>
-          <div className="collection-detail__block">
-            <h2>Where is it found?</h2>
-            <p className="collection-detail__description">
-              {selectedPlant.habitat}
-            </p>
-          </div>
-          <div className="collection-detail__block">
-            <h2>Characteristics</h2>
-            <p className="collection-detail__description">
-              {selectedPlant.characteristics}
-            </p>
-          </div>
-          <div className="collection-detail__block">
-            <h2>Photos of the plant</h2>
-            {/* {selectedPlant["related_photos"].map((photo) => (
-              <img src={photo} alt="selectedPlant.common_name" />
-            ))} */}
-
-            <p> {selectedPlant["related_photos"]}</p>
-          </div>
-        </section>
-      </main>
-    </>
-  );
+          </section>
+          <section className="collection-detail">
+            <div className="collection-detail__block">
+              <h2>When does it grow?</h2>
+              <p className="collection-detail__description">
+                {selectedPlant.openAiResponse.season}
+              </p>
+            </div>
+            <div className="collection-detail__block">
+              <h2>Where is it found?</h2>
+              <p className="collection-detail__description">
+                {selectedPlant.openAiResponse.habitat}
+              </p>
+            </div>
+            <div className="collection-detail__block">
+              <h2>Characteristics</h2>
+              <p className="collection-detail__description">
+                {selectedPlant.openAiResponse.characteristics}
+              </p>
+            </div>
+            <div className="collection-detail__block">
+              <h2>Photos of the plant</h2>
+              {selectedPlant.myPlantnetResponse.map((response, index) => (
+                <div className="collection-detail__gallery" key={index}>
+                  <img
+                    className="collection-detail__photo"
+                    src={response.photo_url}
+                    alt=""
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        </main>
+      </>
+    );
+  } else if (!selectedPlant) {
+    return <h1>Loading</h1>;
+  }
 }

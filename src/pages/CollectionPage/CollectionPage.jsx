@@ -57,17 +57,36 @@ export default function CollectionPage({
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */
   /* -------------------------------------------------------------------------- */
+  const axiosOnePlantRequest = async () => {
+    try {
+      if (selectedPlantId) {
+        // Get the data from the API
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/collections/${selectedPlantId}`
+        );
+        console.log("Response from back-end received: ", response);
+
+        const data = response.data;
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     async function getOnePlantData() {
       try {
-        if (selectedPlantId) {
-          const response = await axios.get(
-            `${import.meta.env.VITE_API_URL}/collections/${selectedPlantId}`
-          );
-          setSelectedPlant(response.data);
+        const data = await axiosOnePlantRequest();
+
+        if (data === "{}") {
+          console.log("Data still loading: ", data);
+        } else {
+          setSelectedPlant(data);
+          console.log("Data received: ", data);
         }
       } catch (err) {
-        console.error(err);
+        console.log(err);
       }
     }
     getOnePlantData();

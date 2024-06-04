@@ -24,6 +24,7 @@ export default function CollectionGallery({
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
   // }, [params]);
 
+  console.log(plantCollection);
   return (
     <>
       {/* {isEditButtonClicked && (
