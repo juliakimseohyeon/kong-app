@@ -30,7 +30,7 @@ export default function CollectionGallery({
   const [isSortClicked, setIsSortClicked] = useState(false);
   const [activeChoice, setActiveChoice] = useState(0); // useState to keep track of whether or not a choice is active
   const [searchInput, setSearchInput] = useState("");
-  const [plants, setPlants] = useState({});
+  const [plants, setPlants] = useState([]);
 
   const handleClickSort = () => {
     setIsSortClicked(true);
@@ -53,7 +53,7 @@ export default function CollectionGallery({
   const handleChange = (event) => {
     setSearchInput(event.target.value);
     searchPlant(event.target.value);
-    console.log("Searching for for: ", event.target.value);
+    console.log("Searching for: ", event.target.value);
   };
 
   const searchPlant = async (userInput) => {
@@ -61,19 +61,21 @@ export default function CollectionGallery({
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/collections?query=${userInput}`
       );
-      console.log(response);
-      const plantsResponse = response;
-      setPlants(plantsResponse);
+
+      console.log("Search plant response: ", response);
+      const plantsResponseArray = response.data;
+      setPlants(plantsResponseArray);
     } catch (err) {
       console.error(err);
     }
   };
 
   const renderSearchResult = () => {
-    if (plants) {
+    if (!(plants === "{}") && !(searchInput === "")) {
       return <SearchResult plants={plants} />;
     }
   };
+
   return (
     <>
       {/* {isEditButtonClicked && (
@@ -82,7 +84,6 @@ export default function CollectionGallery({
           plantToEdit={plantToEdit}
         />
       )} */}
-      {renderSearchResult()}
       {isSortClicked && (
         <SortModal
           setIsSortClicked={setIsSortClicked}
@@ -122,6 +123,7 @@ export default function CollectionGallery({
             onClick={handleClickSort}
           />
         </section>
+        {renderSearchResult()}
         <section className="gallery">
           {plantCollection.map((plant) => (
             <div className="plant-card" key={plant.id}>
