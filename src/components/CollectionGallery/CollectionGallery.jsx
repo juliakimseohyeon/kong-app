@@ -3,6 +3,7 @@ import { useState } from "react";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
 import sortIcon from "../../assets/icons/icon-sort.svg";
+import searchIcon from "../../assets/icons/icon-search.svg";
 import EditPlant from "../EditPlant/EditPlant";
 import "./CollectionGallery.scss";
 import SortModal from "../SortModal/SortModal";
@@ -24,8 +25,8 @@ export default function CollectionGallery({
 }) {
   const params = useParams();
   const [isSortClicked, setIsSortClicked] = useState(false);
-
   const [activeChoice, setActiveChoice] = useState(0); // useState to keep track of whether or not a choice is active
+  const [searchInput, setSearchInput] = useState("");
 
   const handleClickSort = () => {
     setIsSortClicked(true);
@@ -35,6 +36,12 @@ export default function CollectionGallery({
   // useEffect(() => {
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
   // }, [params]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSearchInput(event.target.search.value);
+    console.log("Searched for: ", event.target.search.value);
+  };
 
   console.log("plant collection: ", plantCollection);
   return (
@@ -63,10 +70,19 @@ export default function CollectionGallery({
         </section>
 
         <section className="search-sort-group">
-          <input
-            className="search-sort-group__search-bar"
-            placeholder="search"
-          />
+          <form className="search-sort-group__form" onSubmit={handleSubmit}>
+            <input
+              className="search-sort-group__search-bar"
+              placeholder="search"
+              name="search"
+              type="search"
+            />
+            <img
+              src={searchIcon}
+              alt="Search Button"
+              className="search-sort-group__search-icon"
+            />
+          </form>
           <img
             src={sortIcon}
             className="search-sort-group__sort-icon"
