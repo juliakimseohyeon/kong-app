@@ -37,10 +37,24 @@ export default function CollectionGallery({
   //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
   // }, [params]);
 
+  /* -------------------------------------------------------------------------- */
+  /*                      Function to search plants by name                     */
+  /* -------------------------------------------------------------------------- */
   const handleSubmit = (event) => {
     event.preventDefault();
     setSearchInput(event.target.search.value);
     console.log("Searched for: ", event.target.search.value);
+  };
+
+  const searchPlant = async (userInput) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/collections?name=${userInput}`
+      );
+      console.log(response);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   console.log("plant collection: ", plantCollection);
