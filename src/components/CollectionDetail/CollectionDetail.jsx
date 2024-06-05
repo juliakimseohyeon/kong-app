@@ -6,6 +6,7 @@ import editIcon from "../../assets/icons/icon-edit.svg";
 import { Link } from "react-router-dom";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import LoadingScreenPage from "../../pages/LoadingScreenPage/LoadingScreenPage";
+import PhotoCarousel from "../PhotoCarousel/PhotoCarousel";
 
 export default function CollectionDetail({
   selectedPlant,
@@ -121,6 +122,7 @@ export default function CollectionDetail({
                   />
                 </div>
               ))}
+              <PhotoCarousel />
             </div>
           </section>
         </main>
