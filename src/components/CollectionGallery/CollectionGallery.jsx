@@ -122,7 +122,7 @@ export default function CollectionGallery({
         </section>
 
         {!(plants === "{}") && !(searchInput === "") ? (
-          <SearchResult plants={plants} />
+          <SearchResult plants={plants} selectPlant={selectPlant} />
         ) : (
           <section className="gallery">
             {plantCollection.map((plant) => (

@@ -1,17 +1,24 @@
 import "./SearchResult.scss";
+import { Link } from "react-router-dom";
 
-export default function SearchResult({ plants }) {
+export default function SearchResult({ plants, selectPlant }) {
   return (
     <section className="search-result">
       <h2>Search Results</h2>
       {plants.map((plant) => (
-        <div className="search-result__card">
-          <img className="search-result__image" src={plant.image} />
-          <div className="search-result__names">
-            <h3 className="search-result__title">{plant.common_name}</h3>
-            <p className="search-result__subtitle">{plant.scientific_name}</p>
+        <Link
+          to={`/collections/${plant.id}`}
+          key={plant.id}
+          onClick={() => selectPlant(plant.id)}
+        >
+          <div className="search-result__card">
+            <img className="search-result__image" src={plant.image} />
+            <div className="search-result__names">
+              <h3 className="search-result__title">{plant.common_name}</h3>
+              <p className="search-result__subtitle">{plant.scientific_name}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </section>
   );
