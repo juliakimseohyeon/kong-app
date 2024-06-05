@@ -6,6 +6,7 @@ import CollectionDetail from "../../components/CollectionDetail/CollectionDetail
 import EditPlant from "../../components/EditPlant/EditPlant";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import FooterNav from "../../components/FooterNav/FooterNav";
 
 export default function CollectionPage({
   isPlantSelected,
@@ -99,57 +100,71 @@ export default function CollectionPage({
 
   if (isEditButtonClicked) {
     return (
-      <EditPlant
-        plantToEdit={plantToEdit}
-        setIsLoading={setIsLoading}
-        setIsEditButtonClicked={setIsEditButtonClicked}
-        updateSuccess={updateSuccess}
-      />
+      <>
+        {" "}
+        <EditPlant
+          plantToEdit={plantToEdit}
+          setIsLoading={setIsLoading}
+          setIsEditButtonClicked={setIsEditButtonClicked}
+          updateSuccess={updateSuccess}
+        />
+        <FooterNav />
+      </>
     );
   } else if (isPlantSelected) {
     return (
-      <CollectionDetail
-        selectedPlant={selectedPlant}
-        setIsPlantSelected={setIsPlantSelected}
-        handleClickDelete={handleClickDelete}
-        handleClickEdit={handleClickEdit}
-        deleteModalVisible={deleteModalVisible}
-        setDeleteModalVisible={setDeleteModalVisible}
-        plantToDelete={plantToDelete}
-        setPlantToDelete={setPlantToDelete}
-        isLoading={isLoading}
-        updateSuccess={updateSuccess}
-      />
+      <>
+        {" "}
+        <CollectionDetail
+          selectedPlant={selectedPlant}
+          setIsPlantSelected={setIsPlantSelected}
+          handleClickDelete={handleClickDelete}
+          handleClickEdit={handleClickEdit}
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
+          plantToDelete={plantToDelete}
+          setPlantToDelete={setPlantToDelete}
+          isLoading={isLoading}
+          updateSuccess={updateSuccess}
+        />
+        <FooterNav />
+      </>
     );
   } else if (isLoading) {
     return <LoadingScreenPage />;
   } else if (deleteModalVisible) {
     return (
-      <DeleteModal
-        setDeleteModalVisible={setDeleteModalVisible}
-        plantToDelete={plantToDelete}
-        setPlantToDelete={setPlantToDelete}
-      />
+      <>
+        {" "}
+        <DeleteModal
+          setDeleteModalVisible={setDeleteModalVisible}
+          plantToDelete={plantToDelete}
+          setPlantToDelete={setPlantToDelete}
+        />{" "}
+        <FooterNav />
+      </>
     );
   } else {
     return (
-      <CollectionGallery
-        plantCollection={plantCollection}
-        setPlantCollection={setPlantCollection}
-        isPlantSelected={isPlantSelected}
-        setIsPlantSelected={setIsPlantSelected}
-        selectedPlantId={selectedPlantId}
-        setSelectedPlantId={setSelectedPlantId}
-        deleteModalVisible={deleteModalVisible}
-        setDeleteModalVisible={setDeleteModalVisible}
-        setIsEditButtonClicked={setIsEditButtonClicked}
-        setPlantToEdit={setPlantToEdit}
-        selectPlant={selectPlant}
-        handleClickDelete={handleClickDelete}
-        handleClickEdit={handleClickEdit}
-      />
+      <>
+        {" "}
+        <CollectionGallery
+          plantCollection={plantCollection}
+          setPlantCollection={setPlantCollection}
+          isPlantSelected={isPlantSelected}
+          setIsPlantSelected={setIsPlantSelected}
+          selectedPlantId={selectedPlantId}
+          setSelectedPlantId={setSelectedPlantId}
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
+          setIsEditButtonClicked={setIsEditButtonClicked}
+          setPlantToEdit={setPlantToEdit}
+          selectPlant={selectPlant}
+          handleClickDelete={handleClickDelete}
+          handleClickEdit={handleClickEdit}
+        />
+        <FooterNav />
+      </>
     );
   }
-
-  return;
 }

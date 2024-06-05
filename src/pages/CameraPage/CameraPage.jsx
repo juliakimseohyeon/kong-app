@@ -11,7 +11,7 @@ import closeIcon from "../../assets/icons/icon-close.svg";
 
 export default function CameraPage({
   uploadSuccess,
-  setIsCameraOn,
+
   setError,
   uploadFailure,
   plantAlreadyExists,
@@ -23,13 +23,6 @@ export default function CameraPage({
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const webcamRef = useRef(null);
-
-  /* -------------------------------------------------------------------------- */
-  /*         Function to set CameraOn to true to render different footer        */
-  /* -------------------------------------------------------------------------- */
-  useState(() => {
-    setIsCameraOn(true);
-  }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -77,12 +70,11 @@ export default function CameraPage({
       }
     }
     setIsLoading(false); // Hide loading screen after processing
-    setIsCameraOn(false);
+
     navigate("/collections");
   };
 
   const handleExit = () => {
-    setIsCameraOn(false);
     navigate("/");
   };
 

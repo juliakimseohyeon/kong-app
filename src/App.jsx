@@ -10,7 +10,7 @@ import FooterNav from "./components/FooterNav/FooterNav";
 
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
-  const [isCameraOn, setIsCameraOn] = useState(false);
+
   const [error, setError] = useState(false);
 
   const updateSuccess = () =>
@@ -83,7 +83,6 @@ function App() {
           element={
             <CameraPage
               uploadSuccess={uploadSuccess}
-              setIsCameraOn={setIsCameraOn}
               setError={setError}
               uploadFailure={uploadFailure}
               plantAlreadyExists={plantAlreadyExists}
@@ -91,7 +90,6 @@ function App() {
           }
         />
       </Routes>
-      {!isCameraOn && <FooterNav />}
     </BrowserRouter>
   );
 }
