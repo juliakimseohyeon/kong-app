@@ -53,6 +53,7 @@ export default function CollectionPage({
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setPlantCollection(plantData); // Sort plants in chronological order on default
+        console.log(plantData);
       } catch (err) {
         console.error(err);
       }
