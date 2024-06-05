@@ -70,12 +70,6 @@ export default function CollectionGallery({
     }
   };
 
-  const renderSearchResult = () => {
-    if (!(plants === "{}") && !(searchInput === "")) {
-      return <SearchResult plants={plants} />;
-    }
-  };
-
   return (
     <>
       {/* {isEditButtonClicked && (
@@ -116,54 +110,61 @@ export default function CollectionGallery({
               className="search-sort-group__search-icon"
             />
           </form>
-          <img
-            src={sortIcon}
-            className="search-sort-group__sort-icon"
-            alt="Sort Button"
-            onClick={handleClickSort}
-          />
+          {searchInput === "" && (
+            <img
+              src={sortIcon}
+              className="search-sort-group__sort-icon"
+              alt="Sort Button"
+              onClick={handleClickSort}
+            />
+          )}
+          {/* Only render sort button if there is nothing in the Search Bar */}
         </section>
-        {renderSearchResult()}
-        <section className="gallery">
-          {plantCollection.map((plant) => (
-            <div className="plant-card" key={plant.id}>
-              <div className="plant-card__main">
-                <div className="plant-card__icons">
-                  <img
-                    src={deleteIcon}
-                    alt="Delete"
-                    onClick={() => handleClickDelete(plant)}
-                  />
-                  <img
-                    src={editIcon}
-                    alt="Edit"
-                    onClick={() => handleClickEdit(plant)}
-                  />
+
+        {!(plants === "{}") && !(searchInput === "") ? (
+          <SearchResult plants={plants} />
+        ) : (
+          <section className="gallery">
+            {plantCollection.map((plant) => (
+              <div className="plant-card" key={plant.id}>
+                <div className="plant-card__main">
+                  <div className="plant-card__icons">
+                    <img
+                      src={deleteIcon}
+                      alt="Delete"
+                      onClick={() => handleClickDelete(plant)}
+                    />
+                    <img
+                      src={editIcon}
+                      alt="Edit"
+                      onClick={() => handleClickEdit(plant)}
+                    />
+                  </div>
+                  <Link
+                    to={`/collections/${plant.id}`}
+                    onClick={() => selectPlant(plant.id)}
+                  >
+                    <img
+                      src={plant.image}
+                      className="plant-card__image"
+                      alt={plant.common_name}
+                    />
+                  </Link>
                 </div>
                 <Link
                   to={`/collections/${plant.id}`}
+                  className="plant-card__names"
                   onClick={() => selectPlant(plant.id)}
                 >
-                  <img
-                    src={plant.image}
-                    className="plant-card__image"
-                    alt={plant.common_name}
-                  />
+                  <h2 className="plant-card__title">{plant.common_name}</h2>
+                  <p className="plant-card__subtitle label">
+                    {plant.scientific_name}
+                  </p>
                 </Link>
               </div>
-              <Link
-                to={`/collections/${plant.id}`}
-                className="plant-card__names"
-                onClick={() => selectPlant(plant.id)}
-              >
-                <h2 className="plant-card__title">{plant.common_name}</h2>
-                <p className="plant-card__subtitle label">
-                  {plant.scientific_name}
-                </p>
-              </Link>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
+        )}
       </main>
     </>
   );

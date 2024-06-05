@@ -3,6 +3,7 @@
 
 .search-result {
   padding: 1.5rem 1rem;
+  padding-bottom: 8rem;
   @include display-flex(flex, column, normal, flex-start);
   gap: 1rem;
   &__card {
