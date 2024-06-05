@@ -1,13 +1,17 @@
-import { useParams, Link } from "react-router-dom";
-import deleteIcon from "../../assets/icons/icon-delete.svg";
-import editIcon from "../../assets/icons/icon-edit.svg";
+import "./SearchResult.scss";
 
 export default function SearchResult({ plants }) {
   return (
     <section className="search-result">
       <h2>Search Results</h2>
       {plants.map((plant) => (
-        <h3>{plant.common_name}</h3>
+        <div className="search-result__card">
+          <img className="search-result__image" src={plant.image} />
+          <div className="search-result__names">
+            <h3 className="search-result__title">{plant.common_name}</h3>
+            <p className="search-result__subtitle">{plant.scientific_name}</p>
+          </div>
+        </div>
       ))}
     </section>
   );

@@ -34,6 +34,9 @@
     background-color: $color-secondary-blue;
     padding: 1rem;
     padding-left: 2.5rem;
+    &:focus {
+      outline: 2px solid $color-primary-blue;
+    }
   }
   &__search-icon {
     position: absolute;

@@ -1,0 +1,24 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.search-result {
+  padding: 1.5rem 1rem;
+  @include display-flex(flex, column, normal, flex-start);
+  gap: 1rem;
+  &__card {
+    @include display-flex(flex, row);
+    gap: 1rem;
+    width: 100%;
+    box-shadow: $box-shadow;
+    border-radius: 1rem;
+  }
+  &__image {
+    width: 50%;
+    border-radius: 1rem 0 0 1rem;
+  }
+  &__names {
+    width: 50%;
+    @include display-flex(flex, column, normal, flex-start);
+    gap: 0.5rem;
+  }
+}
