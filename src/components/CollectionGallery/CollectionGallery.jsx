@@ -1,12 +1,15 @@
+import "./CollectionGallery.scss";
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
 import sortIcon from "../../assets/icons/icon-sort.svg";
 import searchIcon from "../../assets/icons/icon-search.svg";
 import EditPlant from "../EditPlant/EditPlant";
-import "./CollectionGallery.scss";
 import SortModal from "../SortModal/SortModal";
+import SearchResult from "../SearchResult/SearchResult";
+import { search } from "../../utils/searchUtils";
 
 export default function CollectionGallery({
   plantCollection,
@@ -27,6 +30,7 @@ export default function CollectionGallery({
   const [isSortClicked, setIsSortClicked] = useState(false);
   const [activeChoice, setActiveChoice] = useState(0); // useState to keep track of whether or not a choice is active
   const [searchInput, setSearchInput] = useState("");
+  const [plants, setPlants] = useState({});
 
   const handleClickSort = () => {
     setIsSortClicked(true);
@@ -40,24 +44,36 @@ export default function CollectionGallery({
   /* -------------------------------------------------------------------------- */
   /*                      Function to search plants by name                     */
   /* -------------------------------------------------------------------------- */
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSearchInput(event.target.search.value);
-    console.log("Searched for: ", event.target.search.value);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   setSearchInput(event.target.search.value);
+  //   console.log("Searched for: ", event.target.search.value);
+  // };
+
+  const handleChange = (event) => {
+    setSearchInput(event.target.value);
+    searchPlant(event.target.value);
+    console.log("Searching for for: ", event.target.value);
   };
 
   const searchPlant = async (userInput) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/collections?name=${userInput}`
+        `${import.meta.env.VITE_API_URL}/collections?query=${userInput}`
       );
       console.log(response);
+      const plantsResponse = response;
+      setPlants(plantsResponse);
     } catch (err) {
       console.error(err);
     }
   };
 
-  console.log("plant collection: ", plantCollection);
+  const renderSearchResult = () => {
+    if (plants) {
+      return <SearchResult plants={plants} />;
+    }
+  };
   return (
     <>
       {/* {isEditButtonClicked && (
@@ -66,6 +82,7 @@ export default function CollectionGallery({
           plantToEdit={plantToEdit}
         />
       )} */}
+      {renderSearchResult()}
       {isSortClicked && (
         <SortModal
           setIsSortClicked={setIsSortClicked}
@@ -84,12 +101,13 @@ export default function CollectionGallery({
         </section>
 
         <section className="search-sort-group">
-          <form className="search-sort-group__form" onSubmit={handleSubmit}>
+          <form className="search-sort-group__form">
             <input
               className="search-sort-group__search-bar"
               placeholder="search"
               name="search"
               type="search"
+              onChange={handleChange}
             />
             <img
               src={searchIcon}
