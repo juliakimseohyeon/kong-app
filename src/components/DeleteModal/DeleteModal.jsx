@@ -7,6 +7,7 @@ export default function DeleteModal({
   plantToDelete,
   setPlantToDelete,
   deleteSuccess,
+  setIsPlantSelected,
 }) {
   const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ export default function DeleteModal({
           `${import.meta.env.VITE_API_URL}/collections/${plantId}`
         );
         setDeleteModalVisible(false);
+        setIsPlantSelected(false); // This will render the default CollectionPage
         deleteSuccess();
         navigate("/collections");
       } catch (err) {

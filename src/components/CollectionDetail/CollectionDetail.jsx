@@ -50,6 +50,7 @@ export default function CollectionDetail({
               plantToDelete={plantToDelete}
               setPlantToDelete={setPlantToDelete}
               deleteSuccess={deleteSuccess}
+              setIsPlantSelected={setIsPlantSelected}
             />
           )}
           {isLoading && <LoadingScreenPage />}
