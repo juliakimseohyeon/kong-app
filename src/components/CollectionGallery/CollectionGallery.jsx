@@ -6,7 +6,6 @@ import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
 import sortIcon from "../../assets/icons/icon-sort.svg";
 import searchIcon from "../../assets/icons/icon-search.svg";
-import EditPlant from "../EditPlant/EditPlant";
 import SortModal from "../SortModal/SortModal";
 import SearchResult from "../SearchResult/SearchResult";
 import { search } from "../../utils/searchUtils";
@@ -14,14 +13,6 @@ import { search } from "../../utils/searchUtils";
 export default function CollectionGallery({
   plantCollection,
   setPlantCollection,
-  isPlantSelected,
-  setIsPlantSelected,
-  selectedPlantId,
-  setSelectedPlantId,
-  deleteModalVisible,
-  setDeleteModalVisible,
-  setIsEditButtonClicked,
-  setPlantToEdit,
   selectPlant,
   handleClickDelete,
   handleClickEdit,

@@ -148,14 +148,6 @@ export default function CollectionPage({
         <CollectionGallery
           plantCollection={plantCollection}
           setPlantCollection={setPlantCollection}
-          isPlantSelected={isPlantSelected}
-          setIsPlantSelected={setIsPlantSelected}
-          selectedPlantId={selectedPlantId}
-          setSelectedPlantId={setSelectedPlantId}
-          deleteModalVisible={deleteModalVisible}
-          setDeleteModalVisible={setDeleteModalVisible}
-          setIsEditButtonClicked={setIsEditButtonClicked}
-          setPlantToEdit={setPlantToEdit}
           selectPlant={selectPlant}
           handleClickDelete={handleClickDelete}
           handleClickEdit={handleClickEdit}
