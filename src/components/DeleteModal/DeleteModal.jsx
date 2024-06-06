@@ -7,7 +7,6 @@ export default function DeleteModal({
   plantToDelete,
   setPlantToDelete,
 }) {
-  console.log(plantToDelete);
   const navigate = useNavigate();
 
   const handleClickConfirm = async (plantId) => {
@@ -16,8 +15,6 @@ export default function DeleteModal({
         const response = await axios.delete(
           `${import.meta.env.VITE_API_URL}/collections/${plantId}`
         );
-        console.log(`Deleted plant with ID: ${plantId}`);
-        console.log(response);
         setDeleteModalVisible(false);
       } catch (err) {
         console.error(err);
