@@ -13,6 +13,8 @@ export default function CollectionPage({
   setIsPlantSelected,
   updateSuccess,
   deleteSuccess,
+  isHomeIconClicked,
+  setIsHomeIconClicked,
 }) {
   const [plantCollection, setPlantCollection] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState({});
@@ -58,7 +60,7 @@ export default function CollectionPage({
       }
     }
     getPlantsData();
-  }, [deleteModalVisible, isLoading]); // Re-render the page every time a plant is deleted or edited
+  }, [deleteModalVisible, isLoading, isHomeIconClicked]); // Re-render the page every time a plant is deleted or edited
 
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */
@@ -96,23 +98,34 @@ export default function CollectionPage({
     getOnePlantData();
   }, [selectedPlantId, isLoading, isPlantSelected]);
 
-  if (isEditButtonClicked) {
+  if (isHomeIconClicked) {
     return (
       <>
-        {" "}
+        <CollectionGallery
+          plantCollection={plantCollection}
+          setPlantCollection={setPlantCollection}
+          selectPlant={selectPlant}
+          handleClickDelete={handleClickDelete}
+          handleClickEdit={handleClickEdit}
+        />
+        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
+      </>
+    );
+  } else if (isEditButtonClicked) {
+    return (
+      <>
         <EditPlant
           plantToEdit={plantToEdit}
           setIsLoading={setIsLoading}
           setIsEditButtonClicked={setIsEditButtonClicked}
           updateSuccess={updateSuccess}
         />
-        <FooterNav />
+        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
   } else if (isPlantSelected) {
     return (
       <>
-        {" "}
         <CollectionDetail
           selectedPlant={selectedPlant}
           setIsPlantSelected={setIsPlantSelected}
@@ -125,7 +138,7 @@ export default function CollectionPage({
           isLoading={isLoading}
           deleteSuccess={deleteSuccess}
         />
-        <FooterNav />
+        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
   } else if (isLoading) {
@@ -133,21 +146,19 @@ export default function CollectionPage({
   } else if (deleteModalVisible) {
     return (
       <>
-        {" "}
         <DeleteModal
           setDeleteModalVisible={setDeleteModalVisible}
           plantToDelete={plantToDelete}
           setPlantToDelete={setPlantToDelete}
           deleteSuccess={deleteSuccess}
           setIsPlantSelected={setIsPlantSelected}
-        />{" "}
-        <FooterNav />
+        />
+        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
   } else {
     return (
       <>
-        {" "}
         <CollectionGallery
           plantCollection={plantCollection}
           setPlantCollection={setPlantCollection}
@@ -155,7 +166,7 @@ export default function CollectionPage({
           handleClickDelete={handleClickDelete}
           handleClickEdit={handleClickEdit}
         />
-        <FooterNav />
+        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
   }

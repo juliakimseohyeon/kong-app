@@ -9,6 +9,7 @@ import HeaderNav from "./components/HeaderNav/HeaderNav";
 
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
+  const [isHomeIconClicked, setIsHomeIconClicked] = useState(false);
 
   const uploadSuccess = () =>
     toast.success("Your plant has been created!", {
@@ -67,6 +68,7 @@ function App() {
               setIsPlantSelected={setIsPlantSelected}
               updateSuccess={updateSuccess}
               deleteSuccess={deleteSuccess}
+              isHomeIconClicked={isHomeIconClicked}
             />
           }
         />
@@ -78,6 +80,7 @@ function App() {
               setIsPlantSelected={setIsPlantSelected}
               updateSuccess={updateSuccess}
               deleteSuccess={deleteSuccess}
+              setIsHomeIconClicked={setIsHomeIconClicked}
             />
           }
         />
