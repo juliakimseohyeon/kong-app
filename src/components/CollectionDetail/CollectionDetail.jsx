@@ -18,6 +18,7 @@ export default function CollectionDetail({
   plantToDelete,
   setPlantToDelete,
   isLoading,
+  deleteSuccess,
 }) {
   if (selectedPlant) {
     // Apply conditional styling depending on plant's endangerment status
@@ -48,6 +49,7 @@ export default function CollectionDetail({
               setDeleteModalVisible={setDeleteModalVisible}
               plantToDelete={plantToDelete}
               setPlantToDelete={setPlantToDelete}
+              deleteSuccess={deleteSuccess}
             />
           )}
           {isLoading && <LoadingScreenPage />}

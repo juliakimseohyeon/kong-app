@@ -12,6 +12,7 @@ export default function CollectionPage({
   isPlantSelected,
   setIsPlantSelected,
   updateSuccess,
+  deleteSuccess,
 }) {
   const [plantCollection, setPlantCollection] = useState([]);
   const [selectedPlant, setSelectedPlant] = useState({});
@@ -122,6 +123,7 @@ export default function CollectionPage({
           plantToDelete={plantToDelete}
           setPlantToDelete={setPlantToDelete}
           isLoading={isLoading}
+          deleteSuccess={deleteSuccess}
         />
         <FooterNav />
       </>
@@ -136,6 +138,7 @@ export default function CollectionPage({
           setDeleteModalVisible={setDeleteModalVisible}
           plantToDelete={plantToDelete}
           setPlantToDelete={setPlantToDelete}
+          deleteSuccess={deleteSuccess}
         />{" "}
         <FooterNav />
       </>

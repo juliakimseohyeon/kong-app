@@ -10,6 +10,13 @@ import HeaderNav from "./components/HeaderNav/HeaderNav";
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
 
+  const uploadSuccess = () =>
+    toast.success("Your plant has been created!", {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "🌱",
+    });
+
   const updateSuccess = () =>
     toast.success("Your plant has been updated!", {
       duration: 4000,
@@ -17,12 +24,13 @@ function App() {
       icon: "👏",
     });
 
-  const uploadSuccess = () =>
-    toast.success("Your plant has been created!", {
+  const deleteSuccess = () => {
+    toast.success("Your plant has been deleted!", {
       duration: 4000,
       position: "bottom-left",
-      icon: "🌱",
+      icon: "🗑️",
     });
+  };
 
   const uploadFailure = () => {
     toast.error("Sorry, there was an error identifying your plant.", {
@@ -44,7 +52,6 @@ function App() {
     <BrowserRouter>
       <Toaster
         containerStyle={{
-          // position: "fixed", // Ensure the position is fixed
           top: "84%", // Center it vertically
           transform: "translate(0, -75%)", // Adjust for the exact center
         }}
@@ -59,6 +66,7 @@ function App() {
               isPlantSelected={isPlantSelected}
               setIsPlantSelected={setIsPlantSelected}
               updateSuccess={updateSuccess}
+              deleteSuccess={deleteSuccess}
             />
           }
         />
@@ -69,6 +77,7 @@ function App() {
               isPlantSelected={isPlantSelected}
               setIsPlantSelected={setIsPlantSelected}
               updateSuccess={updateSuccess}
+              deleteSuccess={deleteSuccess}
             />
           }
         />
