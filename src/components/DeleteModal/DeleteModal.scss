@@ -20,6 +20,7 @@
   position: relative;
   margin: auto;
   padding: 1rem;
+  border-radius: 1rem;
   @include display-flex(flex, column, space-around);
   gap: 1rem;
   &__button-group {
