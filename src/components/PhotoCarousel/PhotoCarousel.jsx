@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import arrowLeftWithBG from "../../assets/icons/icon-arrow-left-with-bg.svg";
 import arrowRightWithBG from "../../assets/icons/icon-arrow-right-with-bg.svg";
 
-export default function PhotoCarousel() {
+export default function PhotoCarousel({ myPlantnetResponse }) {
   const arrowStyles = {
     position: "absolute",
     zIndex: 2,
@@ -35,42 +35,34 @@ export default function PhotoCarousel() {
       dynamicHeight={false}
       renderArrowPrev={(onClickHandler, hasPrev, label) =>
         hasPrev && (
-          // <button
-          //   className="button-carousel"
-          //   type="button"
-          //   onClick={onClickHandler}
-          //   title={label}
-          //   style={{ ...arrowStyles, left: 15 }}
-          // >
-          <img
-            src={arrowLeftWithBG}
+          <button
             className="button-carousel"
             type="button"
             onClick={onClickHandler}
             title={label}
-            style={{ ...arrowStyles, left: 15 }}
-          />
-          // </button>
+            style={{
+              ...arrowStyles,
+              left: 15,
+              backgroundImage: `url(${arrowLeftWithBG})`,
+              backgroundSize: "cover",
+            }}
+          ></button>
         )
       }
       renderArrowNext={(onClickHandler, hasNext, label) =>
         hasNext && (
-          // <button
-          //   className="button-carousel"
-          //   type="button"
-          //   onClick={onClickHandler}
-          //   title={label}
-          //   style={{ ...arrowStyles, right: 15 }}
-          // >
-          <img
-            src={arrowRightWithBG}
+          <button
             className="button-carousel"
             type="button"
             onClick={onClickHandler}
             title={label}
-            style={{ ...arrowStyles, right: 15 }}
-          />
-          // </button>
+            style={{
+              ...arrowStyles,
+              right: 15,
+              backgroundImage: `url(${arrowRightWithBG})`,
+              backgroundSize: "cover",
+            }}
+          ></button>
         )
       }
       renderIndicator={(onClickHandler, isSelected, index, label) => {
@@ -98,36 +90,24 @@ export default function PhotoCarousel() {
         );
       }}
     >
-      <div style={{ padding: 10 }}>
-        <img
-          alt=""
-          src="https://res.cloudinary.com/kong-app/image/upload/fl_preserve_transparency/v1717623652/douglas-maple-tree_cs0suz.jpg?_s=public-apps"
-        />
-      </div>
-      <div style={{ padding: 10 }}>
-        <img
-          alt=""
-          src="https://res.cloudinary.com/kong-app/image/upload/fl_preserve_transparency/v1717623652/douglas-maple-tree_cs0suz.jpg?_s=public-apps"
-        />
-      </div>
-      <div style={{ padding: 10 }}>
-        <img
-          alt=""
-          src="https://res.cloudinary.com/kong-app/image/upload/fl_preserve_transparency/v1717623652/douglas-maple-tree_cs0suz.jpg?_s=public-apps"
-        />
-      </div>
-      <div style={{ padding: 10 }}>
-        <img
-          alt=""
-          src="https://res.cloudinary.com/kong-app/image/upload/fl_preserve_transparency/v1717623652/douglas-maple-tree_cs0suz.jpg?_s=public-apps"
-        />
-      </div>
-      <div style={{ padding: 10 }}>
-        <img
-          alt=""
-          src="https://res.cloudinary.com/kong-app/image/upload/fl_preserve_transparency/v1717623652/douglas-maple-tree_cs0suz.jpg?_s=public-apps"
-        />
-      </div>
+      {/* Only map over the myPlantnet response if there are any photos. Otherwise, return "no related photos found" to avoid error */}
+      {myPlantnetResponse.length === 0 ? (
+        <p>No related photos found</p>
+      ) : (
+        myPlantnetResponse.map((response, index) => (
+          <div
+            style={{ padding: 10 }}
+            className="collection-detail__gallery"
+            key={index}
+          >
+            <img
+              className="collection-detail__photo"
+              src={response.photo_url}
+              alt=""
+            />
+          </div>
+        ))
+      )}
     </Carousel>
   );
 }
