@@ -59,7 +59,7 @@ export default function CollectionPage({
     }
     getPlantsData();
     console.log("Is DeleteModal visible right now?", deleteModalVisible);
-  }, [deleteModalVisible, isLoading, isPlantSelected]); // Re-render the page every time a plant is deleted or edited
+  }, [deleteModalVisible, isLoading]); // Re-render the page every time a plant is deleted or edited
 
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */
@@ -140,7 +140,7 @@ export default function CollectionPage({
           plantToDelete={plantToDelete}
           setPlantToDelete={setPlantToDelete}
           deleteSuccess={deleteSuccess}
-          isPlantSelected={isPlantSelected}
+          setIsPlantSelected={setIsPlantSelected}
         />{" "}
         <FooterNav />
       </>
