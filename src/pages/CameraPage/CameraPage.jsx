@@ -21,10 +21,10 @@ export default function CameraPage({
   const fileInputRef = useRef(null);
   const webcamRef = useRef(null);
 
-  // Set camera setting so it is facing-out (environment)
-  const videoConstraints = {
-    facingMode: { exact: "environment" },
-  };
+  // // Set camera setting so it is facing-out (environment)
+  // const videoConstraints = {
+  //   facingMode: { exact: "environment" },
+  // };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -82,7 +82,6 @@ export default function CameraPage({
           <>
             <div className="camera__webcam">
               <Webcam
-                videoConstraints={videoConstraints}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
