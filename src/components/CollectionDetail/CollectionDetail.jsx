@@ -35,7 +35,6 @@ export default function CollectionDetail({
           : "#f96866",
     };
 
-    console.log("Response from myPlantNet: ", selectedPlant.myPlantnetResponse);
     return (
       <>
         <header className="header">
