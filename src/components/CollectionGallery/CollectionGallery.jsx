@@ -36,19 +36,9 @@ export default function CollectionGallery({
     setIsSortClicked(true);
   };
 
-  // useEffect(() => {
-  //   setSelectedPlantId(params.plantId); // set the new SelectedPlantId to the parameter, which will trigger a useEffect function in the parent component (CollectionPage)
-  // }, [params]);
-
   /* -------------------------------------------------------------------------- */
   /*                      Function to search plants by name                     */
   /* -------------------------------------------------------------------------- */
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   setSearchInput(event.target.search.value);
-  //   console.log("Searched for: ", event.target.search.value);
-  // };
-
   const handleChange = (event) => {
     setSearchInput(event.target.value);
     searchPlant(event.target.value);
@@ -69,12 +59,6 @@ export default function CollectionGallery({
 
   return (
     <>
-      {/* {isEditButtonClicked && (
-        <EditPlant
-          setIsEditButtonClicked={setIsEditButtonClicked}
-          plantToEdit={plantToEdit}
-        />
-      )} */}
       {isSortClicked && (
         <SortModal
           setIsSortClicked={setIsSortClicked}
