@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Webcam from "react-webcam";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import axios from "axios";
-import captureIcon from "../../assets/icons/icon-capture.svg";
 import captureSmallIcon from "../../assets/icons/icon-capture-sml.svg";
 import photoAlbumIcon from "../../assets/icons/icon-photo-album.svg";
 import closeIcon from "../../assets/icons/icon-close.svg";
@@ -21,6 +20,11 @@ export default function CameraPage({
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const webcamRef = useRef(null);
+
+  // Set camera setting so it is facing-out (environment)
+  const videoConstraints = {
+    facingMode: { exact: "environment" },
+  };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -78,6 +82,7 @@ export default function CameraPage({
           <>
             <div className="camera__webcam">
               <Webcam
+                videoConstraints={videoConstraints}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
