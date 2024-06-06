@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
 import homeIcon from "../../assets/icons/icon-home.svg";
 import cameraIcon from "../../assets/icons/icon-camera.svg";
-import plantsIcon from "../../assets/icons/icon-plants.svg";
 import "./FooterNav.scss";
 
 export default function FooterNav() {
