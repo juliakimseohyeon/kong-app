@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./SortModal.scss";
 
 export default function SortModal({
