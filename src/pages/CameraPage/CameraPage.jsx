@@ -21,10 +21,10 @@ export default function CameraPage({
   const fileInputRef = useRef(null);
   const webcamRef = useRef(null);
 
-  // // Set camera setting so it is facing-out (environment)
-  // const videoConstraints = {
-  //   facingMode: { exact: "environment" },
-  // };
+  // Set camera setting so it is facing-out (environment)
+  const videoConstraints = {
+    facingMode: { exact: "environment" },
+  };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -36,8 +36,16 @@ export default function CameraPage({
 
   const captureImage = () => {
     const imageSrc = webcamRef.current.getScreenshot();
-    setSelectedFile(imageSrc);
-    uploadImage(imageSrc);
+    fetch(imageSrc) // Request the resource represented by the data URL
+      .then((res) => res.blob()) // Convert the response from "fetch" into a "Blob" object
+      .then((blob) => {
+        // Create a file object using the Blob.
+        const file = new File([blob], "captured_image.jpg", {
+          type: "image/jpeg",
+        });
+        setSelectedFile(file);
+        uploadImage(file);
+      });
   };
 
   const uploadImage = async (file) => {
@@ -56,12 +64,14 @@ export default function CameraPage({
     } catch (error) {
       console.error("Error uploading image:", error);
       // Check if the error response contains a message
-      if (error.response && error.response.data && error.response.data.error) {
-        uploadFailure();
-      } else if (error.response.data.existingPlantError) {
-        plantAlreadyExists(error.response.data.existingPlantName);
+      if (error.response && error.response.data) {
+        if (error.response.data.existingPlantError) {
+          plantAlreadyExists(error.response.data.existingPlantName);
+        } else {
+          uploadFailure();
+        }
       } else {
-        uploadFailure();
+        console.err("An unknown error occured");
       }
     }
     setIsLoading(false); // Hide loading screen after processing
@@ -82,6 +92,7 @@ export default function CameraPage({
           <>
             <div className="camera__webcam">
               <Webcam
+                videoConstraints={videoConstraints}
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
