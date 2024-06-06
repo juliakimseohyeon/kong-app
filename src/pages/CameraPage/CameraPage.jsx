@@ -48,8 +48,6 @@ export default function CameraPage({
         `${import.meta.env.VITE_API_URL}/camera`,
         formData
       );
-      // const data = await response.json();
-      // console.log("Response from OpenAI:", data);
 
       setImageUploaded(true);
       uploadSuccess();
@@ -85,7 +83,6 @@ export default function CameraPage({
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                // forceScreenshotSourceSize="true"
                 style={{
                   position: "absolute",
                   textAlign: "center",
