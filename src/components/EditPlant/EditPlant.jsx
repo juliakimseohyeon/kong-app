@@ -14,17 +14,12 @@ export default function EditPlant({
   const editPlant = async (plantToEdit) => {
     setIsLoading(true); // Set loading state to true at the beginning of the function
     setIsEditButtonClicked(false); // Set EditButtonClicked to false so it would not render anymore
-    console.log("Loading");
-    try {
-      console.log(
-        `Generating new illustration for plant ${plantToEdit.common_name}`
-      );
 
+    try {
       await axios.put(
         `${import.meta.env.VITE_API_URL}/collections/${plantToEdit.id}`
       );
       setIsLoading(false); // Set loading state to false after API call is completed
-      console.log("Done loading");
       updateSuccess();
       navigate("/collections");
     } catch (err) {
