@@ -11,8 +11,6 @@ import closeIcon from "../../assets/icons/icon-close.svg";
 
 export default function CameraPage({
   uploadSuccess,
-
-  setError,
   uploadFailure,
   plantAlreadyExists,
 }) {

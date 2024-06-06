@@ -6,12 +6,9 @@ import CollectionPage from "./pages/CollectionPage/CollectionPage";
 import FeaturedPlantsPage from "./pages/FeaturedPlantsPage/FeaturedPlantsPage";
 import CameraPage from "./pages/CameraPage/CameraPage";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
-import FooterNav from "./components/FooterNav/FooterNav";
 
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
-
-  const [error, setError] = useState(false);
 
   const updateSuccess = () =>
     toast.success("Your plant has been updated!", {
@@ -53,8 +50,6 @@ function App() {
         }}
       />
       {!isPlantSelected && <HeaderNav />}
-      {/* {error && <p className="error">{error}</p>}{" "} */}
-      {/* Display the error message */}
       <Routes>
         <Route path="/" element={<Navigate to="/collections" />} />
         <Route
@@ -83,7 +78,6 @@ function App() {
           element={
             <CameraPage
               uploadSuccess={uploadSuccess}
-              setError={setError}
               uploadFailure={uploadFailure}
               plantAlreadyExists={plantAlreadyExists}
             />
