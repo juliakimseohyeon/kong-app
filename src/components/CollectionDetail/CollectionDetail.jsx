@@ -3,10 +3,12 @@ import "./CollectionDetail.scss";
 import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
+import { render } from "react-dom";
 import { Link } from "react-router-dom";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import LoadingScreenPage from "../../pages/LoadingScreenPage/LoadingScreenPage";
 import PhotoCarousel from "../PhotoCarousel/PhotoCarousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function CollectionDetail({
   selectedPlant,

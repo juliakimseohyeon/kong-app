@@ -1,2 +1,8 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.button-carousel {
+  @include display-flex(flex, normal, center, center);
+  font-size: 2rem;
+  background-color: transparent;
+}

@@ -16,9 +16,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.23.0",
     "react-webcam": "^7.2.0",
-    "sass": "^1.77.0"
+    "sass": "^1.77.0",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
