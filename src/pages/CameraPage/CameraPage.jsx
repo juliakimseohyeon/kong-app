@@ -59,6 +59,7 @@ export default function CameraPage({
         formData
       );
 
+      setIsLoading(false); // Hide loading screen after processing
       setImageUploaded(true);
       uploadSuccess();
     } catch (error) {
