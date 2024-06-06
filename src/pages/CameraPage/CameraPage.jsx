@@ -48,7 +48,6 @@ export default function CameraPage({
         `${import.meta.env.VITE_API_URL}/camera`,
         formData
       );
-      console.log("upload response:", response);
       // const data = await response.json();
       // console.log("Response from OpenAI:", data);
 
@@ -60,10 +59,6 @@ export default function CameraPage({
       if (error.response && error.response.data && error.response.data.error) {
         uploadFailure();
       } else if (error.response.data.existingPlantError) {
-        console.log(
-          "plant already exists in the database: ",
-          error.response.data.existingPlantError
-        );
         plantAlreadyExists(error.response.data.existingPlantName);
       } else {
         uploadFailure();
