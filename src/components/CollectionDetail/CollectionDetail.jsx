@@ -113,15 +113,20 @@ export default function CollectionDetail({
             </div>
             <div className="collection-detail__block">
               <h2>Photos of the plant</h2>
-              {selectedPlant.myPlantnetResponse.map((response, index) => (
-                <div className="collection-detail__gallery" key={index}>
-                  <img
-                    className="collection-detail__photo"
-                    src={response.photo_url}
-                    alt=""
-                  />
-                </div>
-              ))}
+              {selectedPlant.myPlantnetResponse === "[]" ? (
+                <p>No related photos found</p>
+              ) : (
+                selectedPlant.myPlantnetResponse.map((response, index) => (
+                  <div className="collection-detail__gallery" key={index}>
+                    <img
+                      className="collection-detail__photo"
+                      src={response.photo_url}
+                      alt=""
+                    />
+                  </div>
+                ))
+              )}
+              {/* Only map over the myPlantnet response if there are any photos. Otherwise, return "no related photos found" to avoid error */}
               <PhotoCarousel />
             </div>
           </section>
