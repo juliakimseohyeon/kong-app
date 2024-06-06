@@ -39,56 +39,56 @@ export default function SortModal({
   };
   return (
     <div className="container">
-      <div className="edit-modal">
+      <div className="sort-modal">
         <h1>Sort by</h1>
         <div
-          className="edit-modal__choice"
+          className="sort-modal__choice"
           onClick={() => handleClick(0, sortByCreateTime)}
         >
           <p
-            className={`edit-modal__choice-text ${
-              activeChoice === 0 ? "edit-modal__choice-text--active" : ""
+            className={`sort-modal__choice-text ${
+              activeChoice === 0 ? "sort-modal__choice-text--active" : ""
             }`}
           >
             Most recently added
           </p>
           <div
-            className={`edit-modal__choice-circle ${
-              activeChoice === 0 ? "edit-modal__choice-circle--active" : ""
+            className={`sort-modal__choice-circle ${
+              activeChoice === 0 ? "sort-modal__choice-circle--active" : ""
             }`}
           ></div>
         </div>
         <div
-          className="edit-modal__choice"
+          className="sort-modal__choice"
           onClick={() => handleClick(1, sortByUpdateTime)}
         >
           <p
-            className={`edit-modal__choice-text ${
-              activeChoice === 1 ? "edit-modal__choice-text--active" : ""
+            className={`sort-modal__choice-text ${
+              activeChoice === 1 ? "sort-modal__choice-text--active" : ""
             }`}
           >
             Most recently updated
           </p>
           <div
-            className={`edit-modal__choice-circle ${
-              activeChoice === 1 ? "edit-modal__choice-circle--active" : ""
+            className={`sort-modal__choice-circle ${
+              activeChoice === 1 ? "sort-modal__choice-circle--active" : ""
             }`}
           ></div>
         </div>
         <div
-          className="edit-modal__choice"
+          className="sort-modal__choice"
           onClick={() => handleClick(2, sortByName)}
         >
           <p
-            className={`edit-modal__choice-text ${
-              activeChoice === 2 ? "edit-modal__choice-text--active" : ""
+            className={`sort-modal__choice-text ${
+              activeChoice === 2 ? "sort-modal__choice-text--active" : ""
             }`}
           >
             Name
           </p>
           <div
-            className={`edit-modal__choice-circle ${
-              activeChoice === 2 ? "edit-modal__choice-circle--active" : ""
+            className={`sort-modal__choice-circle ${
+              activeChoice === 2 ? "sort-modal__choice-circle--active" : ""
             }`}
           ></div>
         </div>
