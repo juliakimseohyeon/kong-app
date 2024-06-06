@@ -23,12 +23,6 @@ export default function CollectionDetail({
   updateSuccess,
 }) {
   if (selectedPlant) {
-    console.log("Selected Plant: ", selectedPlant);
-    console.log(
-      "Related photo URL :",
-      selectedPlant.myPlantnetResponse[0].photo_url
-    );
-
     // Apply conditional styling depending on plant's endangerment status
     const statusStyle = {
       backgroundColor:
@@ -41,6 +35,7 @@ export default function CollectionDetail({
           : "#f96866",
     };
 
+    console.log("Response from myPlantNet: ", selectedPlant.myPlantnetResponse);
     return (
       <>
         <header className="header">
@@ -113,7 +108,7 @@ export default function CollectionDetail({
             </div>
             <div className="collection-detail__block">
               <h2>Photos of the plant</h2>
-              {selectedPlant.myPlantnetResponse === "[]" ? (
+              {selectedPlant.myPlantnetResponse.length === 0 ? (
                 <p>No related photos found</p>
               ) : (
                 selectedPlant.myPlantnetResponse.map((response, index) => (
