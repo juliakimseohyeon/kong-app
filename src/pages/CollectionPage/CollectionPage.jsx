@@ -25,7 +25,6 @@ export default function CollectionPage({
   const selectPlant = (plantId) => {
     setIsPlantSelected(true);
     setSelectedPlantId(plantId);
-    // console.log(plantId);
   };
 
   const handleClickDelete = (plant) => {
@@ -53,7 +52,6 @@ export default function CollectionPage({
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setPlantCollection(plantData); // Sort plants in chronological order on default
-        console.log(plantData);
       } catch (err) {
         console.error(err);
       }
@@ -71,7 +69,6 @@ export default function CollectionPage({
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/collections/${selectedPlantId}`
         );
-        console.log("Response from back-end received: ", response);
 
         const data = response.data;
         return data;
@@ -90,7 +87,6 @@ export default function CollectionPage({
           console.log("Data still loading: ", data);
         } else {
           setSelectedPlant(data);
-          console.log("Data received: ", data);
         }
       } catch (err) {
         console.log(err);
