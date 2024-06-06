@@ -34,7 +34,6 @@ export default function CollectionGallery({
 
   const handleClickSort = () => {
     setIsSortClicked(true);
-    console.log("Sort Button Clicked");
   };
 
   // useEffect(() => {
@@ -53,7 +52,6 @@ export default function CollectionGallery({
   const handleChange = (event) => {
     setSearchInput(event.target.value);
     searchPlant(event.target.value);
-    console.log("Searching for: ", event.target.value);
   };
 
   const searchPlant = async (userInput) => {
@@ -62,7 +60,6 @@ export default function CollectionGallery({
         `${import.meta.env.VITE_API_URL}/collections?query=${userInput}`
       );
 
-      console.log("Search plant response: ", response);
       const plantsResponseArray = response.data;
       setPlants(plantsResponseArray);
     } catch (err) {
