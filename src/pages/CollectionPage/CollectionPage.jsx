@@ -122,7 +122,6 @@ export default function CollectionPage({
           plantToDelete={plantToDelete}
           setPlantToDelete={setPlantToDelete}
           isLoading={isLoading}
-          updateSuccess={updateSuccess}
         />
         <FooterNav />
       </>

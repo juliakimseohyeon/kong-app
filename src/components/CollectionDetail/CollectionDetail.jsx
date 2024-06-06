@@ -11,8 +11,6 @@ import PhotoCarousel from "../PhotoCarousel/PhotoCarousel";
 export default function CollectionDetail({
   selectedPlant,
   setIsPlantSelected,
-  selectedPlantId,
-  selectPlant,
   handleClickDelete,
   handleClickEdit,
   deleteModalVisible,
@@ -20,7 +18,6 @@ export default function CollectionDetail({
   plantToDelete,
   setPlantToDelete,
   isLoading,
-  updateSuccess,
 }) {
   if (selectedPlant) {
     // Apply conditional styling depending on plant's endangerment status
