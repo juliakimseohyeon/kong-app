@@ -1,6 +1,6 @@
 import "./EditPlant.scss";
 import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function EditPlant({
