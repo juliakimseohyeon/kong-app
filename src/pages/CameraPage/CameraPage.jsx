@@ -35,6 +35,7 @@ export default function CameraPage({
   };
 
   const captureImage = () => {
+    setIsLoading(true); // Start loading before capturing the image
     const imageSrc = webcamRef.current.getScreenshot();
     fetch(imageSrc) // Request the resource represented by the data URL
       .then((res) => res.blob()) // Convert the response from "fetch" into a "Blob" object
@@ -45,6 +46,10 @@ export default function CameraPage({
         });
         setSelectedFile(file);
         uploadImage(file);
+      })
+      .catch((error) => {
+        console.error("Error capturing image:", error);
+        setIsLoading(false); // Stop loading if there's an error capturing the image
       });
   };
 
