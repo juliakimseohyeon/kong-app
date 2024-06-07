@@ -13,11 +13,11 @@ export default function FooterNav({ setIsHomeIconClicked }) {
           alt="Home Icon"
           onClick={() => setIsHomeIconClicked(true)}
         />
-        <p>HOME</p>
+        <p>home</p>
       </Link>
       <Link to="/camera" className="nav__bottom-item label">
         <img className="icon" src={cameraIcon} alt="Camera Icon" />
-        <p>CAMERA</p>
+        <p>camera</p>
       </Link>
     </footer>
   );

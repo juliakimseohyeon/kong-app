@@ -126,7 +126,7 @@ export default function CameraPage({
                 onClick={() => fileInputRef.current.click()}
               >
                 <img className="icon" src={photoAlbumIcon} alt="Capture Icon" />
-                <p>ALBUM</p>
+                <p>album</p>
               </div>
               <div className="camera__icon label" onClick={captureImage}>
                 <img
@@ -134,7 +134,7 @@ export default function CameraPage({
                   src={captureSmallIcon}
                   alt="Capture Icon"
                 />
-                <p>CAPTURE</p>
+                <p>capture</p>
               </div>
             </div>
             <input

@@ -31,3 +31,12 @@
 .icon-capture {
   justify-self: center;
 }
+
+@media (min-width: $tablet-width) {
+  .camera {
+    &__icon-group {
+      padding: 1.5rem 3rem;
+      height: 8rem;
+    }
+  }
+}
