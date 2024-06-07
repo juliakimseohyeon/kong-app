@@ -6,7 +6,7 @@ import arrowRightWithBG from "../../assets/icons/icon-arrow-right-with-bg.svg";
 export default function PhotoCarousel({ myPlantnetResponse, heroImg, alt }) {
   const arrowStyles = {
     position: "absolute",
-    zIndex: 2,
+    zIndex: 1,
     top: "calc(50% - 15px)",
     width: 30,
     height: 30,

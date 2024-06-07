@@ -1,9 +1,8 @@
 import "../../App.scss";
 import "./CollectionDetail.scss";
-import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
+import arrowLeft from "../../assets/icons/icon-arrow-left-large.svg";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import editIcon from "../../assets/icons/icon-edit.svg";
-import { render } from "react-dom";
 import { Link } from "react-router-dom";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import LoadingScreenPage from "../../pages/LoadingScreenPage/LoadingScreenPage";
@@ -39,7 +38,7 @@ export default function CollectionDetail({
       <>
         <header className="header">
           <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
-            <img src={arrowLeftSmall} alt="Back Button" />
+            <img src={arrowLeft} alt="Back Button" />
           </Link>
           <p className="header__title">
             {selectedPlant.openAiResponse.common_name}
