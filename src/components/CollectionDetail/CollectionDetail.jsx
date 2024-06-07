@@ -71,6 +71,7 @@ export default function CollectionDetail({
               </div>
               <div className="hero__button-group">
                 <img
+                  className="hero__button"
                   src={deleteIcon}
                   alt="Delete"
                   onClick={() =>
@@ -78,6 +79,7 @@ export default function CollectionDetail({
                   }
                 />
                 <img
+                  className="hero__button"
                   src={editIcon}
                   alt="Edit"
                   onClick={() => handleClickEdit(selectedPlant.openAiResponse)}

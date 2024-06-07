@@ -57,3 +57,21 @@
     border-radius: 1rem;
   }
 }
+
+@media (min-width: $tablet-width) {
+  .collection-detail {
+    padding: 3rem;
+    padding-bottom: 12rem;
+  }
+
+  .hero {
+    &__text,
+    &__button-group,
+    &__status {
+      padding: 1rem 3rem;
+    }
+    &__button {
+      width: 4rem;
+    }
+  }
+}
