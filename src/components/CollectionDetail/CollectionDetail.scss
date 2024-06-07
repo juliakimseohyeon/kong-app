@@ -1,24 +1,5 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-.header {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  position: fixed;
-  z-index: 2;
-  height: 5rem;
-  background-color: white;
-  box-shadow: $box-shadow;
-  display: grid;
-  grid-template-columns: 0fr 1fr;
-  align-items: center;
-  &__title {
-    justify-self: center;
-    position: absolute;
-  }
-  &__back-button {
-    width: 3rem;
-  }
-}
 
 .collection-detail {
   padding: 2.5rem 1rem;

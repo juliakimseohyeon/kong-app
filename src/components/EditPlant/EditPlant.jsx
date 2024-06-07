@@ -1,5 +1,5 @@
 import "./EditPlant.scss";
-import arrowLeftSmall from "../../assets/icons/icon-arrow-left.svg";
+import arrowLeft from "../../assets/icons/icon-arrow-left-large.svg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -35,7 +35,9 @@ export default function EditPlant({
           to={`/collections/${plantToEdit.id}`}
           onClick={() => setIsPlantSelected(false)}
         >
-          <img src={arrowLeftSmall} alt="Back Button" />
+          <div className="header__back-button">
+            <img src={arrowLeft} alt="Back Button" />
+          </div>
         </Link>
         <p className="header__title">Edit {plantToEdit.common_name}</p>
       </header>
