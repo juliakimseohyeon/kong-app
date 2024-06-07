@@ -91,6 +91,10 @@ button {
 }
 
 @media (min-width: $tablet-width) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
   button {
     width: 50%;
     font-size: 1rem;
