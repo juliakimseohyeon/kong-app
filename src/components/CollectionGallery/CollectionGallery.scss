@@ -140,3 +140,16 @@
     }
   }
 }
+
+@media (min-width: $desktop-width) {
+  .plant-card {
+    width: 23%;
+    &__names {
+      padding: 0.5rem 1rem;
+    }
+    &__title,
+    &__subtitle {
+      max-width: 100%;
+    }
+  }
+}
