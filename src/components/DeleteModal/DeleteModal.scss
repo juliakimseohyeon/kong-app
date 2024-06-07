@@ -29,3 +29,10 @@
     gap: 1rem;
   }
 }
+
+@media (min-width: $tablet-width) {
+  .delete-modal {
+    width: 85%;
+    padding: 3rem;
+  }
+}
