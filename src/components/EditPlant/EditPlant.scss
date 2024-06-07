@@ -38,3 +38,10 @@
     }
   }
 }
+
+@media (min-width: $desktop-width) {
+  .edit-plant {
+    width: 50%;
+    margin: auto;
+  }
+}

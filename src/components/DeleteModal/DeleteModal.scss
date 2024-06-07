@@ -36,3 +36,9 @@
     padding: 3rem;
   }
 }
+
+@media (min-width: $desktop-width) {
+  .delete-modal {
+    width: 40%;
+  }
+}
