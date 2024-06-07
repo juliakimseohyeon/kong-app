@@ -63,7 +63,6 @@
   width: 100%;
   @include display-flex(flex, column);
   gap: 1rem;
-
   &__main {
     width: 100%;
     position: relative;
@@ -83,6 +82,7 @@
     cursor: pointer;
     width: 100%;
     text-align: center;
+    @include display-flex(flex, column, normal, center);
   }
   &__title,
   &__subtitle {
@@ -120,7 +120,7 @@
   .plant-card {
     border-radius: 1rem;
     width: 46%;
-    @include display-flex(flex, column);
+    @include display-flex(flex, column, normal, center);
     gap: 1rem;
     &__name {
       width: 100%;
