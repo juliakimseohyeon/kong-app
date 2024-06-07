@@ -48,3 +48,9 @@
     height: 2rem;
   }
 }
+
+@media (min-width: $tablet-width) {
+  .sort-modal {
+    padding: 3rem;
+  }
+}

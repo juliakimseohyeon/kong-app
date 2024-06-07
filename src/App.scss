@@ -119,4 +119,9 @@ button {
     font-size: 1rem;
     padding: 2rem;
   }
+
+  .button--delete,
+  .button--cancel {
+    width: 100%;
+  }
 }
