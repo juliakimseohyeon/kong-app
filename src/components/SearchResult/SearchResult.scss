@@ -6,6 +6,10 @@
   padding-bottom: 8rem;
   @include display-flex(flex, column, normal, flex-start);
   gap: 1rem;
+  &__gallery {
+    @include display-flex(flex, column, normal, flex-start);
+    gap: 1rem;
+  }
   &__card {
     @include display-flex(flex, row);
     gap: 1rem;
@@ -21,5 +25,43 @@
     width: 50%;
     @include display-flex(flex, column, normal, flex-start);
     gap: 0.5rem;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .search-result {
+    padding: 3rem;
+    padding-bottom: 12rem;
+    &__gallery {
+      @include display-flex(flex, row, space-between);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    &__card {
+      width: 30%;
+      @include display-flex(flex, column, space-between, center);
+      gap: 0.5rem;
+    }
+    &__image {
+      width: 100%;
+      border-radius: 1rem 1rem 0 0;
+    }
+    &__names {
+      width: 100%;
+      padding: 1rem;
+      align-items: center;
+      gap: 0.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+    }
+    &__title,
+    &__subtitle {
+      max-width: 13ch;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: fit-content;
+    }
   }
 }
