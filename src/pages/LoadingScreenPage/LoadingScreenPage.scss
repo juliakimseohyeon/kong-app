@@ -31,3 +31,12 @@
     text-align: center;
   }
 }
+
+@media (min-width: $tablet-width) {
+  .loading-screen {
+    &__text {
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+  }
+}
