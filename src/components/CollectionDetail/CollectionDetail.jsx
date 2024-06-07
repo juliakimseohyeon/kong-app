@@ -57,9 +57,10 @@ export default function CollectionDetail({
           )}
           {isLoading && <LoadingScreenPage />}
           <section className="hero">
-            <img
+            <PhotoCarousel
               className="hero__image"
-              src={selectedPlant.openAiResponse.image}
+              myPlantnetResponse={selectedPlant.myPlantnetResponse}
+              heroImg={selectedPlant.openAiResponse.image}
               alt={selectedPlant.openAiResponse.common_name}
             />
             <div className="hero__main-info-group">
@@ -106,12 +107,6 @@ export default function CollectionDetail({
               <p className="collection-detail__description">
                 {selectedPlant.openAiResponse.characteristics}
               </p>
-            </div>
-            <div className="collection-detail__block">
-              <h2>Photos of the plant</h2>
-              <PhotoCarousel
-                myPlantnetResponse={selectedPlant.myPlantnetResponse}
-              />
             </div>
           </section>
         </main>

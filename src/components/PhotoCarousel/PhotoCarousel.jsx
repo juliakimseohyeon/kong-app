@@ -3,13 +3,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import arrowLeftWithBG from "../../assets/icons/icon-arrow-left-with-bg.svg";
 import arrowRightWithBG from "../../assets/icons/icon-arrow-right-with-bg.svg";
 
-export default function PhotoCarousel({ myPlantnetResponse }) {
+export default function PhotoCarousel({ myPlantnetResponse, heroImg, alt }) {
   const arrowStyles = {
     position: "absolute",
     zIndex: 2,
     top: "calc(50% - 15px)",
     width: 30,
     height: 30,
+    marginTop: "3em",
     cursor: "pointer",
   };
 
@@ -30,7 +31,7 @@ export default function PhotoCarousel({ myPlantnetResponse }) {
       centerMode={true}
       swipeable={true}
       emulateTouch={true}
-      infiniteLoop={true}
+      infiniteLoop={false}
       width={"100%"}
       dynamicHeight={false}
       renderArrowPrev={(onClickHandler, hasPrev, label) =>
@@ -67,13 +68,7 @@ export default function PhotoCarousel({ myPlantnetResponse }) {
       }
       renderIndicator={(onClickHandler, isSelected, index, label) => {
         if (isSelected) {
-          return (
-            <li
-              style={{ ...indicatorStyles, background: "#6ac15e" }}
-              aria-label={`Selected: ${label} ${index + 1}`}
-              title={`Selected: ${label} ${index + 1}`}
-            />
-          );
+          return <li style={{ ...indicatorStyles, background: "#6ac15e" }} />;
         }
         return (
           <li
@@ -84,8 +79,6 @@ export default function PhotoCarousel({ myPlantnetResponse }) {
             key={index}
             role="button"
             tabIndex={0}
-            title={`${label} ${index + 1}`}
-            aria-label={`${label} ${index + 1}`}
           />
         );
       }}
@@ -96,15 +89,16 @@ export default function PhotoCarousel({ myPlantnetResponse }) {
       ) : (
         myPlantnetResponse.map((response, index) => (
           <div
-            style={{ padding: 10 }}
+            style={{ padding: 10, marginTop: "4rem" }}
             className="collection-detail__gallery"
             key={index}
           >
             <img
               className="collection-detail__photo"
-              src={response.photo_url}
-              alt=""
+              src={index === 0 ? heroImg : response.photo_url}
+              alt={alt}
             />
+            {/* If it's the first image, use the heroImg */}
           </div>
         ))
       )}
