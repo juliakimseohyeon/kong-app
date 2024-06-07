@@ -38,7 +38,9 @@ export default function CollectionDetail({
       <>
         <header className="header">
           <Link to={"/collections"} onClick={() => setIsPlantSelected(false)}>
-            <img src={arrowLeft} alt="Back Button" />
+            <div className="header__back-button">
+              <img src={arrowLeft} alt="Back Button" />
+            </div>
           </Link>
           <p className="header__title">
             {selectedPlant.openAiResponse.common_name}
