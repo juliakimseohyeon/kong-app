@@ -64,3 +64,11 @@
     }
   }
 }
+
+@media (min-width: $desktop-width) {
+  .search-result {
+    &__card {
+      width: 18%;
+    }
+  }
+}
