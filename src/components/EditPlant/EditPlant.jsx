@@ -43,11 +43,13 @@ export default function EditPlant({
       </header>
       <main className="edit-plant">
         <section className="hero">
-          <img
-            className="edit-plant__image"
-            src={plantToEdit.image}
-            alt={plantToEdit.common_name}
-          />
+          <div className="edit-plant__image-container">
+            <img
+              className="edit-plant__image"
+              src={plantToEdit.image}
+              alt={plantToEdit.common_name}
+            />
+          </div>
           <div className="edit-plant__text">
             <h1>{plantToEdit.common_name}</h1>
             <h2>{plantToEdit.scientific_name}</h2>

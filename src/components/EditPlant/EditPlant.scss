@@ -6,8 +6,11 @@
   gap: 1rem;
   width: 100%;
   padding: 0 1rem;
-  &__image {
+  &__image-container {
     margin-top: 4rem;
+    width: 100%;
+  }
+  &__image {
     width: 100%;
   }
   &__text {
@@ -18,5 +21,20 @@
     margin: auto;
     padding: 1rem 0;
     width: 100%;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .edit-plant {
+    padding: 0 3rem;
+    width: 100%;
+    &__image-container {
+      height: 60vh;
+      overflow: hidden;
+      @include display-flex(flex, column, normal, center);
+    }
+    &__image {
+      object-fit: fill;
+    }
   }
 }
