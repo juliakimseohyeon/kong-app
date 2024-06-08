@@ -75,3 +75,9 @@
     }
   }
 }
+
+@media (min-width: $desktop-width) {
+  .collection-detail {
+    @include display-flex(flex, row, normal, flex-start);
+  }
+}
