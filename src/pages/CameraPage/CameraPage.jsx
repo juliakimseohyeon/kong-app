@@ -88,11 +88,11 @@ export default function CameraPage({
   const handleExit = () => {
     navigate("/");
   };
-
+  if (isLoading) {
+    return <LoadingScreenPage />;
+  }
   return (
     <main>
-      {isLoading && <LoadingScreenPage />}
-
       <section className="camera">
         {!isLoading && (
           <>
