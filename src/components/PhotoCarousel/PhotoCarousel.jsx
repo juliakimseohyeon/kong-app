@@ -22,6 +22,10 @@ export default function PhotoCarousel({ myPlantnetResponse, heroImg, alt }) {
     margin: "0 8px",
     borderRadius: "50%",
   };
+
+  // Combine heroImg with myPlantnetResponse photos
+  const allImages = [{ photo_url: heroImg }, ...myPlantnetResponse];
+
   return (
     <Carousel
       showArrows={true}
@@ -84,10 +88,10 @@ export default function PhotoCarousel({ myPlantnetResponse, heroImg, alt }) {
       }}
     >
       {/* Only map over the myPlantnet response if there are any photos. Otherwise, return "no related photos found" to avoid error */}
-      {myPlantnetResponse.length === 0 ? (
+      {allImages.length === 0 ? (
         <p>No related photos found</p>
       ) : (
-        myPlantnetResponse.map((response, index) => (
+        allImages.map((image, index) => (
           <div
             style={{ padding: 10, marginTop: "4rem" }}
             className="collection-detail__gallery"
@@ -95,7 +99,7 @@ export default function PhotoCarousel({ myPlantnetResponse, heroImg, alt }) {
           >
             <img
               className="collection-detail__photo"
-              src={index === 0 ? heroImg : response.photo_url}
+              src={image.photo_url}
               alt={alt}
             />
             {/* If it's the first image, use the heroImg */}
