@@ -21,7 +21,7 @@ export default function EditPlant({
       );
       setIsLoading(false); // Set loading state to false after API call is completed
       updateSuccess();
-      navigate("/collections");
+      navigate(`/collections/${plantToEdit.id}`);
     } catch (err) {
       setIsLoading(false); // Set loading state to false in case of error
       console.error("Error updating plant:", err);

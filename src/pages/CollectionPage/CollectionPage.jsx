@@ -96,22 +96,28 @@ export default function CollectionPage({
       }
     }
     getOnePlantData();
-  }, [selectedPlantId, isLoading, isPlantSelected]);
+  }, [selectedPlantId, isLoading, isPlantSelected, isEditButtonClicked]);
 
-  if (isHomeIconClicked) {
+  if (isLoading) {
+    return <LoadingScreenPage />;
+  }
+
+  if (deleteModalVisible) {
     return (
       <>
-        <CollectionGallery
-          plantCollection={plantCollection}
-          setPlantCollection={setPlantCollection}
-          selectPlant={selectPlant}
-          handleClickDelete={handleClickDelete}
-          handleClickEdit={handleClickEdit}
+        <DeleteModal
+          setDeleteModalVisible={setDeleteModalVisible}
+          plantToDelete={plantToDelete}
+          setPlantToDelete={setPlantToDelete}
+          deleteSuccess={deleteSuccess}
+          setIsPlantSelected={setIsPlantSelected}
         />
         <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
-  } else if (isEditButtonClicked) {
+  }
+
+  if (isEditButtonClicked) {
     return (
       <>
         <EditPlant
@@ -123,7 +129,9 @@ export default function CollectionPage({
         <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
-  } else if (isPlantSelected) {
+  }
+
+  if (isPlantSelected) {
     return (
       <>
         <CollectionDetail
@@ -141,33 +149,18 @@ export default function CollectionPage({
         <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
       </>
     );
-  } else if (isLoading) {
-    return <LoadingScreenPage />;
-  } else if (deleteModalVisible) {
-    return (
-      <>
-        <DeleteModal
-          setDeleteModalVisible={setDeleteModalVisible}
-          plantToDelete={plantToDelete}
-          setPlantToDelete={setPlantToDelete}
-          deleteSuccess={deleteSuccess}
-          setIsPlantSelected={setIsPlantSelected}
-        />
-        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
-      </>
-    );
-  } else {
-    return (
-      <>
-        <CollectionGallery
-          plantCollection={plantCollection}
-          setPlantCollection={setPlantCollection}
-          selectPlant={selectPlant}
-          handleClickDelete={handleClickDelete}
-          handleClickEdit={handleClickEdit}
-        />
-        <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
-      </>
-    );
   }
+
+  return (
+    <>
+      <CollectionGallery
+        plantCollection={plantCollection}
+        setPlantCollection={setPlantCollection}
+        selectPlant={selectPlant}
+        handleClickDelete={handleClickDelete}
+        handleClickEdit={handleClickEdit}
+      />
+      <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
+    </>
+  );
 }
