@@ -8,6 +8,8 @@ export default function EditPlant({
   setIsLoading,
   setIsEditButtonClicked,
   updateSuccess,
+  setSelectedPlantId,
+  setIsPlantSelected,
 }) {
   const navigate = useNavigate();
 
@@ -19,6 +21,8 @@ export default function EditPlant({
       await axios.put(
         `${import.meta.env.VITE_API_URL}/collections/${plantToEdit.id}`
       );
+      setSelectedPlantId(plantToEdit.id);
+      setIsPlantSelected(true);
       setIsLoading(false); // Set loading state to false after API call is completed
       updateSuccess();
       navigate(`/collections/${plantToEdit.id}`);

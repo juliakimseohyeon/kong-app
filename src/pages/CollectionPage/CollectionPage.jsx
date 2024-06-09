@@ -124,6 +124,8 @@ export default function CollectionPage({
           plantToEdit={plantToEdit}
           setIsLoading={setIsLoading}
           setIsEditButtonClicked={setIsEditButtonClicked}
+          setSelectedPlantId={setSelectedPlantId}
+          setIsPlantSelected={setIsPlantSelected}
           updateSuccess={updateSuccess}
         />
         <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
