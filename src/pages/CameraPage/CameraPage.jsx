@@ -88,6 +88,7 @@ export default function CameraPage({
   const handleExit = () => {
     navigate("/");
   };
+
   if (isLoading) {
     return <LoadingScreenPage />;
   }
