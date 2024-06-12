@@ -60,7 +60,7 @@ export default function CollectionPage({
       }
     }
     getPlantsData();
-  }, [deleteModalVisible, isLoading, isHomeIconClicked]); // Re-render the page every time a plant is deleted or edited
+  }, [deleteModalVisible, isLoading, isHomeIconClicked, isPlantSelected]); // Re-render the page every time a plant is deleted or edited
 
   /* -------------------------------------------------------------------------- */
   /*            Function to load specific plant data from collection            */

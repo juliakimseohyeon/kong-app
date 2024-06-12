@@ -37,7 +37,11 @@ export default function EditPlant({
       <header className="header">
         <Link
           to={`/collections/${plantToEdit.id}`}
-          onClick={() => setIsPlantSelected(false)}
+          onClick={() => {
+            setIsPlantSelected(true),
+              setSelectedPlantId(plantToEdit.id),
+              setIsEditButtonClicked(false);
+          }}
         >
           <div className="header__back-button">
             <img src={arrowLeft} alt="Back Button" />
