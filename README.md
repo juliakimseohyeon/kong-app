@@ -19,6 +19,26 @@ According to the World Economic Forum, almost 8 out of 10 children do not recogn
 
 ![](./public/images/v1-problem-space.jpg)
 
+## Screenshots
+
+![](./public/images/v1-screenshot-home.png)
+
+![](./public/images/v1-screenshot-plant-detail.png)
+
+![](./public/images/v1-screenshot-delete-modal.png)
+
+![](./public/images/v1-screenshot-delete-message.png)
+
+![](./public/images/v1-screenshot-search-result--found.png)
+
+![](./public/images/v1-screenshot-search-result--not-found.png)
+
+![](./public/images/v1-screenshot-sort.png)
+
+![](./public/images/v1-screenshot-camera.png)
+
+![](./public/images/v1-screenshot-loading.png)
+
 ## The Details
 
 ### Features
