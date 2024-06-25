@@ -48,13 +48,11 @@ export default function LoginPage({ token, setToken }) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <Link to={"/collections"}>
-            <button type="submit" className="login__button">
-              Log In
-            </button>
+          <Link to={"/collections"} className="login__button-container">
+            <button type="submit">Log In</button>
           </Link>
-          <Link to={"/register"}>
-            <button lassName="login__button">Sign Up</button>
+          <Link to={"/register"} className="login__button-container">
+            <button className="button--signup">Sign Up</button>
           </Link>
         </form>
       </section>

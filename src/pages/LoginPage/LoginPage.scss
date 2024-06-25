@@ -39,9 +39,15 @@
     }
   }
 
-  &__button {
+  &__button-container {
     width: 100%;
   }
+}
+
+.button--signup {
+  border: 1px solid $color-primary-green;
+  background-color: transparent;
+  color: $color-primary-green;
 }
 
 @media (min-width: $tablet-width) {

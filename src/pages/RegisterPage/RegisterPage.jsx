@@ -1,6 +1,7 @@
 import "./RegisterPage.scss";
 import kongLogo from "../../assets/logos/logo-kong-full-mark-horizontal.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -51,6 +52,9 @@ export default function RegisterPage({ token, setToken }) {
           <button type="submit" className="register__button">
             Sign Up
           </button>
+          <Link to={"/login"} className="login__button-container">
+            <button className="button--signup">Back to Log In</button>
+          </Link>
         </form>
       </section>
     </main>
