@@ -13,10 +13,6 @@ function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
   const [isHomeIconClicked, setIsHomeIconClicked] = useState(false);
 
-  if (!token) {
-    return <LoginPage setToken={setToken} />;
-  }
-
   const uploadSuccess = () =>
     toast.success("Your plant has been created!", {
       duration: 4000,
@@ -54,6 +50,9 @@ function App() {
       icon: "📋",
     });
   };
+  if (!token) {
+    return <LoginPage setToken={setToken} token={token} />;
+  }
 
   return (
     <BrowserRouter>
