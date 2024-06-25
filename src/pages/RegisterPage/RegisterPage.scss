@@ -1,0 +1,62 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.register {
+  height: 100vh;
+  @include display-flex(flex, column, center);
+  gap: 1rem;
+
+  &__logo {
+    height: 3rem;
+    position: absolute;
+    top: 2rem;
+  }
+
+  &__form {
+    width: 100%;
+    @include display-flex(flex, column);
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  &__label,
+  &__input {
+    width: 100%;
+  }
+
+  &__label {
+    @include display-flex(flex, column, normal, flex-start);
+    gap: 0.5rem;
+  }
+
+  &__input {
+    border-radius: 4rem;
+    padding: 1rem;
+    border: none;
+    background-color: $color-secondary-green;
+    &:focus {
+      outline: 2px solid $color-primary-green;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .register {
+    &__form {
+      padding: 3rem;
+      gap: 3rem;
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .register {
+    &__form {
+      width: 50%;
+    }
+  }
+}

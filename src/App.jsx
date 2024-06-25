@@ -7,6 +7,7 @@ import FeaturedPlantsPage from "./pages/FeaturedPlantsPage/FeaturedPlantsPage";
 import CameraPage from "./pages/CameraPage/CameraPage";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   const [token, setToken] = useState();
@@ -50,9 +51,6 @@ function App() {
       icon: "📋",
     });
   };
-  if (!token) {
-    return <LoginPage setToken={setToken} token={token} />;
-  }
 
   return (
     <BrowserRouter>
@@ -65,6 +63,16 @@ function App() {
       {!isPlantSelected && <HeaderNav />}
 
       <Routes>
+        if (!token){" "}
+        {
+          <>
+            <Route
+              path="/login"
+              element={<LoginPage setToken={setToken} token={token} />}
+            />
+            <Route path="/register" element={<RegisterPage />} />
+          </>
+        }
         <Route path="/" element={<Navigate to="/collections" />} />
         <Route
           path="/collections"
