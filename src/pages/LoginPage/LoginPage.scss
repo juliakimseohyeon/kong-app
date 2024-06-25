@@ -43,3 +43,20 @@
     width: 100%;
   }
 }
+
+@media (min-width: $tablet-width) {
+  .login {
+    &__form {
+      padding: 3rem;
+      gap: 3rem;
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .login {
+    &__form {
+      width: 50%;
+    }
+  }
+}
