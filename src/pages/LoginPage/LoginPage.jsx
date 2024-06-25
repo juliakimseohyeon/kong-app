@@ -1,4 +1,5 @@
 import "./LoginPage.scss";
+import kongLogo from "../../assets/logos/logo-kong-full-mark-horizontal.svg";
 import { useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -6,18 +7,6 @@ import PropTypes from "prop-types";
 export default function LoginPage({ token, setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  //   const loginUser = async (credentials) => {
-  //     try {
-  //       const response = await axios.post(
-  //         `${import.meta.env.VITE_API_URL}/login`,
-  //         credentials
-  //       );
-  //       console.log("login response: ", response);
-  //     } catch (err) {
-  //       console.error("Error logging in: ", err);
-  //     }
-  //   };
 
   const handleSubmitLoginForm = async (e) => {
     e.preventDefault();
@@ -39,6 +28,7 @@ export default function LoginPage({ token, setToken }) {
   return (
     <main>
       <section className="login">
+        <img className="login__logo" src={kongLogo} alt="Kong logo" />
         <h1>Please Log In</h1>
         <form className="login__form" onSubmit={handleSubmitLoginForm}>
           <label className="login__label">

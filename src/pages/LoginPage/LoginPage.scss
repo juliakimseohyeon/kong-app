@@ -6,6 +6,12 @@
   @include display-flex(flex, column, center);
   gap: 1rem;
 
+  &__logo {
+    height: 3rem;
+    position: absolute;
+    top: 2rem;
+  }
+
   &__form {
     width: 100%;
     @include display-flex(flex, column);
