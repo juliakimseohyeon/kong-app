@@ -6,10 +6,16 @@ import CollectionPage from "./pages/CollectionPage/CollectionPage";
 import FeaturedPlantsPage from "./pages/FeaturedPlantsPage/FeaturedPlantsPage";
 import CameraPage from "./pages/CameraPage/CameraPage";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 function App() {
+  const [token, setToken] = useState();
   const [isPlantSelected, setIsPlantSelected] = useState(false);
   const [isHomeIconClicked, setIsHomeIconClicked] = useState(false);
+
+  if (!token) {
+    return <LoginPage setToken={setToken} />;
+  }
 
   const uploadSuccess = () =>
     toast.success("Your plant has been created!", {
@@ -58,6 +64,7 @@ function App() {
         }}
       />
       {!isPlantSelected && <HeaderNav />}
+
       <Routes>
         <Route path="/" element={<Navigate to="/collections" />} />
         <Route
@@ -84,7 +91,7 @@ function App() {
             />
           }
         />
-        <Route path="/featuredplants" element={<FeaturedPlantsPage />} />
+        {/* <Route path="/featuredplants" element={<FeaturedPlantsPage />} /> */}
         <Route
           path="/camera"
           element={
