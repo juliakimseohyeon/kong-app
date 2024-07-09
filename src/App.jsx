@@ -25,6 +25,14 @@ function App() {
     );
   };
 
+  const registerError = (userName) => {
+    toast.error(`Sorry, ${userName} is already taken.`, {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "👯",
+    });
+  };
+
   const uploadSuccess = () =>
     toast.success("Your plant has been created!", {
       duration: 4000,
@@ -84,6 +92,7 @@ function App() {
                 <RegisterPage
                   setToken={setToken}
                   registerSuccess={registerSuccess}
+                  registerError={registerError}
                 />
               }
             />

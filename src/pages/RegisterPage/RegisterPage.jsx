@@ -5,7 +5,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-export default function RegisterPage({ setToken, registerSuccess }) {
+export default function RegisterPage({
+  setToken,
+  registerSuccess,
+  registerError,
+}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,12 +20,16 @@ export default function RegisterPage({ setToken, registerSuccess }) {
         `${import.meta.env.VITE_API_URL}/register`,
         { username, password }
       );
+      console.log("Full Response: ", response);
       if (response) {
         setToken(response.data.token);
-        registerSuccess();
+        registerSuccess(username);
       }
     } catch (err) {
       console.error("Error logging in: ", err);
+      if (err.response.data.existingUsernameError) {
+        registerError(username);
+      }
     }
   };
 
