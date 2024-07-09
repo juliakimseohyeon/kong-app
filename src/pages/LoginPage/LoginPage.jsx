@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-export default function LoginPage({ token, setToken }) {
+export default function LoginPage({ setToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,7 +17,6 @@ export default function LoginPage({ token, setToken }) {
         { username, password }
       );
       console.log("login response: ", response);
-      console.log("token: ", response.data.token);
       if (response) {
         setToken(response.data.token);
       }

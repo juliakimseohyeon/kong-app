@@ -14,6 +14,17 @@ function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
   const [isHomeIconClicked, setIsHomeIconClicked] = useState(false);
 
+  const registerSuccess = (userName) => {
+    toast.success(
+      `Your account with the username ${userName} has been created!`,
+      {
+        duration: 4000,
+        position: "bottom-left",
+        icon: "🪪",
+      }
+    );
+  };
+
   const uploadSuccess = () =>
     toast.success("Your plant has been created!", {
       duration: 4000,
@@ -66,11 +77,16 @@ function App() {
         if (!token){" "}
         {
           <>
+            <Route path="/login" element={<LoginPage setToken={setToken} />} />
             <Route
-              path="/login"
-              element={<LoginPage setToken={setToken} token={token} />}
+              path="/register"
+              element={
+                <RegisterPage
+                  setToken={setToken}
+                  registerSuccess={registerSuccess}
+                />
+              }
             />
-            <Route path="/register" element={<RegisterPage />} />
           </>
         }
         <Route path="/" element={<Navigate to="/collections" />} />

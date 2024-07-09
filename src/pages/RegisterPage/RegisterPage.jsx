@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-export default function RegisterPage({ token, setToken }) {
+export default function RegisterPage({ setToken, registerSuccess }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,10 +16,9 @@ export default function RegisterPage({ token, setToken }) {
         `${import.meta.env.VITE_API_URL}/register`,
         { username, password }
       );
-      console.log("register response: ", response);
-      console.log("token: ", response.data.token);
       if (response) {
         setToken(response.data.token);
+        registerSuccess();
       }
     } catch (err) {
       console.error("Error logging in: ", err);
