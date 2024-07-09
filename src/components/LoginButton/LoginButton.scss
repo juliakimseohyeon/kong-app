@@ -1,0 +1,9 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.login {
+  height: 100vh;
+  @include display-flex(flex, column, center);
+  gap: 1rem;
+  padding: 1rem;
+}

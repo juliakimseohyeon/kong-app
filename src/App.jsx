@@ -8,6 +8,7 @@ import CameraPage from "./pages/CameraPage/CameraPage";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginButton from "./components/LoginButton/LoginButton";
 
 function App() {
   const [token, setToken] = useState();
@@ -82,58 +83,48 @@ function App() {
       {!isPlantSelected && <HeaderNav />}
 
       <Routes>
-        if (!token){" "}
+        if (!token){<Route path="/login" element={<LoginButton />} />}
+        else
         {
           <>
-            <Route path="/login" element={<LoginPage setToken={setToken} />} />
+            <Route path="/" element={<Navigate to="/collections" />} />
             <Route
-              path="/register"
+              path="/collections"
               element={
-                <RegisterPage
-                  setToken={setToken}
-                  registerSuccess={registerSuccess}
-                  registerError={registerError}
+                <CollectionPage
+                  isPlantSelected={isPlantSelected}
+                  setIsPlantSelected={setIsPlantSelected}
+                  updateSuccess={updateSuccess}
+                  deleteSuccess={deleteSuccess}
+                  isHomeIconClicked={isHomeIconClicked}
+                />
+              }
+            />
+            <Route
+              path="/collections/:plantId"
+              element={
+                <CollectionPage
+                  isPlantSelected={isPlantSelected}
+                  setIsPlantSelected={setIsPlantSelected}
+                  updateSuccess={updateSuccess}
+                  deleteSuccess={deleteSuccess}
+                  setIsHomeIconClicked={setIsHomeIconClicked}
+                />
+              }
+            />
+            {/* <Route path="/featuredplants" element={<FeaturedPlantsPage />} /> */}
+            <Route
+              path="/camera"
+              element={
+                <CameraPage
+                  uploadSuccess={uploadSuccess}
+                  uploadFailure={uploadFailure}
+                  plantAlreadyExists={plantAlreadyExists}
                 />
               }
             />
           </>
         }
-        <Route path="/" element={<Navigate to="/collections" />} />
-        <Route
-          path="/collections"
-          element={
-            <CollectionPage
-              isPlantSelected={isPlantSelected}
-              setIsPlantSelected={setIsPlantSelected}
-              updateSuccess={updateSuccess}
-              deleteSuccess={deleteSuccess}
-              isHomeIconClicked={isHomeIconClicked}
-            />
-          }
-        />
-        <Route
-          path="/collections/:plantId"
-          element={
-            <CollectionPage
-              isPlantSelected={isPlantSelected}
-              setIsPlantSelected={setIsPlantSelected}
-              updateSuccess={updateSuccess}
-              deleteSuccess={deleteSuccess}
-              setIsHomeIconClicked={setIsHomeIconClicked}
-            />
-          }
-        />
-        {/* <Route path="/featuredplants" element={<FeaturedPlantsPage />} /> */}
-        <Route
-          path="/camera"
-          element={
-            <CameraPage
-              uploadSuccess={uploadSuccess}
-              uploadFailure={uploadFailure}
-              plantAlreadyExists={plantAlreadyExists}
-            />
-          }
-        />
       </Routes>
     </BrowserRouter>
   );
