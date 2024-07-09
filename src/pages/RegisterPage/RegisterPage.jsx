@@ -25,6 +25,9 @@ export default function RegisterPage({
         setToken(response.data.token);
         registerSuccess(username);
       }
+      // Set username and password to blank
+      setUsername("");
+      setPassword("");
     } catch (err) {
       console.error("Error logging in: ", err);
       if (err.response.data.existingUsernameError) {
@@ -39,19 +42,25 @@ export default function RegisterPage({
         <img className="register__logo" src={kongLogo} alt="Kong logo" />
         <h1>Sign Up</h1>
         <form className="register__form" onSubmit={handleSubmitLoginForm}>
-          <label className="register__label">
+          <label className="register__label" htmlFor="username">
             <p>Username</p>
             <input
               type="text"
               className="register__input"
+              id="username"
+              name="username"
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
-          <label className="register__label">
+          <label className="register__label" htmlFor="password">
             <p>Password</p>
             <input
               type="password"
               className="register__input"
+              id="password"
+              name="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
