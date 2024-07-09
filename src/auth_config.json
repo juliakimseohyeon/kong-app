@@ -1,0 +1,7 @@
+{
+  "domain": "import.meta.env.VITE_AUTH_DOMAIN",
+  "clientId": "import.meta.env.VITE_AUTH_CLIENT_ID",
+  "audience": "import.meta.env.VITE_AUTH_AUDIENCE",
+  "appOrigin": "https://kong-app.netlify.app",
+  "apiOrigin": "https://kong-app-api-f16901f372a8.herokuapp.com"
+}
