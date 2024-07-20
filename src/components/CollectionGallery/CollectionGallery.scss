@@ -113,7 +113,7 @@
     padding: 3rem;
     padding-bottom: 12rem;
     gap: 3rem;
-    @include display-flex(flex, row, space-between);
+    @include display-flex(flex, row, flex-start);
     flex-wrap: wrap;
   }
 
@@ -142,8 +142,12 @@
 }
 
 @media (min-width: $desktop-width) {
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   .plant-card {
-    width: 23%;
+    width: 100%;
     &__names {
       padding: 0.5rem 1rem;
     }
