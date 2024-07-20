@@ -6,10 +6,12 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
-    domain={`${import.meta.env.VITE_AUTH_DOMAIN}`}
-    clientId={`${import.meta.env.VITE_AUTH_CLIENT_ID}`}
+    domain={import.meta.env.VITE_AUTH_DOMAIN}
+    clientId={import.meta.env.VITE_AUTH_CLIENT_ID}
     authorizationParams={{
       redirect_uri: `${import.meta.env.VITE_APP_BASE_URL}`,
+      audience: `${import.meta.env.VITE_AUTH_AUDIENCE}`,
+      scope: "read:current_user update:current_user_metadata",
     }}
   >
     <App />

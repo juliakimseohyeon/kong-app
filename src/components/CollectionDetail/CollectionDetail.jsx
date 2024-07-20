@@ -116,6 +116,6 @@ export default function CollectionDetail({
       </>
     );
   } else if (!selectedPlant) {
-    return <h1>Loading</h1>;
+    return <LoadingScreenPage />;
   }
 }
