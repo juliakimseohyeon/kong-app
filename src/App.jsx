@@ -3,7 +3,6 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useAuth0 } from "@auth0/auth0-react";
 import { AuthProvider } from "./utils/Auth/AuthContext";
 import PrivateRoute from "./utils/Auth/PrivateRoute";
 import CollectionPage from "./pages/CollectionPage/CollectionPage";
