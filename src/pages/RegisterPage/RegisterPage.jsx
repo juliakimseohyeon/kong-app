@@ -49,7 +49,7 @@ export default function RegisterPage({
       setPassword("");
     } catch (err) {
       console.error("Registration error: ", err);
-      registerError(username);
+      registerError(email);
     }
   };
 
