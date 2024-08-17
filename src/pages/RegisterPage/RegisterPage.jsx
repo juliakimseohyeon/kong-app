@@ -60,13 +60,13 @@ export default function RegisterPage({
         <h1>Sign Up</h1>
         <form className="register__form" onSubmit={handleSubmit}>
           <label className="register__label" htmlFor="username">
-            <p>Username</p>
+            <p>Name</p>
             <input
               type="text"
               className="register__input"
-              id="username"
-              name="username"
-              value={username}
+              id="name"
+              name="name"
+              value={name}
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
