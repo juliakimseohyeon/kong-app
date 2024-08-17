@@ -7,7 +7,6 @@ import EditPlant from "../../components/EditPlant/EditPlant";
 import LoadingScreenPage from "../LoadingScreenPage/LoadingScreenPage";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import FooterNav from "../../components/FooterNav/FooterNav";
-import LogoutButton from "../../components/LogoutButton/LogoutButton";
 
 export default function CollectionPage({
   isPlantSelected,
@@ -163,7 +162,7 @@ export default function CollectionPage({
         handleClickDelete={handleClickDelete}
         handleClickEdit={handleClickEdit}
       />
-      <LogoutButton />
+
       <FooterNav setIsHomeIconClicked={setIsHomeIconClicked} />
     </>
   );
