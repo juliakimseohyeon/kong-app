@@ -23,6 +23,10 @@
   border-radius: 1rem;
   @include display-flex(flex, column, space-around);
   gap: 1rem;
+  &__container {
+    height: 100%;
+    @include display-flex(flex, column, space-around);
+  }
   &__button-group {
     width: 100%;
     @include display-flex(flex, row);
@@ -39,6 +43,6 @@
 
 @media (min-width: $desktop-width) {
   .delete-modal {
-    width: 40%;
+    width: 60%;
   }
 }
