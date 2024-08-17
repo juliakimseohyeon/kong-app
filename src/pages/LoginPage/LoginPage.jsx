@@ -19,18 +19,18 @@ export default function LoginPage() {
         { email, password }
       );
       console.log("login response: ", response);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Login data: ", data);
+      if (response.status === 200) {
+        console.log("Good login: ", response);
         login(data.user, data.token); // Pass the user data and token to login function
         navigate("/collections");
       } else {
-        const data = await response.json();
+        console.log("Bad login: ", response);
+        const data = response.data;
         console.error(data.message || "Login failed.");
       }
-      // Set username and password to blank
-      setEmail("");
-      setPassword("");
+      // // Set username and password to blank
+      // setEmail("");
+      // setPassword("");
     } catch (err) {
       console.error("Login error: ", err);
     }
@@ -58,12 +58,8 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          <Link to={"/collections"} className="login__button-container">
-            <button type="submit">Log In</button>
-          </Link>
-          <Link to={"/register"} className="login__button-container">
-            <button className="button--signup">Sign Up</button>
-          </Link>
+          <button type="submit">Log In</button>
+          <button className="button--signup">Sign Up</button>
         </form>
       </section>
     </main>
