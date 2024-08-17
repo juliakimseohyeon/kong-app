@@ -37,11 +37,11 @@ export default function RegisterPage({
         { name, email, password }
       );
       console.log("Full Response: ", response);
-      if (response.ok) {
+      if (response.status === 200) {
         navigate("/login");
         registerSuccess(email);
       } else {
-        const data = await response.json();
+        const data = response.data;
         console.error(data.message || "Registration failed.");
       }
       // Set username and password to blank
