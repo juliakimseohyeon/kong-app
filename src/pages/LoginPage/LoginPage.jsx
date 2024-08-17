@@ -21,7 +21,7 @@ export default function LoginPage() {
       console.log("login response: ", response);
       if (response.status === 200) {
         console.log("Good login: ", response);
-        login(data.user, data.token); // Pass the user data and token to login function
+        login(response.data.user, response.data.token); // Pass the user data and token to login function
         navigate("/collections");
       } else {
         console.log("Bad login: ", response);
