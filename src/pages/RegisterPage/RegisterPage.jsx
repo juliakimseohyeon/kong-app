@@ -67,7 +67,7 @@ export default function RegisterPage({
               id="name"
               name="name"
               value={name}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </label>
           <label className="register__label" htmlFor="username">
@@ -78,7 +78,7 @@ export default function RegisterPage({
               id="email"
               name="email"
               value={email}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <label className="register__label" htmlFor="password">
