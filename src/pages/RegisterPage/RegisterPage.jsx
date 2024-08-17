@@ -17,10 +17,10 @@ export default function RegisterPage({
 
   const validateForm = () => {
     if (!name || !email || !password) {
-      registerMissingFieldError();
+      registerMissingFieldError("All fields are required.");
     }
     if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
+      registerMissingFieldError("Password must be at least 6 characters long.");
       return false;
     }
     return true;

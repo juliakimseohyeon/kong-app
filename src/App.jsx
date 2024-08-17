@@ -26,8 +26,8 @@ function App() {
     });
   };
 
-  const registerMissingFieldError = () => {
-    toast.error(`All fields are required.`, {
+  const registerMissingFieldError = (message) => {
+    toast.error(`${message}`, {
       duration: 4000,
       position: "bottom-left",
       icon: "🫥",
