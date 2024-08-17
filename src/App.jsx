@@ -18,15 +18,12 @@ function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
   const [isHomeIconClicked, setIsHomeIconClicked] = useState(false);
 
-  const registerSuccess = (userName) => {
-    toast.success(
-      `Your account with the username ${userName} has been created!`,
-      {
-        duration: 4000,
-        position: "bottom-left",
-        icon: "🪪",
-      }
-    );
+  const registerSuccess = (email) => {
+    toast.success(`Your account with the email ${email} has been created!`, {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "🪪",
+    });
   };
 
   const registerMissingFieldError = () => {
@@ -101,6 +98,7 @@ function App() {
               <RegisterPage
                 registerMissingFieldError={registerMissingFieldError}
                 registerError={registerError}
+                registerSuccess={registerSuccess}
               />
             }
           />

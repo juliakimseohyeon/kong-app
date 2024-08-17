@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function RegisterPage({
-  setToken,
   registerSuccess,
   registerError,
   registerMissingFieldError,
