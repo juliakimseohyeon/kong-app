@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./utils/Auth/AuthContext";
@@ -91,8 +91,9 @@ function App() {
           transform: "translate(0, -75%)", // Adjust for the exact center
         }}
       />
-      {!isPlantSelected && <HeaderNav />}
-      <Router>
+      <BrowserRouter>
+        {!isPlantSelected && <HeaderNav />}
+
         <Routes>
           <Route
             path="/register"
@@ -143,7 +144,7 @@ function App() {
             />
           </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
     </AuthProvider>
   );
 }
