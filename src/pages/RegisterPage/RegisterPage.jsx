@@ -45,10 +45,10 @@ export default function RegisterPage({
         console.error(data.message || "Registration failed.");
       }
       // Set username and password to blank
-      setUsername("");
+      setEmail("");
       setPassword("");
     } catch (err) {
-      console.error("Registration error:", error);
+      console.error("Registration error: ", err);
       registerError(username);
     }
   };

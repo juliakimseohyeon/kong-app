@@ -1,27 +1,38 @@
 import "./LoginPage.scss";
 import kongLogo from "../../assets/logos/logo-kong-full-mark-horizontal.svg";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/Auth/AuthContext";
 import axios from "axios";
-import PropTypes from "prop-types";
 
-export default function LoginPage({ setToken }) {
-  const [username, setUsername] = useState("");
+export default function LoginPage() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleSubmitLoginForm = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/login`,
-        { username, password }
+        { email, password }
       );
       console.log("login response: ", response);
-      if (response) {
-        setToken(response.data.token);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Login data: ", data);
+        login(data.user, data.token); // Pass the user data and token to login function
+        navigate("/collections");
+      } else {
+        const data = await response.json();
+        console.error(data.message || "Login failed.");
       }
+      // Set username and password to blank
+      setEmail("");
+      setPassword("");
     } catch (err) {
-      console.error("Error logging in: ", err);
+      console.error("Login error: ", err);
     }
   };
 
@@ -30,13 +41,13 @@ export default function LoginPage({ setToken }) {
       <section className="login">
         <img className="login__logo" src={kongLogo} alt="Kong logo" />
         <h1>Please Log In</h1>
-        <form className="login__form" onSubmit={handleSubmitLoginForm}>
+        <form className="login__form" onSubmit={handleSubmit}>
           <label className="login__label">
-            <p>Username</p>
+            <p>Email</p>
             <input
-              type="text"
+              type="email"
               className="login__input"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
           <label className="login__label">
@@ -58,7 +69,3 @@ export default function LoginPage({ setToken }) {
     </main>
   );
 }
-
-LoginPage.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
