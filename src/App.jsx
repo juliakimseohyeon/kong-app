@@ -1,8 +1,11 @@
 import "./App.scss";
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { useAuth0 } from "@auth0/auth0-react";
+import { AuthProvider } from "./utils/Auth/AuthContext";
+import PrivateRoute from "./utils/Auth/PrivateRoute";
 import CollectionPage from "./pages/CollectionPage/CollectionPage";
 import FeaturedPlantsPage from "./pages/FeaturedPlantsPage/FeaturedPlantsPage";
 import CameraPage from "./pages/CameraPage/CameraPage";
@@ -25,6 +28,14 @@ function App() {
         icon: "🪪",
       }
     );
+  };
+
+  const registerMissingFieldError = () => {
+    toast.error(`All fields are required.`, {
+      duration: 4000,
+      position: "bottom-left",
+      icon: "🫥",
+    });
   };
 
   const registerError = (userName) => {
@@ -74,7 +85,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <AuthProvider>
       <Toaster
         containerStyle={{
           top: "84%", // Center it vertically
@@ -82,12 +93,11 @@ function App() {
         }}
       />
       {!isPlantSelected && <HeaderNav />}
-
-      <Routes>
-        if (!token){<Route path="/login" element={<LoginButton />} />}
-        else
-        {
-          <>
+      <Router>
+        <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route element={<PrivateRoute />}>
             <Route path="/" element={<Navigate to="/collections" />} />
             <Route
               path="/collections"
@@ -124,10 +134,10 @@ function App() {
                 />
               }
             />
-          </>
-        }
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
