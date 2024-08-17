@@ -1,38 +1,55 @@
 import "./RegisterPage.scss";
 import kongLogo from "../../assets/logos/logo-kong-full-mark-horizontal.svg";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import PropTypes from "prop-types";
 
 export default function RegisterPage({
   setToken,
   registerSuccess,
   registerError,
+  registerMissingFieldError,
 }) {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmitLoginForm = async (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  const validateForm = () => {
+    if (!name || !email || !password) {
+      registerMissingFieldError();
+    }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!validateForm()) return;
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/register`,
-        { username, password }
+        { name, email, password }
       );
       console.log("Full Response: ", response);
-      if (response) {
-        setToken(response.data.token);
-        registerSuccess(username);
+      if (response.ok) {
+        navigate("/login");
+        registerSuccess(email);
+      } else {
+        const data = await response.json();
+        console.error(data.message || "Registration failed.");
       }
       // Set username and password to blank
       setUsername("");
       setPassword("");
     } catch (err) {
-      console.error("Error logging in: ", err);
-      if (err.response.data.existingUsernameError) {
-        registerError(username);
-      }
+      console.error("Registration error:", error);
+      registerError(username);
     }
   };
 
@@ -41,7 +58,7 @@ export default function RegisterPage({
       <section className="register">
         <img className="register__logo" src={kongLogo} alt="Kong logo" />
         <h1>Sign Up</h1>
-        <form className="register__form" onSubmit={handleSubmitLoginForm}>
+        <form className="register__form" onSubmit={handleSubmit}>
           <label className="register__label" htmlFor="username">
             <p>Username</p>
             <input

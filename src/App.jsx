@@ -94,7 +94,15 @@ function App() {
       {!isPlantSelected && <HeaderNav />}
       <Router>
         <Routes>
-          <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="/register"
+            element={
+              <RegisterPage
+                registerMissingFieldError={registerMissingFieldError}
+                registerError={registerError}
+              />
+            }
+          />
           <Route path="/login" element={<LoginPage />} />
           <Route element={<PrivateRoute />}>
             <Route path="/" element={<Navigate to="/collections" />} />
