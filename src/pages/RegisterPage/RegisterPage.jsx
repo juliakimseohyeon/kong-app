@@ -60,7 +60,7 @@ export default function RegisterPage({
         <h1>Sign Up</h1>
         <form className="register__form" onSubmit={handleSubmit}>
           <label className="register__label" htmlFor="username">
-            <p>Name</p>
+            Name
             <input
               type="text"
               className="register__input"
@@ -70,8 +70,19 @@ export default function RegisterPage({
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
+          <label className="register__label" htmlFor="username">
+            E-mail
+            <input
+              type="email"
+              className="register__input"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </label>
           <label className="register__label" htmlFor="password">
-            <p>Password</p>
+            Password
             <input
               type="password"
               className="register__input"
