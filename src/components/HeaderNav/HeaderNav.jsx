@@ -9,6 +9,15 @@ export default function HeaderNav() {
         <Link to="/collections">
           <img className="logo" src={kongLogo} alt="Kong logo" />
         </Link>
+        <p className="nav__text">
+          Made with 💚 by{" "}
+          <Link
+            to="https://github.com/juliakimseohyeon"
+            className="nav__text-link"
+          >
+            Julia (Seo Hyeon) Kim
+          </Link>
+        </p>
       </nav>
     </header>
   );

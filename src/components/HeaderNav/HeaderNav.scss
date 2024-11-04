@@ -1,15 +1,26 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.nav__top {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  position: fixed;
-  z-index: 2;
-  height: 5rem;
-  background-color: white;
-  box-shadow: $box-shadow;
-  @include display-flex(flex, row, center, center);
+.nav {
+  &__top {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    z-index: 2;
+    height: 5rem;
+    background-color: white;
+    box-shadow: $box-shadow;
+    @include display-flex(flex, column, center, center);
+  }
+  &__text {
+    color: $color-primary-green;
+    font-size: 0.65rem;
+  }
+  &__text-link {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+  }
 }
 
 .logo {
