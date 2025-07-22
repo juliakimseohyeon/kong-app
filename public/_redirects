@@ -1,4 +1,1 @@
-# Redirect all traffic to new Vercel deployment
-/*              thekong.ca     301
-
-# Uncomment if you want to revert to previous setup --> /* /index.html 200
+/* /index.html 200

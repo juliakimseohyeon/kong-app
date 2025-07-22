@@ -6,6 +6,7 @@ import CollectionPage from "./pages/CollectionPage/CollectionPage";
 import FeaturedPlantsPage from "./pages/FeaturedPlantsPage/FeaturedPlantsPage";
 import CameraPage from "./pages/CameraPage/CameraPage";
 import HeaderNav from "./components/HeaderNav/HeaderNav";
+import RedirectPage from "./pages/RedirectPage/RedirectPage";
 
 function App() {
   const [isPlantSelected, setIsPlantSelected] = useState(false);
@@ -51,6 +52,15 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/redirect" />} />
+        <Route path="/redirect" element={<RedirectPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
+
+  return (
+    <BrowserRouter>
       <Toaster
         containerStyle={{
           top: "84%", // Center it vertically
@@ -59,7 +69,7 @@ function App() {
       />
       {!isPlantSelected && <HeaderNav />}
       <Routes>
-        <Route path="/" element={<Navigate to="/collections" />} />
+        <Route path="/" element={<Navigate to="/redirect" />} />
         <Route
           path="/collections"
           element={
